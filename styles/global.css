@@ -1,0 +1,11 @@
+html {
+  /* Use a more intuitive box-sizing value. */
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  /* Make it easy for composite components to override the box-sizing set by `html`. */
+  box-sizing: inherit;
+}
