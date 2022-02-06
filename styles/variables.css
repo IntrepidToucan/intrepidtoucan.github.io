@@ -1,0 +1,33 @@
+:root {
+  --border-radius-0: 2px;
+  --border-radius-1: 4px;
+
+  --color-blue-7: #2d8fd5;
+
+  --color-gray-0: #f9f9fa;
+  --color-gray-1: #eceeef;
+  --color-gray-8: #606e79;
+  --color-gray-9: #374047;
+
+  --font-family-monospace: 'Courier New', monospace;
+  --font-family-sans-serif: Arial, sans-serif;
+
+  --spacing-0: 2px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 16px;
+}
+
+[data-intrepid-toucan-global-theme='dark'] {
+  --themed-background-color-0: var(--color-gray-9);
+  --themed-background-color-1: var(--color-gray-8);
+  --themed-link-color-normal: var(--color-blue-7);
+  --themed-text-color-normal: var(--color-gray-0);
+}
+
+[data-intrepid-toucan-global-theme='light'] {
+  --themed-background-color-0: var(--color-gray-0);
+  --themed-background-color-1: var(--color-gray-1);
+  --themed-link-color-normal: var(--color-blue-7);
+  --themed-text-color-normal: var(--color-gray-9);
+}

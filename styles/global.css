@@ -9,3 +9,9 @@ html {
   /* Make it easy for composite components to override the box-sizing set by `html`. */
   box-sizing: inherit;
 }
+
+body {
+  background-color: var(--themed-background-color-0);
+  color: var(--themed-text-color-normal);
+  font-family: var(--font-family-sans-serif);
+}
