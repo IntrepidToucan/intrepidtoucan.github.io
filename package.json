@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build && next export -o docs/ && cp ./CNAME ./docs/CNAME",
+    "build": "next build && next export -o docs/ && touch ./docs/.nojekyll && echo 'intrepidtoucan.com' > ./docs/CNAME",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start"
