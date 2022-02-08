@@ -1,7 +1,6 @@
 import Head from 'next/head';
-import Link from 'next/link';
 
-import { Heading, TextLink } from '../../common';
+import { Heading } from '../../common';
 import { buildPageTitle, WorldName } from '../../utils';
 
 export default function MarsHome() {
@@ -11,13 +10,7 @@ export default function MarsHome() {
         <title>{buildPageTitle([WorldName.MARS])}</title>
       </Head>
 
-      <main>
-        <Heading>{WorldName.MARS}</Heading>
-
-        <Link href="/" passHref>
-          <TextLink>Home</TextLink>
-        </Link>
-      </main>
+      <Heading>{WorldName.MARS}</Heading>
     </>
   );
 }

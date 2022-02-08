@@ -25,13 +25,23 @@
 [data-intrepid-toucan-global-theme='dark'] {
   --themed-background-color-0: var(--color-gray-9);
   --themed-background-color-1: var(--color-gray-8);
+
+  --themed-interactive-background-color-normal: var(--color-blue-7);
+  --themed-interactive-foreground-color-normal: var(--color-gray-0);
+
   --themed-link-color-normal: var(--color-blue-7);
+
   --themed-text-color-normal: var(--color-gray-0);
 }
 
 [data-intrepid-toucan-global-theme='light'] {
   --themed-background-color-0: var(--color-gray-0);
   --themed-background-color-1: var(--color-gray-1);
+
+  --themed-interactive-background-color-normal: var(--color-blue-7);
+  --themed-interactive-foreground-color-normal: var(--color-gray-0);
+
   --themed-link-color-normal: var(--color-blue-7);
+
   --themed-text-color-normal: var(--color-gray-9);
 }

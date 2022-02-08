@@ -1,4 +1,4 @@
-import kebabCase from 'just-kebab-case';
+import kebabCase from 'lodash/kebabCase';
 
 export function buildBaseClassName(componentName: string): string {
   return `IntrepidToucan-${componentName}`;

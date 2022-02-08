@@ -1,6 +1,8 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import React from 'react';
 
+import { isNil } from '../../../utils';
 import { useClasses, useProps } from '../../hooks';
 import { useLinkProps } from '../../hooks/useLinkProps';
 import type { HTMLComponentProps, LinkableComponentProps } from '../../types';
@@ -15,6 +17,13 @@ export interface TextLinkProps
    * @default "a"
    */
   component?: React.ElementType;
+
+  /**
+   * The visual variant of the component.
+   *
+   * @default "text"
+   */
+  variant?: 'button' | 'text';
 }
 
 const displayName = 'TextLink';
@@ -27,8 +36,10 @@ export const TextLink = React.forwardRef<HTMLElement, TextLinkProps>(
       classes: classesProp,
       className,
       component: Component = 'a',
+      href,
       rel,
       target,
+      variant = 'text',
       ...restProps
     } = useProps(displayName, props);
 
@@ -37,9 +48,12 @@ export const TextLink = React.forwardRef<HTMLElement, TextLinkProps>(
     // Styles
     const classes = useClasses(displayName, baseClasses, classesProp);
 
-    const rootClassName = clsx(classes.BASE, className, classes.root);
+    const rootClassName = clsx(classes.BASE, className, classes.root, {
+      [classes.rootButton]: variant === 'button',
+      [classes.rootText]: variant === 'text',
+    });
 
-    return (
+    const componentNode = (
       <Component
         className={rootClassName}
         ref={ref}
@@ -48,6 +62,14 @@ export const TextLink = React.forwardRef<HTMLElement, TextLinkProps>(
       >
         {children}
       </Component>
+    );
+
+    if (isNil(href)) return componentNode;
+
+    return (
+      <Link href={href} passHref>
+        {componentNode}
+      </Link>
     );
   }
 );

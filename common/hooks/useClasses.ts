@@ -1,4 +1,4 @@
-import merge from 'deepmerge';
+import mergeWith from 'lodash/mergeWith';
 import React from 'react';
 
 import type { ClassesMap } from '../types';
@@ -6,12 +6,13 @@ import { buildBaseClassName } from '../utils';
 
 type UseClassesResult<T> = { BASE: string } & T;
 
-function mergeStrings(str1: string, str2: string): string {
-  return str1.concat(str2);
-}
+function classesMergeFn(val1: unknown, val2: unknown): string | undefined {
+  if (typeof val1 === 'string' && typeof val2 === 'string') {
+    return val1.concat(val2);
+  }
 
-function customMerge() {
-  return mergeStrings;
+  // Returning `undefined` causes the default merge behavior to be used.
+  return undefined;
 }
 
 export function useClasses<T extends ClassesMap>(
@@ -27,8 +28,8 @@ export function useClasses<T extends ClassesMap>(
 
     if (!userClasses) return baseResult;
 
-    return merge.all([baseResult, userClasses], {
-      customMerge,
-    }) as UseClassesResult<T>;
+    // Lodash `mergeWith()` mutates the original object,
+    // so start with a fresh object.
+    return mergeWith({}, baseResult, userClasses, classesMergeFn);
   }, [baseClasses, componentName, userClasses]);
 }
