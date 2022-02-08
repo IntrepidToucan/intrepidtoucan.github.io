@@ -8,7 +8,14 @@ import baseClasses from './TextLink.module.css';
 
 export interface TextLinkProps
   extends HTMLComponentProps,
-    LinkableComponentProps {}
+    LinkableComponentProps {
+  /**
+   * A React component or intrinsic JSX element string to use as the root element of the component.
+   *
+   * @default "a"
+   */
+  component?: React.ElementType;
+}
 
 const displayName = 'TextLink';
 

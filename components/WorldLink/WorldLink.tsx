@@ -1,8 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import { useClasses, useProps } from '../../hooks';
-import type { HTMLComponentProps } from '../../types';
+import { HTMLComponentProps, useClasses, useProps } from '../../common';
 import baseClasses from './WorldLink.module.css';
 
 export interface WorldLinkProps extends HTMLComponentProps {}

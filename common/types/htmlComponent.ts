@@ -16,6 +16,8 @@ export interface HTMLComponentProps<
     React.AriaAttributes {
   /**
    * A React component or intrinsic JSX element string to use as the root element of the component.
+   *
+   * @default "div"
    */
   component?: React.ElementType;
 

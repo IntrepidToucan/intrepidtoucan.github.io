@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 
-import { Heading, TextLink } from '../../components/common';
+import { Heading, TextLink } from '../../common';
 import { buildPageTitle, WorldName } from '../../utils';
 
 export default function MarsHome() {

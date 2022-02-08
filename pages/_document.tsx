@@ -1,11 +1,11 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { buildDataAttributeName } from '../components/utils';
+import { buildDataAttributeName } from '../common';
 import { Namespace, ThemeId } from '../utils';
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head />
 
       <body

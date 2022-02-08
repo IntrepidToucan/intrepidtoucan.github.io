@@ -7,6 +7,13 @@ import baseClasses from './Heading.module.css';
 
 export interface HeadingProps extends HTMLComponentProps {
   /**
+   * A React component or intrinsic JSX element string to use as the root element of the component.
+   *
+   * @default "h1"
+   */
+  component?: React.ElementType;
+
+  /**
    * The level of the heading.
    *
    * @default 1

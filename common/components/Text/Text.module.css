@@ -1,0 +1,14 @@
+.root {
+}
+
+.rootLarge {
+  font-size: var(--font-size-2);
+}
+
+.rootMedium {
+  font-size: var(--font-size-1);
+}
+
+.rootSmall {
+  font-size: var(--font-size-0);
+}
