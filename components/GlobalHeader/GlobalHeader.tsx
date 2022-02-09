@@ -4,11 +4,11 @@ import React from 'react';
 import {
   buildDataAttributeName,
   HTMLComponentProps,
-  TextLink,
   useClasses,
   useProps,
 } from '../../common';
 import { APP_NAME, Namespace, ThemeId } from '../../utils';
+import { NextTextLink } from '../NextTextLink';
 import baseClasses from './GlobalHeader.module.css';
 
 export interface GlobalHeaderProps extends HTMLComponentProps {}
@@ -33,7 +33,7 @@ export const GlobalHeader = React.forwardRef<HTMLElement, GlobalHeaderProps>(
 
     return (
       <Component className={rootClassName} ref={ref} {...restProps}>
-        <TextLink href="/">{APP_NAME}</TextLink>
+        <NextTextLink href="/">{APP_NAME}</NextTextLink>
 
         {children}
 

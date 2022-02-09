@@ -1,0 +1,10 @@
+.root {
+  align-items: center;
+  background-color: var(--themed-interactive-background-color-normal);
+  border-radius: var(--border-radius-1);
+  color: var(--themed-interactive-foreground-color-normal);
+  display: inline-flex;
+  justify-content: center;
+  padding: var(--spacing-2) var(--spacing-3);
+  text-decoration: none;
+}

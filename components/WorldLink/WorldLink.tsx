@@ -1,12 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import {
-  HTMLComponentProps,
-  TextLink,
-  useClasses,
-  useProps,
-} from '../../common';
+import { Button, HTMLComponentProps, useClasses, useProps } from '../../common';
 import baseClasses from './WorldLink.module.css';
 
 export interface WorldLinkProps
@@ -44,9 +39,7 @@ export const WorldLink = React.forwardRef<HTMLElement, WorldLinkProps>(
       <Component className={rootClassName} ref={ref} {...restProps}>
         {children}
 
-        <TextLink href={href} variant="button">
-          {ctaText}
-        </TextLink>
+        <Button href={href}>{ctaText}</Button>
       </Component>
     );
   }
