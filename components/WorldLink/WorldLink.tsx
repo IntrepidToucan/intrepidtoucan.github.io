@@ -1,18 +1,29 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import { Button, HTMLComponentProps, useClasses, useProps } from '../../common';
+import {
+  Button,
+  Heading,
+  HTMLComponentProps,
+  useClasses,
+  useProps,
+} from '../../common';
 import baseClasses from './WorldLink.module.css';
 
 export interface WorldLinkProps
   extends HTMLComponentProps,
     Required<Pick<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>> {
   /**
-   * The Call to Action text.
+   * The call to action text.
    *
    * @default "Go"
    */
   ctaText?: string;
+
+  /**
+   * The title to display on the link.
+   */
+  title: string;
 }
 
 const displayName = 'WorldLink';
@@ -27,6 +38,7 @@ export const WorldLink = React.forwardRef<HTMLElement, WorldLinkProps>(
       component: Component = 'div',
       ctaText = 'Go',
       href,
+      title,
       ...restProps
     } = useProps(displayName, props);
 
@@ -37,6 +49,8 @@ export const WorldLink = React.forwardRef<HTMLElement, WorldLinkProps>(
 
     return (
       <Component className={rootClassName} ref={ref} {...restProps}>
+        <Heading>{title}</Heading>
+
         {children}
 
         <Button href={href}>{ctaText}</Button>

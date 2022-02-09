@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Heading } from '../../common';
+import { WorldHeroBanner } from '../../components';
 import { buildPageTitle, WorldName } from '../../utils';
 
 export default function MarsHome() {
@@ -10,7 +10,7 @@ export default function MarsHome() {
         <title>{buildPageTitle([WorldName.MARS])}</title>
       </Head>
 
-      <Heading>{WorldName.MARS}</Heading>
+      <WorldHeroBanner title={WorldName.MARS} />
     </>
   );
 }

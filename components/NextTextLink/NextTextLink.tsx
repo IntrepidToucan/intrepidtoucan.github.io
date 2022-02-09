@@ -37,6 +37,8 @@ export const NextTextLink = React.forwardRef<HTMLElement, NextTextLinkProps>(
 
     if (isNil(href)) return componentNode;
 
+    // TODO(a11y): Seems that focus doesn't go to the right place after clicking on a link
+    // (see https://github.com/vercel/next.js/issues/7681). Find a way to fix this.
     return (
       <Link href={href} passHref>
         {componentNode}

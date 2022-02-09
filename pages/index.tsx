@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
-import { WorldLink } from '../components';
+import { Text } from '../common';
+import { WorldLink, WorldLinksGrid } from '../components';
 import { buildPageTitle } from '../utils';
 
 export default function Home() {
@@ -11,7 +12,11 @@ export default function Home() {
         <link href="/favicon.ico" rel="icon" />
       </Head>
 
-      <WorldLink href="/mars" />
+      <WorldLinksGrid>
+        <WorldLink href="/mars" title="Mars">
+          <Text>Lorem ipsum...</Text>
+        </WorldLink>
+      </WorldLinksGrid>
     </>
   );
 }
