@@ -6,5 +6,7 @@
   display: inline-flex;
   justify-content: center;
   padding: var(--spacing-2) var(--spacing-3);
+
+  /** In case the root element is `<a />`. */
   text-decoration: none;
 }

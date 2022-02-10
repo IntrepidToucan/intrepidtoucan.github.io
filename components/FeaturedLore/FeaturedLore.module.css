@@ -1,14 +1,13 @@
 .root {
   background-color: var(--themed-background-color-1);
   border-radius: var(--border-radius-1);
-  display: inline-block;
-  min-width: 300;
+  margin: var(--spacing-4) var(--spacing-3);
   padding: var(--spacing-3);
-  width: 100%;
 }
 
 @media (min-width: 640px) {
   .root {
-    width: 45%;
+    margin: var(--spacing-4) auto;
+    width: 60%;
   }
 }

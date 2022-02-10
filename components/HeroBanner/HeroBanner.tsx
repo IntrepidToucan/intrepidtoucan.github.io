@@ -2,23 +2,20 @@ import clsx from 'clsx';
 import React from 'react';
 
 import {
-  Button,
   Heading,
   HTMLComponentProps,
   useClasses,
   useProps,
 } from '../../common';
-import baseClasses from './WorldLink.module.css';
+import baseClasses from './HeroBanner.module.css';
 
-export interface WorldLinkProps
-  extends HTMLComponentProps,
-    Required<Pick<React.AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>> {
+export interface HeroBannerProps extends HTMLComponentProps {
   /**
-   * The call to action text.
+   * A React component or intrinsic JSX element string to use as the root element of the component.
    *
-   * @default "Go"
+   * @default "header"
    */
-  ctaText?: string;
+  component?: React.ElementType;
 
   /**
    * The title.
@@ -26,18 +23,16 @@ export interface WorldLinkProps
   title: string;
 }
 
-const displayName = 'WorldLink';
+const displayName = 'HeroBanner';
 
-export const WorldLink = React.forwardRef<HTMLElement, WorldLinkProps>(
-  function WorldLink(props, ref) {
+export const HeroBanner = React.forwardRef<HTMLElement, HeroBannerProps>(
+  function HeroBanner(props, ref) {
     // Props
     const {
       children,
       classes: classesProp,
       className,
-      component: Component = 'div',
-      ctaText = 'Go',
-      href,
+      component: Component = 'header',
       title,
       ...restProps
     } = useProps(displayName, props);
@@ -52,8 +47,6 @@ export const WorldLink = React.forwardRef<HTMLElement, WorldLinkProps>(
         <Heading>{title}</Heading>
 
         {children}
-
-        <Button href={href}>{ctaText}</Button>
       </Component>
     );
   }

@@ -1,0 +1,8 @@
+.root {
+  background-color: var(--themed-background-color-1);
+  padding: var(--spacing-3);
+
+  /** In case the root element is `<a />`. */
+  display: block;
+  text-decoration: none;
+}
