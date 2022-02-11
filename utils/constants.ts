@@ -9,6 +9,13 @@ export const ThemeId = {
   LIGHT: 'light',
 } as const;
 
-export const WorldName = {
-  MARS: 'Mars',
+export const WorldData = {
+  LOS_ANGELES: {
+    id: 'la',
+    name: 'Los Angeles',
+  },
+  MARS: {
+    id: 'mars',
+    name: 'Mars',
+  },
 } as const;

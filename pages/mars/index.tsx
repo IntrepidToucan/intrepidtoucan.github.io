@@ -7,25 +7,40 @@ import {
   FeaturedLore,
   HeroBanner,
 } from '../../components';
-import { buildPageTitle, WorldName } from '../../utils';
+import { EncyclopediaEntry, parseEncyclopedia } from '../../lib';
+import { buildPageTitle, WorldData } from '../../utils';
 
-export default function MarsHome() {
+interface GetStaticPropsResult {
+  props: {
+    entries: EncyclopediaEntry[];
+  };
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult> {
+  return {
+    props: {
+      entries: parseEncyclopedia(WorldData.MARS.id),
+    },
+  };
+}
+
+export default function MarsHome({ entries }: GetStaticPropsResult['props']) {
   return (
     <>
       <Head>
-        <title>{buildPageTitle([WorldName.MARS])}</title>
+        <title>{buildPageTitle([WorldData.MARS.name])}</title>
       </Head>
 
-      <HeroBanner title={WorldName.MARS} />
+      <HeroBanner title={WorldData.MARS.name} />
 
       <FeaturedLore>
         <Text>Lorem ipsum...</Text>
       </FeaturedLore>
 
       <EncyclopediaGrid>
-        <Card href="/mars/encyclopedia" title="Foo" />
-        <Card title="Bar" />
-        <Card title="Baz" />
+        {entries.map(({ id, title }) => (
+          <Card href={`/mars/encyclopedia/${id}`} key={id} title={title} />
+        ))}
       </EncyclopediaGrid>
     </>
   );

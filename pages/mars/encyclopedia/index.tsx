@@ -1,16 +1,35 @@
 import Head from 'next/head';
 
 import { HeroBanner } from '../../../components';
-import { buildPageTitle, WorldName } from '../../../utils';
+import { EncyclopediaEntry, parseEncyclopedia } from '../../../lib';
+import { buildPageTitle, WorldData } from '../../../utils';
 
-export default function MarsEncyclopediaHome() {
+interface GetStaticPropsResult {
+  props: {
+    entries: EncyclopediaEntry[];
+  };
+}
+
+export async function getStaticProps(): Promise<GetStaticPropsResult> {
+  return {
+    props: {
+      entries: parseEncyclopedia(WorldData.MARS.id),
+    },
+  };
+}
+
+export default function MarsEncyclopediaHome({
+  entries,
+}: GetStaticPropsResult['props']) {
   return (
     <>
       <Head>
-        <title>{buildPageTitle([WorldName.MARS])}</title>
+        <title>{buildPageTitle([WorldData.MARS.name])}</title>
       </Head>
 
       <HeroBanner title="Encyclopedia" />
+
+      {JSON.stringify(entries)}
     </>
   );
 }
