@@ -1,8 +1,11 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+// TODO(deps): Use micromark or MDX instead.
+import { remark } from 'remark';
+import remarkHtml from 'remark-html';
 
-import { WorldData } from '../utils';
+import { SiteAreaData, WorldId } from '../utils';
 
 export interface EncyclopediaEntry {
   category: string;
@@ -10,19 +13,56 @@ export interface EncyclopediaEntry {
   title: string;
 }
 
-export function parseEncyclopedia(
-  worldId: typeof WorldData[keyof typeof WorldData]['id']
-): EncyclopediaEntry[] {
-  const dir = path.join(process.cwd(), 'encyclopedia', worldId);
+export interface FullEncyclopediaEntry extends EncyclopediaEntry {
+  contentHtml: string;
+}
 
-  return fs.readdirSync(dir).map((fileName) => {
-    const fileContent = fs.readFileSync(path.join(dir, fileName), 'utf8');
-    const { category, title } = matter(fileContent).data;
+function buildEntryMetadata(
+  id: string,
+  { category, title }: { [key: string]: any }
+): EncyclopediaEntry {
+  return {
+    category: category || '',
+    id,
+    title: title || '',
+  };
+}
 
-    return {
-      category: category || '',
-      id: fileName.replace(/\.md$/, ''),
-      title: title || '',
-    };
-  });
+function getEntryId(fileName: string): string {
+  return fileName.replace(/\.md$/, '');
+}
+
+function getWorldPath(worldId: WorldId): string {
+  return path.join(process.cwd(), SiteAreaData.ENCYCLOPEDIA.id, worldId);
+}
+
+export function getAllEntryIds(worldId: WorldId): string[] {
+  return fs.readdirSync(getWorldPath(worldId)).map(getEntryId);
+}
+
+export function getAllEntries(worldId: WorldId): EncyclopediaEntry[] {
+  const dir = getWorldPath(worldId);
+
+  return fs
+    .readdirSync(dir)
+    .map((fileName) =>
+      buildEntryMetadata(
+        getEntryId(fileName),
+        matter(fs.readFileSync(path.join(dir, fileName), 'utf8')).data
+      )
+    );
+}
+
+export async function getEntry(
+  worldId: WorldId,
+  id: string
+): Promise<FullEncyclopediaEntry> {
+  const { content, data } = matter(
+    fs.readFileSync(path.join(getWorldPath(worldId), `${id}.md`), 'utf8')
+  );
+
+  return {
+    ...buildEntryMetadata(id, data),
+    contentHtml: (await remark().use(remarkHtml).process(content)).toString(),
+  };
 }

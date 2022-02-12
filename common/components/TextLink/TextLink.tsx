@@ -23,8 +23,8 @@ export const TextLink = React.forwardRef<HTMLElement, TextLinkProps>(
     // Props
     const {
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component: Component = 'a',
       rel,
       target,

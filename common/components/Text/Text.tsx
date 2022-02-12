@@ -30,8 +30,8 @@ export const Text = React.forwardRef<HTMLElement, TextProps>(function Text(
   // Props
   const {
     children,
-    classes: classesProp,
     className,
+    classes: classesProp,
     component: Component = 'p',
     size = 'medium',
     ...restProps

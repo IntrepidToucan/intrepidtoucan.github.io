@@ -13,8 +13,8 @@ export const GlobalFooter = React.forwardRef<HTMLElement, GlobalFooterProps>(
     // Props
     const {
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component: Component = 'footer',
       ...restProps
     } = useProps(displayName, props);

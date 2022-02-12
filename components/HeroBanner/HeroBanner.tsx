@@ -30,8 +30,8 @@ export const HeroBanner = React.forwardRef<HTMLElement, HeroBannerProps>(
     // Props
     const {
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component: Component = 'header',
       title,
       ...restProps

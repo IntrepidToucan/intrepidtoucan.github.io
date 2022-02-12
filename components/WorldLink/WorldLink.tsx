@@ -33,8 +33,8 @@ export const WorldLink = React.forwardRef<HTMLElement, WorldLinkProps>(
     // Props
     const {
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component: Component = 'div',
       ctaText = 'Go',
       href,

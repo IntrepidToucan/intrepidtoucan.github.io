@@ -36,8 +36,8 @@ export const Heading = React.forwardRef<HTMLElement, HeadingProps>(
     const {
       align = 'default',
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component,
       level = 1,
       ...restProps

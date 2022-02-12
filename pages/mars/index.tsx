@@ -7,8 +7,13 @@ import {
   FeaturedLore,
   HeroBanner,
 } from '../../components';
-import { EncyclopediaEntry, parseEncyclopedia } from '../../lib';
-import { buildPageTitle, WorldData } from '../../utils';
+import { EncyclopediaEntry, getAllEntries } from '../../lib';
+import {
+  buildPagePath,
+  buildPageTitle,
+  SiteAreaData,
+  WorldData,
+} from '../../utils';
 
 interface GetStaticPropsResult {
   props: {
@@ -19,7 +24,7 @@ interface GetStaticPropsResult {
 export async function getStaticProps(): Promise<GetStaticPropsResult> {
   return {
     props: {
-      entries: parseEncyclopedia(WorldData.MARS.id),
+      entries: getAllEntries(WorldData.MARS.id),
     },
   };
 }
@@ -28,7 +33,7 @@ export default function MarsHome({ entries }: GetStaticPropsResult['props']) {
   return (
     <>
       <Head>
-        <title>{buildPageTitle([WorldData.MARS.name])}</title>
+        <title>{buildPageTitle(WorldData.MARS.name)}</title>
       </Head>
 
       <HeroBanner title={WorldData.MARS.name} />
@@ -39,7 +44,15 @@ export default function MarsHome({ entries }: GetStaticPropsResult['props']) {
 
       <EncyclopediaGrid>
         {entries.map(({ id, title }) => (
-          <Card href={`/mars/encyclopedia/${id}`} key={id} title={title} />
+          <Card
+            href={buildPagePath(
+              WorldData.MARS.id,
+              SiteAreaData.ENCYCLOPEDIA.id,
+              id
+            )}
+            key={id}
+            title={title}
+          />
         ))}
       </EncyclopediaGrid>
     </>

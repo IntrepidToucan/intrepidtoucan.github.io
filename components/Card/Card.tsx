@@ -38,8 +38,8 @@ export const Card = React.forwardRef<HTMLElement, CardProps>(function Card(
   // Props
   const {
     children,
-    classes: classesProp,
     className,
+    classes: classesProp,
     component,
     href,
     rel,

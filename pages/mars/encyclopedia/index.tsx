@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import { HeroBanner } from '../../../components';
-import { EncyclopediaEntry, parseEncyclopedia } from '../../../lib';
+import { EncyclopediaEntry, getAllEntries } from '../../../lib';
 import { buildPageTitle, WorldData } from '../../../utils';
 
 interface GetStaticPropsResult {
@@ -13,7 +13,7 @@ interface GetStaticPropsResult {
 export async function getStaticProps(): Promise<GetStaticPropsResult> {
   return {
     props: {
-      entries: parseEncyclopedia(WorldData.MARS.id),
+      entries: getAllEntries(WorldData.MARS.id),
     },
   };
 }
@@ -24,7 +24,7 @@ export default function MarsEncyclopediaHome({
   return (
     <>
       <Head>
-        <title>{buildPageTitle([WorldData.MARS.name])}</title>
+        <title>{buildPageTitle(WorldData.MARS.name)}</title>
       </Head>
 
       <HeroBanner title="Encyclopedia" />

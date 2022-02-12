@@ -4,6 +4,12 @@ export const Namespace = {
   GLOBAL: 'global',
 } as const;
 
+export const SiteAreaData = {
+  ENCYCLOPEDIA: {
+    id: 'encyclopedia',
+  },
+} as const;
+
 export const ThemeId = {
   DARK: 'dark',
   LIGHT: 'light',

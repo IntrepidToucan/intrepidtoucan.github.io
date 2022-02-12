@@ -25,8 +25,8 @@ export const FeaturedLore = React.forwardRef<HTMLElement, FeaturedLoreProps>(
     // Props
     const {
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component: Component = 'section',
       ...restProps
     } = useProps(displayName, props);

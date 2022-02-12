@@ -19,8 +19,8 @@ export const NextTextLink = React.forwardRef<HTMLElement, NextTextLinkProps>(
   function NextTextLink(props, ref) {
     // Props
     const {
-      classes: classesProp,
       className,
+      classes: classesProp,
       href,
       ...restProps
     } = useProps(displayName, props);

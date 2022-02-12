@@ -20,8 +20,8 @@ export const EncyclopediaGrid = React.forwardRef<
   // Props
   const {
     children,
-    classes: classesProp,
     className,
+    classes: classesProp,
     component: Component = 'div',
     ...restProps
   } = useProps(displayName, props);

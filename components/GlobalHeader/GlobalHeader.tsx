@@ -20,8 +20,8 @@ export const GlobalHeader = React.forwardRef<HTMLElement, GlobalHeaderProps>(
     // Props
     const {
       children,
-      classes: classesProp,
       className,
+      classes: classesProp,
       component: Component = 'header',
       ...restProps
     } = useProps(displayName, props);
