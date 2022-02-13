@@ -7,7 +7,7 @@ export function buildPagePath(
   areaId: SiteAreaId,
   ...pageSegments: string[]
 ): string {
-  return buildStringFromSegments([worldId, areaId, ...pageSegments], '/');
+  return '/' + buildStringFromSegments([worldId, areaId, ...pageSegments], '/');
 }
 
 export function buildPageTitle(...titleSegments: string[]): string {

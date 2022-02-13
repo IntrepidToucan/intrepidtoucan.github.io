@@ -2,11 +2,13 @@ import clsx from 'clsx';
 import React from 'react';
 
 import {
+  Button,
   Heading,
   HTMLComponentProps,
   useClasses,
   useProps,
 } from '../../common';
+import { buildPagePath, SiteAreaData, WorldId } from '../../utils';
 import baseClasses from './FeaturedLore.module.css';
 
 export interface FeaturedLoreProps extends HTMLComponentProps {
@@ -16,6 +18,11 @@ export interface FeaturedLoreProps extends HTMLComponentProps {
    * @default "section"
    */
   component?: React.ElementType;
+
+  /**
+   * The ID of the relevant world.
+   */
+  worldId: WorldId;
 }
 
 const displayName = 'FeaturedLore';
@@ -28,6 +35,7 @@ export const FeaturedLore = React.forwardRef<HTMLElement, FeaturedLoreProps>(
       className,
       classes: classesProp,
       component: Component = 'section',
+      worldId,
       ...restProps
     } = useProps(displayName, props);
 
@@ -41,6 +49,10 @@ export const FeaturedLore = React.forwardRef<HTMLElement, FeaturedLoreProps>(
         <Heading>Lore</Heading>
 
         {children}
+
+        <Button href={buildPagePath(worldId, SiteAreaData.LORE.id)}>
+          Read More
+        </Button>
       </Component>
     );
   }

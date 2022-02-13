@@ -7,58 +7,51 @@ import remarkHtml from 'remark-html';
 
 import { SiteAreaData, WorldId } from '../utils';
 
-export interface EncyclopediaEntry {
-  category: string;
+export interface LoreEntry {
   id: string;
-  title: string;
+  title?: string;
 }
 
-export interface FullEncyclopediaEntry extends EncyclopediaEntry {
+export interface FullLoreEntry extends LoreEntry {
   contentHtml: string;
 }
 
 function buildEntryMetadata(
   id: string,
-  { category, title }: { [key: string]: any }
-): EncyclopediaEntry {
-  return {
-    category: category || '',
-    id,
-    title: title || '',
-  };
+  { title }: { [key: string]: any }
+): LoreEntry {
+  return { id, title };
 }
 
-function getEncyclopediaEntryId(fileName: string): string {
+function getLoreEntryId(fileName: string): string {
   return fileName.replace(/\.md$/, '');
 }
 
 function getWorldPath(worldId: WorldId): string {
-  return path.join(process.cwd(), SiteAreaData.ENCYCLOPEDIA.id, worldId);
+  return path.join(process.cwd(), SiteAreaData.LORE.id, worldId, 'main');
 }
 
-export function getAllEncyclopediaEntryIds(worldId: WorldId): string[] {
-  return fs.readdirSync(getWorldPath(worldId)).map(getEncyclopediaEntryId);
+export function getAllLoreEntryIds(worldId: WorldId): string[] {
+  return fs.readdirSync(getWorldPath(worldId)).map(getLoreEntryId);
 }
 
-export function getAllEncyclopediaEntries(
-  worldId: WorldId
-): EncyclopediaEntry[] {
+export function getAllLoreEntries(worldId: WorldId): LoreEntry[] {
   const dir = getWorldPath(worldId);
 
   return fs
     .readdirSync(dir)
     .map((fileName) =>
       buildEntryMetadata(
-        getEncyclopediaEntryId(fileName),
+        getLoreEntryId(fileName),
         matter(fs.readFileSync(path.join(dir, fileName), 'utf8')).data
       )
     );
 }
 
-export async function getEncyclopediaEntry(
+export async function getLoreEntry(
   worldId: WorldId,
   id: string
-): Promise<FullEncyclopediaEntry> {
+): Promise<FullLoreEntry> {
   const { content, data } = matter(
     fs.readFileSync(path.join(getWorldPath(worldId), `${id}.md`), 'utf8')
   );
