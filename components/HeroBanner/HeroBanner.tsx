@@ -7,6 +7,8 @@ import {
   useClasses,
   useProps,
 } from '../../common';
+import { tr } from '../../utils';
+import { NextImage } from '../NextImage';
 import baseClasses from './HeroBanner.module.css';
 
 export interface HeroBannerProps extends HTMLComponentProps {
@@ -44,7 +46,15 @@ export const HeroBanner = React.forwardRef<HTMLElement, HeroBannerProps>(
 
     return (
       <Component className={rootClassName} ref={ref} {...restProps}>
-        <Heading>{title}</Heading>
+        <NextImage
+          alt={tr('mars.message.heroBanner.altText')}
+          layout="fill"
+          objectFit="cover"
+          quality={100}
+          src="/images/mars/hero-banner.jpg"
+        />
+
+        <Heading className={classes.title}>{title}</Heading>
 
         {children}
       </Component>

@@ -6,6 +6,7 @@ export * from './GlobalFooter';
 export * from './GlobalHeader';
 export * from './HeroBanner';
 export * from './LoreEntriesGrid';
+export * from './NextImage';
 export * from './NextTextLink';
 export * from './WorldLink';
 export * from './WorldLinksGrid';
