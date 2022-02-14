@@ -6,7 +6,7 @@ import {
   getAllEncyclopediaEntryIds,
   getEncyclopediaEntry,
 } from '../../../lib';
-import { buildPageTitle, WorldData } from '../../../utils';
+import { buildPageTitle, tr, WorldData } from '../../../utils';
 
 interface GetStaticPropsResult {
   props: {
@@ -42,7 +42,11 @@ export default function MarsEncyclopediaHome({
     <>
       <Head>
         <title>
-          {buildPageTitle(title, `${WorldData.MARS.name} Encyclopedia`)}
+          {buildPageTitle(
+            title,
+            tr('common.title.encyclopedia'),
+            tr('mars.title.selfName')
+          )}
         </title>
       </Head>
 

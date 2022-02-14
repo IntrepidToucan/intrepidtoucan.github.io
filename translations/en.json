@@ -1,0 +1,18 @@
+{
+  "common.action.go": "Go",
+  "common.action.readMore": "Read More",
+  "common.action.seeMore": "See More",
+
+  "common.message.placeholderText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+
+  "common.title.encyclopedia": "Encyclopedia",
+  "common.title.lore": "Lore",
+
+  "global.action.toggleTheme": "Toggle Theme",
+
+  "global.message.copyright": "Copyright © 2022 Intrepid Toucan",
+
+  "global.title.selfName": "Intrepid Toucan",
+
+  "mars.title.selfName": "Mars"
+}

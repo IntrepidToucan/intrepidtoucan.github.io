@@ -1,7 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
 import { buildDataAttributeName } from '../common';
-import { Namespace, ThemeId } from '../utils';
+import { AppNamespace, ThemeId } from '../utils';
 
 export default function Document() {
   return (
@@ -10,7 +10,7 @@ export default function Document() {
 
       <body
         {...{
-          [buildDataAttributeName('theme', { namespace: Namespace.GLOBAL })]:
+          [buildDataAttributeName('theme', { namespace: AppNamespace.GLOBAL })]:
             ThemeId.DARK,
         }}
       >

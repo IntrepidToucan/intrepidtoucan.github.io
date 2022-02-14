@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { Text } from '../common';
 import { WorldLink, WorldLinksGrid } from '../components';
-import { buildPageTitle } from '../utils';
+import { buildPagePath, buildPageTitle, tr, WorldData } from '../utils';
 
 export default function Home() {
   return (
@@ -13,8 +13,11 @@ export default function Home() {
       </Head>
 
       <WorldLinksGrid>
-        <WorldLink href="/mars" title="Mars">
-          <Text>Lorem ipsum...</Text>
+        <WorldLink
+          href={buildPagePath(WorldData.MARS.id)}
+          title={tr('mars.title.selfName')}
+        >
+          <Text>{tr('common.message.placeholderText')}</Text>
         </WorldLink>
       </WorldLinksGrid>
     </>

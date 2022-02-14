@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { HeroBanner } from '../../../components';
 import { EncyclopediaEntry, getAllEncyclopediaEntries } from '../../../lib';
-import { buildPageTitle, WorldData } from '../../../utils';
+import { buildPageTitle, tr, WorldData } from '../../../utils';
 
 interface GetStaticPropsResult {
   props: {
@@ -24,10 +24,15 @@ export default function MarsEncyclopediaHome({
   return (
     <>
       <Head>
-        <title>{buildPageTitle(WorldData.MARS.name)}</title>
+        <title>
+          {buildPageTitle(
+            tr('common.title.encyclopedia'),
+            tr('mars.title.selfName')
+          )}
+        </title>
       </Head>
 
-      <HeroBanner title="Encyclopedia" />
+      <HeroBanner title={tr('common.title.encyclopedia')} />
 
       {JSON.stringify(entries)}
     </>

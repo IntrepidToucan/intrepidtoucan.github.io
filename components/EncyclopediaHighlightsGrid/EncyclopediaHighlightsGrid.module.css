@@ -1,0 +1,25 @@
+.actionsContainer {
+  display: flex;
+  padding: var(--spacing-3);
+}
+
+.encyclopediaLink {
+  margin-left: auto;
+}
+
+.root {
+  margin: var(--spacing-4) var(--spacing-3);
+}
+
+@media (min-width: 640px) {
+  .root {
+    margin: var(--spacing-4) auto;
+    width: 80%;
+  }
+}
+
+.itemsContainer {
+  display: grid;
+  gap: var(--spacing-3);
+  grid-template-columns: 1fr 1fr 1fr;
+}

@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { HeroBanner } from '../../../components';
 import { FullLoreEntry, getAllLoreEntryIds, getLoreEntry } from '../../../lib';
-import { buildPageTitle, WorldData } from '../../../utils';
+import { buildPageTitle, tr, WorldData } from '../../../utils';
 
 interface GetStaticPropsResult {
   props: {
@@ -39,7 +39,13 @@ export default function MarsLoreHome({
   return (
     <>
       <Head>
-        <title>{buildPageTitle(title, `${WorldData.MARS.name} Lore`)}</title>
+        <title>
+          {buildPageTitle(
+            title,
+            tr('common.title.lore'),
+            tr('mars.title.selfName')
+          )}
+        </title>
       </Head>
 
       <HeroBanner title={title} />

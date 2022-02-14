@@ -1,9 +1,3 @@
-export const APP_NAME = 'Intrepid Toucan';
-
-export const Namespace = {
-  GLOBAL: 'global',
-} as const;
-
 export const SiteAreaData = {
   ENCYCLOPEDIA: {
     id: 'encyclopedia',
@@ -26,7 +20,6 @@ export const WorldData = {
         id: 'main',
       },
     },
-    name: 'Los Angeles',
   },
   MARS: {
     id: 'mars',
@@ -35,6 +28,11 @@ export const WorldData = {
         id: 'main',
       },
     },
-    name: 'Mars',
   },
+} as const;
+
+export const AppNamespace = {
+  GLOBAL: 'global',
+  LOS_ANGELES: WorldData.LOS_ANGELES.id,
+  MARS: WorldData.MARS.id,
 } as const;

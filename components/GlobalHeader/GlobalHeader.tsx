@@ -7,7 +7,7 @@ import {
   useClasses,
   useProps,
 } from '../../common';
-import { APP_NAME, Namespace, ThemeId } from '../../utils';
+import { AppNamespace, buildPagePath, ThemeId, tr } from '../../utils';
 import { NextTextLink } from '../NextTextLink';
 import baseClasses from './GlobalHeader.module.css';
 
@@ -33,14 +33,16 @@ export const GlobalHeader = React.forwardRef<HTMLElement, GlobalHeaderProps>(
 
     return (
       <Component className={rootClassName} ref={ref} {...restProps}>
-        <NextTextLink href="/">{APP_NAME}</NextTextLink>
+        <NextTextLink href={buildPagePath()}>
+          {tr('global.title.selfName')}
+        </NextTextLink>
 
         {children}
 
         <button
           onClick={() => {
             const attrName = buildDataAttributeName('theme', {
-              namespace: Namespace.GLOBAL,
+              namespace: AppNamespace.GLOBAL,
             });
 
             document.body.setAttribute(
@@ -51,7 +53,7 @@ export const GlobalHeader = React.forwardRef<HTMLElement, GlobalHeaderProps>(
             );
           }}
         >
-          Toggle Theme
+          {tr('global.action.toggleTheme')}
         </button>
       </Component>
     );

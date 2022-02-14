@@ -14,6 +14,13 @@ export interface TextLinkProps
    * @default "a"
    */
   component?: React.ElementType;
+
+  /**
+   * The visual variant of the component.
+   *
+   * @default "inline"
+   */
+  variant?: 'inline' | 'standalone';
 }
 
 const displayName = 'TextLink';
@@ -28,6 +35,7 @@ export const TextLink = React.forwardRef<HTMLElement, TextLinkProps>(
       component: Component = 'a',
       rel,
       target,
+      variant = 'inline',
       ...restProps
     } = useProps(displayName, props);
 
@@ -36,7 +44,9 @@ export const TextLink = React.forwardRef<HTMLElement, TextLinkProps>(
     // Styles
     const classes = useClasses(displayName, baseClasses, classesProp);
 
-    const rootClassName = clsx(classes.BASE, className, classes.root);
+    const rootClassName = clsx(classes.BASE, className, classes.root, {
+      [classes.rootStandalone]: variant === 'standalone',
+    });
 
     return (
       <Component

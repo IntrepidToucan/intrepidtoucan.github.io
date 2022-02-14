@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import React from 'react';
 
 import { HTMLComponentProps, Text, useClasses, useProps } from '../../common';
+import { tr } from '../../utils';
 import baseClasses from './GlobalFooter.module.css';
 
 export interface GlobalFooterProps extends HTMLComponentProps {}
@@ -28,7 +29,7 @@ export const GlobalFooter = React.forwardRef<HTMLElement, GlobalFooterProps>(
       <Component className={rootClassName} ref={ref} {...restProps}>
         {children}
 
-        <Text>Copyright © 2022 Intrepid Toucan</Text>
+        <Text>{tr('global.message.copyright')}</Text>
       </Component>
     );
   }

@@ -1,11 +1,12 @@
 import Head from 'next/head';
 
-import { Card, EncyclopediaGrid, HeroBanner } from '../../../components';
+import { Card, HeroBanner, LoreEntriesGrid } from '../../../components';
 import { getAllLoreEntries, LoreEntry } from '../../../lib';
 import {
   buildPagePath,
   buildPageTitle,
   SiteAreaData,
+  tr,
   WorldData,
 } from '../../../utils';
 
@@ -29,12 +30,14 @@ export default function MarsLoreHome({
   return (
     <>
       <Head>
-        <title>{buildPageTitle('Lore', WorldData.MARS.name)}</title>
+        <title>
+          {buildPageTitle(tr('common.title.lore'), tr('mars.title.selfName'))}
+        </title>
       </Head>
 
-      <HeroBanner title="Lore" />
+      <HeroBanner title={tr('common.title.lore')} />
 
-      <EncyclopediaGrid>
+      <LoreEntriesGrid>
         {entries.map(({ id, title }) => (
           <Card
             href={buildPagePath(
@@ -47,7 +50,7 @@ export default function MarsLoreHome({
             title={title ?? id}
           />
         ))}
-      </EncyclopediaGrid>
+      </LoreEntriesGrid>
     </>
   );
 }

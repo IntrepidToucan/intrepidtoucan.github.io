@@ -3,7 +3,7 @@ import Head from 'next/head';
 import { Text } from '../../common';
 import {
   Card,
-  EncyclopediaGrid,
+  EncyclopediaHighlightsGrid,
   FeaturedLore,
   HeroBanner,
 } from '../../components';
@@ -12,6 +12,7 @@ import {
   buildPagePath,
   buildPageTitle,
   SiteAreaData,
+  tr,
   WorldData,
 } from '../../utils';
 
@@ -35,16 +36,22 @@ export default function MarsHome({
   return (
     <>
       <Head>
-        <title>{buildPageTitle(WorldData.MARS.name)}</title>
+        <title>{buildPageTitle(tr('mars.title.selfName'))}</title>
       </Head>
 
-      <HeroBanner title={WorldData.MARS.name} />
+      <HeroBanner title={tr('mars.title.selfName')} />
 
       <FeaturedLore worldId={WorldData.MARS.id}>
-        <Text>Lorem ipsum...</Text>
+        <Text>{tr('common.message.placeholderText')}</Text>
       </FeaturedLore>
 
-      <EncyclopediaGrid>
+      <EncyclopediaHighlightsGrid
+        encyclopediaPath={buildPagePath(
+          WorldData.MARS.id,
+          SiteAreaData.ENCYCLOPEDIA.id
+        )}
+        title={tr('common.title.encyclopedia')}
+      >
         {encyclopediaEntries.map(({ id, title }) => (
           <Card
             href={buildPagePath(
@@ -56,7 +63,7 @@ export default function MarsHome({
             title={title}
           />
         ))}
-      </EncyclopediaGrid>
+      </EncyclopediaHighlightsGrid>
     </>
   );
 }
