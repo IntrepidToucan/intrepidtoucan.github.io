@@ -50,7 +50,11 @@ export default function MarsEncyclopediaHome({
         </title>
       </Head>
 
-      <HeroBanner title={title} />
+      <HeroBanner
+        alt={tr('mars.message.heroBanner.altText')}
+        src="/images/mars/hero-banner-v1.jpg"
+        title={title}
+      />
 
       <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
     </>

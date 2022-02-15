@@ -5,7 +5,7 @@ import path from 'path';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 
-import { SiteAreaData, WorldId } from '../utils';
+import { WorldAreaData, WorldId } from '../utils';
 
 export interface EncyclopediaEntry {
   category: string;
@@ -32,18 +32,20 @@ function getEncyclopediaEntryId(fileName: string): string {
   return fileName.replace(/\.md$/, '');
 }
 
-function getWorldPath(worldId: WorldId): string {
-  return path.join(process.cwd(), SiteAreaData.ENCYCLOPEDIA.id, worldId);
+function getWorldEncyclopediaPath(worldId: WorldId): string {
+  return path.join(process.cwd(), WorldAreaData.ENCYCLOPEDIA.id, worldId);
 }
 
 export function getAllEncyclopediaEntryIds(worldId: WorldId): string[] {
-  return fs.readdirSync(getWorldPath(worldId)).map(getEncyclopediaEntryId);
+  return fs
+    .readdirSync(getWorldEncyclopediaPath(worldId))
+    .map(getEncyclopediaEntryId);
 }
 
 export function getAllEncyclopediaEntries(
   worldId: WorldId
 ): EncyclopediaEntry[] {
-  const dir = getWorldPath(worldId);
+  const dir = getWorldEncyclopediaPath(worldId);
 
   return fs
     .readdirSync(dir)
@@ -60,7 +62,10 @@ export async function getEncyclopediaEntry(
   id: string
 ): Promise<FullEncyclopediaEntry> {
   const { content, data } = matter(
-    fs.readFileSync(path.join(getWorldPath(worldId), `${id}.md`), 'utf8')
+    fs.readFileSync(
+      path.join(getWorldEncyclopediaPath(worldId), `${id}.md`),
+      'utf8'
+    )
   );
 
   return {

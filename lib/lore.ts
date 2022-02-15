@@ -5,7 +5,7 @@ import path from 'path';
 import { remark } from 'remark';
 import remarkHtml from 'remark-html';
 
-import { SiteAreaData, WorldId } from '../utils';
+import { WorldAreaData, WorldId } from '../utils';
 
 export interface LoreEntry {
   id: string;
@@ -27,16 +27,16 @@ function getLoreEntryId(fileName: string): string {
   return fileName.replace(/\.md$/, '');
 }
 
-function getWorldPath(worldId: WorldId): string {
-  return path.join(process.cwd(), SiteAreaData.LORE.id, worldId, 'main');
+function getWorldLorePath(worldId: WorldId): string {
+  return path.join(process.cwd(), WorldAreaData.LORE.id, worldId, 'main');
 }
 
 export function getAllLoreEntryIds(worldId: WorldId): string[] {
-  return fs.readdirSync(getWorldPath(worldId)).map(getLoreEntryId);
+  return fs.readdirSync(getWorldLorePath(worldId)).map(getLoreEntryId);
 }
 
 export function getAllLoreEntries(worldId: WorldId): LoreEntry[] {
-  const dir = getWorldPath(worldId);
+  const dir = getWorldLorePath(worldId);
 
   return fs
     .readdirSync(dir)
@@ -53,7 +53,7 @@ export async function getLoreEntry(
   id: string
 ): Promise<FullLoreEntry> {
   const { content, data } = matter(
-    fs.readFileSync(path.join(getWorldPath(worldId), `${id}.md`), 'utf8')
+    fs.readFileSync(path.join(getWorldLorePath(worldId), `${id}.md`), 'utf8')
   );
 
   return {

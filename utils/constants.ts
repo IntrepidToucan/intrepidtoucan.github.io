@@ -1,15 +1,25 @@
-export const SiteAreaData = {
+export const GlobalAreaData = {
+  INSPIRATION: {
+    id: 'inspiration',
+  },
+} as const;
+
+export const GlobalData = {
+  id: 'global',
+} as const;
+
+export const ThemeId = {
+  DARK: 'dark',
+  LIGHT: 'light',
+} as const;
+
+export const WorldAreaData = {
   ENCYCLOPEDIA: {
     id: 'encyclopedia',
   },
   LORE: {
     id: 'lore',
   },
-} as const;
-
-export const ThemeId = {
-  DARK: 'dark',
-  LIGHT: 'light',
 } as const;
 
 export const WorldData = {
@@ -29,10 +39,4 @@ export const WorldData = {
       },
     },
   },
-} as const;
-
-export const AppNamespace = {
-  GLOBAL: 'global',
-  LOS_ANGELES: WorldData.LOS_ANGELES.id,
-  MARS: WorldData.MARS.id,
 } as const;

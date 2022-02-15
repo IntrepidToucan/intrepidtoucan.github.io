@@ -10,4 +10,5 @@
   position: absolute;
   right: var(--spacing-5);
   top: var(--spacing-4);
+  z-index: 1;
 }

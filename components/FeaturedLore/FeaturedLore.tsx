@@ -8,7 +8,7 @@ import {
   useClasses,
   useProps,
 } from '../../common';
-import { buildPagePath, SiteAreaData, WorldId } from '../../utils';
+import { buildPagePath, WorldAreaData, WorldId } from '../../utils';
 import baseClasses from './FeaturedLore.module.css';
 
 export interface FeaturedLoreProps extends HTMLComponentProps {
@@ -50,7 +50,7 @@ export const FeaturedLore = React.forwardRef<HTMLElement, FeaturedLoreProps>(
 
         {children}
 
-        <Button href={buildPagePath(worldId, SiteAreaData.LORE.id)}>
+        <Button href={buildPagePath(worldId, WorldAreaData.LORE.id)}>
           Read More
         </Button>
       </Component>

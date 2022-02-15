@@ -11,8 +11,8 @@ import { EncyclopediaEntry, getAllEncyclopediaEntries } from '../../lib';
 import {
   buildPagePath,
   buildPageTitle,
-  SiteAreaData,
   tr,
+  WorldAreaData,
   WorldData,
 } from '../../utils';
 
@@ -39,16 +39,20 @@ export default function MarsHome({
         <title>{buildPageTitle(tr('mars.title.selfName'))}</title>
       </Head>
 
-      <HeroBanner title={tr('mars.title.selfName')} />
+      <HeroBanner
+        alt={tr('mars.message.heroBanner.altText')}
+        src="/images/mars/hero-banner-v1.jpg"
+        title={tr('mars.title.selfName')}
+      />
 
       <FeaturedLore worldId={WorldData.MARS.id}>
         <Text>{tr('common.message.placeholderText')}</Text>
       </FeaturedLore>
 
       <EncyclopediaHighlightsGrid
-        encyclopediaPath={buildPagePath(
+        encyclopediaHref={buildPagePath(
           WorldData.MARS.id,
-          SiteAreaData.ENCYCLOPEDIA.id
+          WorldAreaData.ENCYCLOPEDIA.id
         )}
         title={tr('common.title.encyclopedia')}
       >
@@ -56,7 +60,7 @@ export default function MarsHome({
           <Card
             href={buildPagePath(
               WorldData.MARS.id,
-              SiteAreaData.ENCYCLOPEDIA.id,
+              WorldAreaData.ENCYCLOPEDIA.id,
               id
             )}
             key={id}

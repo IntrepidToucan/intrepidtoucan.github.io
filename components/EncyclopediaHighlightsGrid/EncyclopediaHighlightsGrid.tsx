@@ -13,9 +13,9 @@ import baseClasses from './EncyclopediaHighlightsGrid.module.css';
 
 export interface EncyclopediaHighlightsGridProps extends HTMLComponentProps {
   /**
-   * The path to the encyclopedia.
+   * The `href` for the link to the encyclopedia.
    */
-  encyclopediaPath: string;
+  encyclopediaHref: string;
 
   /**
    * The title.
@@ -35,7 +35,7 @@ export const EncyclopediaHighlightsGrid = React.forwardRef<
     className,
     classes: classesProp,
     component: Component = 'div',
-    encyclopediaPath,
+    encyclopediaHref,
     title,
     ...restProps
   } = useProps(displayName, props);
@@ -54,7 +54,7 @@ export const EncyclopediaHighlightsGrid = React.forwardRef<
       <div className={classes.actionsContainer}>
         <NextTextLink
           className={classes.encyclopediaLink}
-          href={encyclopediaPath}
+          href={encyclopediaHref}
           variant="standalone"
         >
           {tr('common.action.seeMore')}

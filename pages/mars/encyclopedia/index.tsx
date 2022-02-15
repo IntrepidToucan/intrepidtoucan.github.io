@@ -32,7 +32,11 @@ export default function MarsEncyclopediaHome({
         </title>
       </Head>
 
-      <HeroBanner title={tr('common.title.encyclopedia')} />
+      <HeroBanner
+        alt={tr('mars.message.heroBanner.altText')}
+        src="/images/mars/hero-banner-v1.jpg"
+        title={tr('common.title.encyclopedia')}
+      />
 
       {JSON.stringify(entries)}
     </>

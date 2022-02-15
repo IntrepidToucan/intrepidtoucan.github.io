@@ -5,8 +5,8 @@ import { getAllLoreEntries, LoreEntry } from '../../../lib';
 import {
   buildPagePath,
   buildPageTitle,
-  SiteAreaData,
   tr,
+  WorldAreaData,
   WorldData,
 } from '../../../utils';
 
@@ -35,14 +35,18 @@ export default function MarsLoreHome({
         </title>
       </Head>
 
-      <HeroBanner title={tr('common.title.lore')} />
+      <HeroBanner
+        alt={tr('mars.message.heroBanner.altText')}
+        src="/images/mars/hero-banner-v1.jpg"
+        title={tr('common.title.lore')}
+      />
 
       <LoreEntriesGrid>
         {entries.map(({ id, title }) => (
           <Card
             href={buildPagePath(
               WorldData.MARS.id,
-              SiteAreaData.LORE.id,
+              WorldAreaData.LORE.id,
               WorldData.MARS.loreData.MAIN.id,
               id
             )}

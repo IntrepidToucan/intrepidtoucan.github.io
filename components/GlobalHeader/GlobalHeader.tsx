@@ -7,7 +7,7 @@ import {
   useClasses,
   useProps,
 } from '../../common';
-import { AppNamespace, buildPagePath, ThemeId, tr } from '../../utils';
+import { buildPagePath, GlobalData, ThemeId, tr } from '../../utils';
 import { NextTextLink } from '../NextTextLink';
 import baseClasses from './GlobalHeader.module.css';
 
@@ -42,7 +42,7 @@ export const GlobalHeader = React.forwardRef<HTMLElement, GlobalHeaderProps>(
         <button
           onClick={() => {
             const attrName = buildDataAttributeName('theme', {
-              namespace: AppNamespace.GLOBAL,
+              namespace: GlobalData.id,
             });
 
             document.body.setAttribute(

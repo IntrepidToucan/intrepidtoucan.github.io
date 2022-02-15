@@ -1,8 +1,14 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import { HTMLComponentProps, Text, useClasses, useProps } from '../../common';
-import { tr } from '../../utils';
+import {
+  HTMLComponentProps,
+  Text,
+  TextLink,
+  useClasses,
+  useProps,
+} from '../../common';
+import { buildPagePath, GlobalAreaData, GlobalData, tr } from '../../utils';
 import baseClasses from './GlobalFooter.module.css';
 
 export interface GlobalFooterProps extends HTMLComponentProps {}
@@ -28,8 +34,12 @@ export const GlobalFooter = React.forwardRef<HTMLElement, GlobalFooterProps>(
     return (
       <Component className={rootClassName} ref={ref} {...restProps}>
         {children}
-
-        <Text>{tr('global.message.copyright')}</Text>
+        <Text>{tr('global.message.copyright')}</Text> |{' '}
+        <TextLink
+          href={buildPagePath(GlobalData.id, GlobalAreaData.INSPIRATION.id)}
+        >
+          {tr('global.title.inspiration')}
+        </TextLink>
       </Component>
     );
   }
