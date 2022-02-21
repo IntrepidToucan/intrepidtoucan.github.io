@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002Fmars","\u002Finspiration","\u002Fmars\u002Flore","\u002Fmars\u002Fencyclopedia","\u002Fmars\u002Flore\u002F[...id]","\u002Finspiration\u002F[id]","\u002Fmars\u002Fencyclopedia\u002F[id]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

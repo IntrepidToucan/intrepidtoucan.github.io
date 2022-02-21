@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
 
-import { Heading, TextLink } from '../../common';
+import { Heading } from '../../common';
+import { NextTextLink } from '../../components';
 import { getAllInspirationEntries, InspirationEntry } from '../../lib';
 import {
   buildPagePath,
@@ -66,7 +67,7 @@ export default function InspirationHome({
 
             entries.forEach(({ id, title }) => {
               result.push(
-                <TextLink
+                <NextTextLink
                   href={buildPagePath(
                     GlobalData.id,
                     GlobalAreaData.INSPIRATION.id,
@@ -75,7 +76,7 @@ export default function InspirationHome({
                   key={id}
                 >
                   {title}
-                </TextLink>
+                </NextTextLink>
               );
             });
 
