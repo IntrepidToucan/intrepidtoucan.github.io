@@ -15,3 +15,7 @@ body {
   color: var(--themed-text-color-normal);
   font-family: var(--font-family-sans-serif);
 }
+
+a {
+  color: var(--themed-link-color-normal);
+}

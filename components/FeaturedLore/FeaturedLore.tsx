@@ -20,6 +20,16 @@ export interface FeaturedLoreProps extends HTMLComponentProps {
   component?: React.ElementType;
 
   /**
+   * The ID of the relevant lore entry.
+   */
+  entryId: string;
+
+  /**
+   * The ID of the relevant lore.
+   */
+  loreId: string;
+
+  /**
    * The ID of the relevant world.
    */
   worldId: WorldId;
@@ -35,6 +45,8 @@ export const FeaturedLore = React.forwardRef<HTMLElement, FeaturedLoreProps>(
       className,
       classes: classesProp,
       component: Component = 'section',
+      entryId,
+      loreId,
       worldId,
       ...restProps
     } = useProps(displayName, props);
@@ -50,9 +62,22 @@ export const FeaturedLore = React.forwardRef<HTMLElement, FeaturedLoreProps>(
 
         {children}
 
-        <Button href={buildPagePath(worldId, WorldAreaData.LORE.id)}>
-          Read More
-        </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Button href={buildPagePath(worldId, WorldAreaData.LORE.id)}>
+            Read from Beginning
+          </Button>
+
+          <Button
+            href={buildPagePath(
+              worldId,
+              WorldAreaData.LORE.id,
+              loreId,
+              entryId
+            )}
+          >
+            Read More
+          </Button>
+        </div>
       </Component>
     );
   }

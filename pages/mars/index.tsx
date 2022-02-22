@@ -7,7 +7,12 @@ import {
   FeaturedLore,
   HeroBanner,
 } from '../../components';
-import { EncyclopediaEntry, getAllEncyclopediaEntries } from '../../lib';
+import {
+  EncyclopediaEntry,
+  FullLoreEntry,
+  getAllEncyclopediaEntries,
+  getLatestLoreEntry,
+} from '../../lib';
 import {
   buildPagePath,
   buildPageTitle,
@@ -19,19 +24,24 @@ import {
 interface GetStaticPropsResult {
   props: {
     encyclopediaEntries: EncyclopediaEntry[];
+    loreEntry: FullLoreEntry;
   };
 }
 
 export async function getStaticProps(): Promise<GetStaticPropsResult> {
+  const loreEntry = await getLatestLoreEntry(WorldData.MARS.id);
+
   return {
     props: {
       encyclopediaEntries: getAllEncyclopediaEntries(WorldData.MARS.id),
+      loreEntry,
     },
   };
 }
 
 export default function MarsHome({
   encyclopediaEntries,
+  loreEntry,
 }: GetStaticPropsResult['props']) {
   return (
     <>
@@ -45,8 +55,15 @@ export default function MarsHome({
         title={tr('mars.title.selfName')}
       />
 
-      <FeaturedLore worldId={WorldData.MARS.id}>
-        <Text>{tr('common.message.placeholderText')}</Text>
+      <FeaturedLore
+        entryId={loreEntry.id}
+        loreId={WorldData.MARS.loreData.MAIN.id}
+        worldId={WorldData.MARS.id}
+      >
+        <Text
+          component="div"
+          dangerouslySetInnerHTML={{ __html: loreEntry.contentHtml }}
+        />
       </FeaturedLore>
 
       <EncyclopediaHighlightsGrid

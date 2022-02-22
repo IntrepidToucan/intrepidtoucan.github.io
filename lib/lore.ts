@@ -2,8 +2,11 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 // TODO(deps): Use micromark or MDX instead.
-import { remark } from 'remark';
-import remarkHtml from 'remark-html';
+import rehypeStringify from 'rehype-stringify';
+import remarkGfm from 'remark-gfm';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
 
 import { WorldAreaData, WorldId } from '../utils';
 
@@ -58,6 +61,34 @@ export async function getLoreEntry(
 
   return {
     ...buildEntryMetadata(id, data),
-    contentHtml: (await remark().use(remarkHtml).process(content)).toString(),
+    contentHtml: (
+      await unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype)
+        .use(rehypeStringify)
+        .process(content)
+    ).toString(),
+  };
+}
+
+export async function getLatestLoreEntry(
+  worldId: WorldId
+): Promise<FullLoreEntry> {
+  const id = (await getAllLoreEntryIds(worldId))[0];
+  const { content, data } = matter(
+    fs.readFileSync(path.join(getWorldLorePath(worldId), `${id}.md`), 'utf8')
+  );
+
+  return {
+    ...buildEntryMetadata(id, data),
+    contentHtml: (
+      await unified()
+        .use(remarkParse)
+        .use(remarkGfm)
+        .use(remarkRehype)
+        .use(rehypeStringify)
+        .process(content)
+    ).toString(),
   };
 }
