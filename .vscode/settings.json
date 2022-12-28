@@ -7,5 +7,6 @@
     "typescript",
     "typescriptreact"
   ],
-  "prettier.documentSelectors": ["**/*.astro"]
+  "prettier.documentSelectors": ["**/*.astro"],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
