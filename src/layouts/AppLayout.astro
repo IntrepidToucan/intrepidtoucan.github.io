@@ -1,0 +1,50 @@
+---
+export interface Props {
+  title: string;
+}
+
+import "../styles/reset.css";
+import "../styles/global.css";
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title} | IntrepidToucan</title>
+  </head>
+
+  <body>
+    <header>
+      <a href="/">IntrepidToucan</a>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer>
+      <span class="copyright">
+        Copyright © 2022 IntrepidToucan. All rights reserved.
+      </span>
+    </footer>
+  </body>
+</html>
+
+<style>
+  footer {
+    padding: var(--sizing-4);
+    text-align: center;
+  }
+
+  .copyright {
+    font-size: var(--font-size-1);
+  }
+</style>

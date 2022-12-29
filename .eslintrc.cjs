@@ -1,4 +1,7 @@
-// Adapted from https://ota-meshi.github.io/eslint-plugin-astro/user-guide/.
+/**
+ * Adapted from https://ota-meshi.github.io/eslint-plugin-astro/user-guide/.
+ */
+
 module.exports = {
   env: {
     node: true,
@@ -11,15 +14,13 @@ module.exports = {
   ],
   overrides: [
     {
-      // Define the configuration for `.astro` file.
+      // Define the configuration for `.astro` files.
       files: ["*.astro"],
-      // Allows Astro components to be parsed.
       parser: "astro-eslint-parser",
-      // Parse the script in `.astro` as TypeScript by adding the following configuration.
-      // It's the setting you need when using TypeScript.
+      // Parse the scripts in `.astro` files as TypeScript.
       parserOptions: {
-        parser: "@typescript-eslint/parser",
         extraFileExtensions: [".astro"],
+        parser: "@typescript-eslint/parser",
       },
       rules: {
         // override/add rules settings here, such as:
@@ -28,8 +29,8 @@ module.exports = {
     },
   ],
   parserOptions: {
-    sourceType: "module",
     ecmaVersion: 2020,
+    sourceType: "module",
   },
   plugins: ["@typescript-eslint"],
 };
