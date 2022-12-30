@@ -23,7 +23,7 @@ module.exports = {
         parser: "@typescript-eslint/parser",
       },
       rules: {
-        // override/add rules settings here, such as:
+        // Override or add rule settings here, such as:
         // "astro/no-set-html-directive": "error"
       },
     },

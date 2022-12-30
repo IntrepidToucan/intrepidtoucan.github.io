@@ -3,7 +3,53 @@ import AppLayout from "../layouts/AppLayout.astro";
 ---
 
 <AppLayout title="Home">
-  <h1>Welcome to IntrepidToucan</h1>
-
-  <a href="/places/galaris">Galaris</a>
+  <div class="hero-banner">
+    <h1 class="hero-title only-large">IntrepidToucan</h1>
+    <h1 class="hero-title only-small">Intrepid Toucan</h1>
+  </div>
 </AppLayout>
+
+<style>
+  .hero-banner {
+    background-color: var(--color-neutral-9);
+    color: var(--color-neutral-0);
+    display: flex;
+    flex-direction: column;
+    height: var(--sizing-14);
+    justify-content: center;
+    padding-block: var(--spacing-4);
+    padding-inline: var(--spacing-4);
+  }
+
+  .hero-title {
+    background-clip: text;
+    background-image: linear-gradient(
+      45deg,
+      var(--color-primary-1-5) 30%,
+      var(--color-primary-1-1) 80%
+    );
+    color: transparent;
+    font-size: var(--font-size-8);
+    text-align: center;
+  }
+
+  .only-large {
+    display: none;
+  }
+
+  @media (min-width: 414px) {
+    .only-large {
+      display: initial;
+    }
+
+    .only-small {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-title {
+      font-size: var(--font-size-9);
+    }
+  }
+</style>

@@ -11,7 +11,8 @@
     "start": "astro dev"
   },
   "dependencies": {
-    "astro": "^1.8.0"
+    "astro": "^1.8.0",
+    "autoprefixer": "^10.4.13"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.47.1",
