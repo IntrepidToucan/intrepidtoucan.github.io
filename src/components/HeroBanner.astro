@@ -1,0 +1,110 @@
+---
+export interface Props {
+  backgroundColor?: string;
+  gradientColorDark?: string;
+  gradientColorLight?: string;
+  patternSrc?: string;
+  smallTitle?: string;
+  subtitle?: string;
+  title: string;
+}
+
+const {
+  backgroundColor = "var(--color-neutral-9)",
+  gradientColorDark = "var(--color-primary-1-5)",
+  gradientColorLight = "var(--color-primary-1-1)",
+  patternSrc,
+  smallTitle,
+  subtitle,
+  title,
+} = Astro.props;
+---
+
+<div class:list={["hero-banner", { "hero-banner-with-pattern": !!patternSrc }]}>
+  <h1 class:list={["hero-title", { "only-large": !!smallTitle }]}>{title}</h1>
+
+  {smallTitle && <h1 class="hero-title only-small">{smallTitle}</h1>}
+
+  {subtitle && <h2 class="hero-subtitle">{subtitle}</h2>}
+</div>
+
+<style
+  define:vars={{
+    backgroundColor,
+    gradientColorDark,
+    gradientColorLight,
+    patternSrc,
+  }}
+>
+  .hero-banner {
+    align-items: center;
+    background-color: var(--backgroundColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-block-size: var(--sizing-14);
+    padding: var(--spacing-4);
+  }
+
+  .hero-banner-with-pattern {
+    background-image: linear-gradient(
+        0deg,
+        transparent 30%,
+        var(--backgroundColor) 80%
+      ),
+      radial-gradient(
+        circle at 100% 0%,
+        var(--backgroundColor) 70%,
+        transparent 85%
+      ),
+      var(--patternSrc);
+  }
+
+  .hero-subtitle {
+    color: var(--color-neutral-2);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-5);
+    font-weight: var(--font-weight-0);
+    text-align: center;
+  }
+
+  .hero-title {
+    background-clip: text;
+    background-image: linear-gradient(
+      45deg,
+      var(--gradientColorDark) 30%,
+      var(--gradientColorLight) 80%
+    );
+    color: transparent;
+    font-size: var(--font-size-8);
+    text-align: center;
+  }
+
+  .only-large {
+    display: none;
+  }
+
+  @media (min-width: 414px) {
+    .only-large {
+      display: initial;
+    }
+
+    .only-small {
+      display: none;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .hero-banner {
+      min-block-size: var(--sizing-16);
+    }
+
+    .hero-subtitle {
+      font-size: var(--font-size-6);
+    }
+
+    .hero-title {
+      font-size: var(--font-size-9);
+    }
+  }
+</style>
