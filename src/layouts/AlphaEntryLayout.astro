@@ -1,0 +1,15 @@
+---
+import HeroBanner from "../components/HeroBanner.astro";
+import AppLayout from "./AppLayout.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<AppLayout>
+  <HeroBanner
+    backgroundPatternSrc="url('/images/patterns/primary-temple.svg')"
+    title={frontmatter.title}
+  />
+
+  <slot />
+</AppLayout>

@@ -1,0 +1,36 @@
+---
+export interface Props {
+  backgroundImageSrc: string;
+  class?: string;
+  href?: string | undefined;
+}
+
+const { backgroundImageSrc, class: className, href } = Astro.props;
+---
+
+<div class:list={["image-div", className]}>
+  {
+    href ? (
+      <a class="image-div--link" href={href}>
+        <slot />
+      </a>
+    ) : (
+      <slot />
+    )
+  }
+</div>
+
+<style define:vars={{ backgroundImageSrc }}>
+  .image-div {
+    background-image: var(--backgroundImageSrc);
+    background-size: cover;
+    width: 100%;
+  }
+
+  .image-div--link {
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    width: 100%;
+  }
+</style>

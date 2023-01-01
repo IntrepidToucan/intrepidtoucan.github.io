@@ -1,39 +1,57 @@
 ---
 export interface Props {
   backgroundColor?: string;
-  gradientColorDark?: string;
-  gradientColorLight?: string;
-  patternSrc?: string;
+  backgroundPatternSrc?: string;
   smallTitle?: string;
   subtitle?: string;
   title: string;
+  titleGradientColorDark?: string;
+  titleGradientColorLight?: string;
 }
 
 const {
   backgroundColor = "var(--color-neutral-9)",
-  gradientColorDark = "var(--color-primary-1-5)",
-  gradientColorLight = "var(--color-primary-1-1)",
-  patternSrc,
+  backgroundPatternSrc,
   smallTitle,
   subtitle,
   title,
+  titleGradientColorDark = "var(--color-primary-1-5)",
+  titleGradientColorLight = "var(--color-primary-1-1)",
 } = Astro.props;
 ---
 
-<div class:list={["hero-banner", { "hero-banner-with-pattern": !!patternSrc }]}>
-  <h1 class:list={["hero-title", { "only-large": !!smallTitle }]}>{title}</h1>
+<div
+  class:list={[
+    "hero-banner",
+    { "hero-banner--with-pattern": !!backgroundPatternSrc },
+  ]}
+>
+  <h1
+    class:list={[
+      "hero-banner--title",
+      { "hero-banner--title-only-large": !!smallTitle },
+    ]}
+  >
+    {title}
+  </h1>
 
-  {smallTitle && <h1 class="hero-title only-small">{smallTitle}</h1>}
+  {
+    smallTitle && (
+      <h1 class="hero-banner--title hero-banner--title-only-small">
+        {smallTitle}
+      </h1>
+    )
+  }
 
-  {subtitle && <h2 class="hero-subtitle">{subtitle}</h2>}
+  {subtitle && <h2 class="hero-banner--subtitle">{subtitle}</h2>}
 </div>
 
 <style
   define:vars={{
     backgroundColor,
-    gradientColorDark,
-    gradientColorLight,
-    patternSrc,
+    backgroundPatternSrc,
+    titleGradientColorDark,
+    titleGradientColorLight,
   }}
 >
   .hero-banner {
@@ -46,7 +64,31 @@ const {
     padding: var(--spacing-4);
   }
 
-  .hero-banner-with-pattern {
+  .hero-banner--subtitle {
+    color: var(--color-neutral-2);
+    font-family: var(--font-family-sans);
+    font-size: var(--font-size-5);
+    font-weight: var(--font-weight-0);
+    text-align: center;
+  }
+
+  .hero-banner--title {
+    background-clip: text;
+    background-image: linear-gradient(
+      45deg,
+      var(--titleGradientColorDark) 30%,
+      var(--titleGradientColorLight) 80%
+    );
+    color: transparent;
+    font-size: var(--font-size-8);
+    text-align: center;
+  }
+
+  .hero-banner--title-only-large {
+    display: none;
+  }
+
+  .hero-banner--with-pattern {
     background-image: linear-gradient(
         0deg,
         transparent 30%,
@@ -57,39 +99,15 @@ const {
         var(--backgroundColor) 70%,
         transparent 85%
       ),
-      var(--patternSrc);
-  }
-
-  .hero-subtitle {
-    color: var(--color-neutral-2);
-    font-family: var(--font-family-sans);
-    font-size: var(--font-size-5);
-    font-weight: var(--font-weight-0);
-    text-align: center;
-  }
-
-  .hero-title {
-    background-clip: text;
-    background-image: linear-gradient(
-      45deg,
-      var(--gradientColorDark) 30%,
-      var(--gradientColorLight) 80%
-    );
-    color: transparent;
-    font-size: var(--font-size-8);
-    text-align: center;
-  }
-
-  .only-large {
-    display: none;
+      var(--backgroundPatternSrc);
   }
 
   @media (min-width: 414px) {
-    .only-large {
+    .hero-banner--title-only-large {
       display: initial;
     }
 
-    .only-small {
+    .hero-banner--title-only-small {
       display: none;
     }
   }
@@ -99,11 +117,11 @@ const {
       min-block-size: var(--sizing-16);
     }
 
-    .hero-subtitle {
+    .hero-banner--subtitle {
       font-size: var(--font-size-6);
     }
 
-    .hero-title {
+    .hero-banner--title {
       font-size: var(--font-size-9);
     }
   }

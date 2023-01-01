@@ -1,17 +1,20 @@
 ---
 import HeroBanner from "../../components/HeroBanner.astro";
+import ImageDiv from "../../components/ImageDiv.astro";
 import AppLayout from "../../layouts/AppLayout.astro";
+
+const placeEntries = await Astro.glob("./places/*.mdx");
 ---
 
 <AppLayout title="Project Alpha">
   <HeroBanner
-    patternSrc="url('/images/patterns/primary-temple.svg')"
+    backgroundPatternSrc="url('/images/patterns/primary-temple.svg')"
     title="Project Alpha"
   />
 
-  <div class="page-section page-section-with-background">
+  <div class="page-section">
     <div class="section-wrapper">
-      <h2 class="section-title section-title-without-border">Cities</h2>
+      <h2 class="section-title">Cities</h2>
 
       <p class="section-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -19,18 +22,22 @@ import AppLayout from "../../layouts/AppLayout.astro";
       </p>
 
       <div class="image-grid image-grid-places">
-        <div class="image image-place"></div>
-        <div class="image image-place"></div>
-        <div class="image image-place"></div>
-        <div class="image image-place"></div>
-        <div class="image image-place"></div>
+        {
+          placeEntries.map((entry) => (
+            <ImageDiv
+              backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
+              class="image-place"
+              href={entry.url}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
 
-  <div class="page-section page-section-with-background">
+  <div class="page-section">
     <div class="section-wrapper">
-      <h2 class="section-title section-title-without-border">People</h2>
+      <h2 class="section-title">Gods</h2>
 
       <p class="section-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -38,18 +45,22 @@ import AppLayout from "../../layouts/AppLayout.astro";
       </p>
 
       <div class="image-grid image-grid-people">
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
+        {
+          placeEntries.map((entry) => (
+            <ImageDiv
+              backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
+              class="image-person"
+              href={entry.url}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
 
-  <div class="page-section page-section-with-background">
+  <div class="page-section">
     <div class="section-wrapper">
-      <h2 class="section-title section-title-without-border">Gods</h2>
+      <h2 class="section-title">People</h2>
 
       <p class="section-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -57,23 +68,21 @@ import AppLayout from "../../layouts/AppLayout.astro";
       </p>
 
       <div class="image-grid image-grid-people">
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
-        <div class="image image-person"></div>
+        {
+          placeEntries.map((entry) => (
+            <ImageDiv
+              backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
+              class="image-person"
+              href={entry.url}
+            />
+          ))
+        }
       </div>
     </div>
   </div>
 </AppLayout>
 
 <style>
-  .image {
-    background-image: url("/images/placeholder.jpg");
-    background-size: cover;
-    width: 100%;
-  }
-
   .image-grid {
     display: flex;
     flex-wrap: wrap;
@@ -99,32 +108,21 @@ import AppLayout from "../../layouts/AppLayout.astro";
   }
 
   .page-section {
+    padding-block-end: var(--spacing-8);
+    padding-block-start: var(--spacing-7);
     padding-inline: var(--spacing-4);
   }
 
-  .page-section-with-background {
-    padding-block-end: var(--spacing-8);
-    padding-block-start: var(--spacing-7);
-  }
-
-  .page-section-with-background:nth-child(odd) {
+  .page-section:nth-child(odd) {
     background-color: var(--color-neutral-9);
   }
 
-  .page-section-with-background:nth-child(odd) .section-text {
+  .page-section:nth-child(odd) .section-text {
     color: var(--color-neutral-2);
   }
 
-  .page-section-with-background:nth-child(odd) .section-title {
+  .page-section:nth-child(odd) .section-title {
     color: var(--color-neutral-0);
-  }
-
-  .page-section-without-background {
-    padding-block-start: var(--spacing-8);
-  }
-
-  .page-section-without-background:last-child {
-    padding-block-end: var(--spacing-9);
   }
 
   .section-text {
@@ -134,19 +132,6 @@ import AppLayout from "../../layouts/AppLayout.astro";
 
   .section-title {
     font-size: var(--font-size-6);
-  }
-
-  .section-title-with-border {
-    display: grid;
-    gap: 0.5em;
-    grid-template-columns: auto 1fr;
-  }
-
-  .section-title::after {
-    align-self: center;
-    border-block-start-style: double;
-    border-block-start-width: 0.1em;
-    content: "";
   }
 
   @media (min-width: 556px) {
@@ -161,20 +146,9 @@ import AppLayout from "../../layouts/AppLayout.astro";
 
   @media (min-width: 768px) {
     .page-section {
-      padding-inline: var(--spacing-5);
-    }
-
-    .page-section-with-background {
       padding-block-end: var(--spacing-9);
       padding-block-start: var(--spacing-8);
-    }
-
-    .page-section-without-background {
-      padding-block-start: var(--spacing-9);
-    }
-
-    .page-section-without-background:last-child {
-      padding-block-end: var(--spacing-10);
+      padding-inline: var(--spacing-5);
     }
 
     .section-text {
