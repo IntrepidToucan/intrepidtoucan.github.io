@@ -8,4 +8,214 @@ import AppLayout from "../../layouts/AppLayout.astro";
     patternSrc="url('/images/patterns/primary-temple.svg')"
     title="Project Alpha"
   />
+
+  <div class="page-section page-section-with-background">
+    <div class="section-wrapper">
+      <h2 class="section-title section-title-without-border">Cities</h2>
+
+      <p class="section-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div class="image-grid image-grid-places">
+        <div class="image image-place"></div>
+        <div class="image image-place"></div>
+        <div class="image image-place"></div>
+        <div class="image image-place"></div>
+        <div class="image image-place"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section page-section-with-background">
+    <div class="section-wrapper">
+      <h2 class="section-title section-title-without-border">People</h2>
+
+      <p class="section-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div class="image-grid image-grid-people">
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-section page-section-with-background">
+    <div class="section-wrapper">
+      <h2 class="section-title section-title-without-border">Gods</h2>
+
+      <p class="section-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua.
+      </p>
+
+      <div class="image-grid image-grid-people">
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+        <div class="image image-person"></div>
+      </div>
+    </div>
+  </div>
 </AppLayout>
+
+<style>
+  .image {
+    background-image: url("/images/placeholder.jpg");
+    background-size: cover;
+    width: 100%;
+  }
+
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-5);
+    margin-block-start: var(--spacing-6);
+    margin-inline: auto;
+  }
+
+  .image-grid-people {
+    max-width: 250px;
+  }
+
+  .image-grid-places {
+    max-width: 400px;
+  }
+
+  .image-person {
+    height: 300px;
+  }
+
+  .image-place {
+    height: 250px;
+  }
+
+  .page-section {
+    padding-inline: var(--spacing-4);
+  }
+
+  .page-section-with-background {
+    padding-block-end: var(--spacing-8);
+    padding-block-start: var(--spacing-7);
+  }
+
+  .page-section-with-background:nth-child(odd) {
+    background-color: var(--color-neutral-9);
+  }
+
+  .page-section-with-background:nth-child(odd) .section-text {
+    color: var(--color-neutral-2);
+  }
+
+  .page-section-with-background:nth-child(odd) .section-title {
+    color: var(--color-neutral-0);
+  }
+
+  .page-section-without-background {
+    padding-block-start: var(--spacing-8);
+  }
+
+  .page-section-without-background:last-child {
+    padding-block-end: var(--spacing-9);
+  }
+
+  .section-text {
+    color: var(--color-neutral-7);
+    max-inline-size: 30em;
+  }
+
+  .section-title {
+    font-size: var(--font-size-6);
+  }
+
+  .section-title-with-border {
+    display: grid;
+    gap: 0.5em;
+    grid-template-columns: auto 1fr;
+  }
+
+  .section-title::after {
+    align-self: center;
+    border-block-start-style: double;
+    border-block-start-width: 0.1em;
+    content: "";
+  }
+
+  @media (min-width: 556px) {
+    .image-person {
+      max-width: 250px;
+    }
+
+    .image-grid-people {
+      max-width: 524px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .page-section {
+      padding-inline: var(--spacing-5);
+    }
+
+    .page-section-with-background {
+      padding-block-end: var(--spacing-9);
+      padding-block-start: var(--spacing-8);
+    }
+
+    .page-section-without-background {
+      padding-block-start: var(--spacing-9);
+    }
+
+    .page-section-without-background:last-child {
+      padding-block-end: var(--spacing-10);
+    }
+
+    .section-text {
+      font-size: var(--font-size-3);
+    }
+
+    .section-title {
+      font-size: var(--font-size-7);
+    }
+
+    .section-wrapper {
+      margin-inline: auto;
+      max-width: 1248px;
+    }
+  }
+
+  @media (min-width: 846px) {
+    .image-grid-people {
+      max-width: 798px;
+    }
+  }
+
+  @media (min-width: 872px) {
+    .image-place {
+      max-width: 400px;
+    }
+
+    .image-grid-places {
+      max-width: 825px;
+    }
+  }
+
+  @media (min-width: 1120px) {
+    .image-grid-people {
+      max-width: 1072px;
+    }
+  }
+
+  @media (min-width: 1296px) {
+    .image-grid {
+      max-width: none;
+    }
+  }
+</style>
