@@ -11,6 +11,7 @@
     "start": "astro dev"
   },
   "dependencies": {
+    "@astrojs/mdx": "^0.14.0",
     "astro": "^1.8.0",
     "autoprefixer": "^10.4.13"
   },
