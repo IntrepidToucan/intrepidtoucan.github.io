@@ -117,9 +117,16 @@ const { mainLink, tabs } = Astro.props;
 </style>
 
 <script>
+  const pathname = window.location.pathname;
   const activeLink = Array.from(
     document.querySelectorAll("[data-entry-nav-tab-link]")
-  ).find((node) => node.getAttribute("href") === window.location.pathname);
+  ).find(
+    (node) =>
+      node.getAttribute("href") ===
+      (pathname.endsWith("/")
+        ? pathname.slice(0, pathname.length - 1)
+        : pathname)
+  );
 
   if (activeLink) {
     activeLink.classList.add("entry-nav--tab-link-active");
