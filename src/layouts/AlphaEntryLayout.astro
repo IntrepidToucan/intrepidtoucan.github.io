@@ -3,7 +3,13 @@ import EntryNav from "../components/EntryNav.astro";
 import HeroBanner from "../components/HeroBanner.astro";
 import AppLayout from "./AppLayout.astro";
 
-const { frontmatter } = Astro.props;
+const { frontmatter, url } = Astro.props;
+
+const tabs = Array.isArray(frontmatter.tabs)
+  ? (frontmatter.tabs as { fileName: string; text: string }[])
+  : [];
+const urlSegments = typeof url === "string" ? url.split("/") : [];
+const path = urlSegments.slice(0, urlSegments.length - 1).join("/");
 ---
 
 <AppLayout>
@@ -15,7 +21,7 @@ const { frontmatter } = Astro.props;
 
   <EntryNav
     mainLink={{ href: "/alpha", text: "Alpha" }}
-    tabs={frontmatter.tabs}
+    tabs={tabs.map((tab) => ({ ...tab, href: `${path}/${tab.fileName}` }))}
   />
 
   <div class="alpha-entry-layout--content-wrapper">
