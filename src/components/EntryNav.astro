@@ -1,0 +1,107 @@
+---
+export interface Props {
+  mainLink: {
+    href: string;
+    text: string;
+  };
+  tabs?: {
+    href: string;
+    text: string;
+  }[];
+}
+
+const { mainLink, tabs } = Astro.props;
+---
+
+<nav class="entry-nav">
+  <div class="entry-nav--wrapper">
+    <a class="entry-nav--main-link" href={mainLink.href}>{mainLink.text}</a>
+
+    {
+      !!tabs?.length && (
+        <ul class="entry-nav--tabs">
+          {tabs.map((tab) => (
+            <li>
+              <a class="entry-nav--tab-link" href={tab.href}>
+                {tab.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</nav>
+
+<style>
+  .entry-nav {
+    background-color: var(--color-neutral-9);
+    padding-inline: var(--app-padding-inline-small);
+  }
+
+  .entry-nav--main-link {
+    color: var(--color-neutral-0);
+    font-size: var(--font-size-4);
+    font-weight: var(--font-weight-2);
+    text-decoration-color: transparent;
+    text-decoration-line: underline;
+    text-decoration-thickness: var(--border-width-3);
+    text-underline-offset: var(--spacing-1);
+    transition: text-decoration-color var(--transition-duration-1);
+  }
+
+  .entry-nav--main-link:hover {
+    text-decoration-color: var(--color-primary-1-3);
+  }
+
+  .entry-nav--tab-link {
+    color: var(--color-neutral-1);
+    text-decoration: none;
+  }
+
+  .entry-nav--tab-link:hover {
+    text-decoration: underline;
+  }
+
+  .entry-nav--tabs {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-7);
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .entry-nav--wrapper {
+    align-items: center;
+    display: flex;
+    gap: var(--spacing-7);
+    min-block-size: var(--sizing-8);
+    padding-block: var(--spacing-4);
+  }
+
+  @media (min-width: 768px) {
+    .entry-nav {
+      padding-inline: var(--app-padding-inline-large);
+    }
+
+    .entry-nav--main-link {
+      font-size: var(--font-size-5);
+    }
+
+    .entry-nav--tabs {
+      gap: var(--spacing-9);
+    }
+
+    .entry-nav--tab-link {
+      font-size: var(--font-size-4);
+    }
+
+    .entry-nav--wrapper {
+      align-items: baseline;
+      gap: var(--spacing-9);
+      margin-inline: auto;
+      max-inline-size: var(--app-content-max-inline-size);
+      padding-block: var(--spacing-5);
+    }
+  }
+</style>

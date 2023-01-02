@@ -3,7 +3,22 @@ import HeroBanner from "../../components/HeroBanner.astro";
 import ImageDiv from "../../components/ImageDiv.astro";
 import AppLayout from "../../layouts/AppLayout.astro";
 
-const placeEntries = await Astro.glob("./places/*.mdx");
+const placeEntries = (await Astro.glob("./places/*.mdx")).filter((entry) => {
+  const pathSegments = entry.url?.split("/");
+
+  if (!pathSegments) return false;
+
+  // Filter out subsection files.
+  return !pathSegments[pathSegments.length - 1]?.includes("--");
+});
+
+const cityEntries = placeEntries.filter((entry) => {
+  const tags = entry.frontmatter.tags;
+
+  if (!Array.isArray(tags)) return false;
+
+  return tags.includes("city");
+});
 ---
 
 <AppLayout title="Project Alpha">
@@ -23,7 +38,7 @@ const placeEntries = await Astro.glob("./places/*.mdx");
 
       <div class="image-grid image-grid-places">
         {
-          placeEntries.map((entry) => (
+          cityEntries.map((entry) => (
             <ImageDiv
               backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
               class="image-place"
@@ -110,7 +125,7 @@ const placeEntries = await Astro.glob("./places/*.mdx");
   .page-section {
     padding-block-end: var(--spacing-8);
     padding-block-start: var(--spacing-7);
-    padding-inline: var(--spacing-4);
+    padding-inline: var(--app-padding-inline-small);
   }
 
   .page-section:nth-child(odd) {
@@ -148,7 +163,7 @@ const placeEntries = await Astro.glob("./places/*.mdx");
     .page-section {
       padding-block-end: var(--spacing-9);
       padding-block-start: var(--spacing-8);
-      padding-inline: var(--spacing-5);
+      padding-inline: var(--app-padding-inline-large);
     }
 
     .section-text {
@@ -161,7 +176,7 @@ const placeEntries = await Astro.glob("./places/*.mdx");
 
     .section-wrapper {
       margin-inline: auto;
-      max-width: 1248px;
+      max-inline-size: var(--app-content-max-inline-size);
     }
   }
 

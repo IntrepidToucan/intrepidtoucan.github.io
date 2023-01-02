@@ -1,4 +1,5 @@
 ---
+import EntryNav from "../components/EntryNav.astro";
 import HeroBanner from "../components/HeroBanner.astro";
 import AppLayout from "./AppLayout.astro";
 
@@ -8,8 +9,37 @@ const { frontmatter } = Astro.props;
 <AppLayout>
   <HeroBanner
     backgroundPatternSrc="url('/images/patterns/primary-temple.svg')"
+    subtitle={frontmatter.subtitle}
     title={frontmatter.title}
   />
 
-  <slot />
+  <EntryNav
+    mainLink={{ href: "/alpha", text: "Alpha" }}
+    tabs={frontmatter.tabs}
+  />
+
+  <div class="alpha-entry-layout--content-wrapper">
+    <div class="alpha-entry-layout--content">
+      <slot />
+    </div>
+  </div>
 </AppLayout>
+
+<style>
+  .alpha-entry-layout--content-wrapper {
+    padding-block-end: var(--spacing-8);
+    padding-block-start: var(--spacing-7);
+    padding-inline: var(--app-padding-inline-small);
+  }
+
+  .alpha-entry-layout--content {
+    margin-inline: auto;
+    max-inline-size: var(--app-content-max-inline-size);
+  }
+
+  @media (min-width: 768px) {
+    .alpha-entry-layout--content-wrapper {
+      padding-inline: var(--app-padding-inline-large);
+    }
+  }
+</style>

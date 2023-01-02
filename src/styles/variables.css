@@ -1,5 +1,5 @@
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Merriweather";
   font-style: normal;
   font-weight: 400;
@@ -7,7 +7,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Merriweather";
   font-style: italic;
   font-weight: 400;
@@ -15,7 +15,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Merriweather";
   font-style: normal;
   font-weight: 700;
@@ -23,7 +23,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 300;
@@ -31,7 +31,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 400;
@@ -39,7 +39,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Open Sans";
   font-style: italic;
   font-weight: 400;
@@ -47,7 +47,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: block;
   font-family: "Open Sans";
   font-style: normal;
   font-weight: 700;
@@ -136,6 +136,13 @@
 
   --transition-duration-0: 0ms;
   --transition-duration-1: 250ms;
+
+  /**
+   * Derived variables
+   */
+  --app-content-max-inline-size: 1248px;
+  --app-padding-inline-large: var(--spacing-5);
+  --app-padding-inline-small: var(--spacing-4);
 }
 
 .theme--light {
