@@ -2,14 +2,18 @@
 import HeroBanner from "../../components/HeroBanner.astro";
 import ImageDiv from "../../components/ImageDiv.astro";
 import AppLayout from "../../layouts/AppLayout.astro";
+import {
+  getCorrectedEntryUrl,
+  getEntryFileNameFromFilePath,
+  getParentEntryFileName,
+} from "../../utils/entryHelpers";
 
-const placeEntries = (await Astro.glob("./places/*.mdx")).filter((entry) => {
-  const pathSegments = entry.url?.split("/");
+const placeEntries = (
+  await Astro.glob("../../entries/alpha/places/*.mdx")
+).filter((entry) => {
+  const fileName = getEntryFileNameFromFilePath(entry.file);
 
-  if (!pathSegments) return false;
-
-  // Filter out subsection files.
-  return !pathSegments[pathSegments.length - 1]?.includes("--");
+  return getParentEntryFileName(fileName) === fileName;
 });
 
 const cityEntries = placeEntries.filter((entry) => {
@@ -42,7 +46,7 @@ const cityEntries = placeEntries.filter((entry) => {
             <ImageDiv
               backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
               class="image-place"
-              href={entry.url}
+              href={getCorrectedEntryUrl(entry.url, entry.file)}
             />
           ))
         }
@@ -65,7 +69,7 @@ const cityEntries = placeEntries.filter((entry) => {
             <ImageDiv
               backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
               class="image-person"
-              href={entry.url}
+              href={getCorrectedEntryUrl(entry.url, entry.file)}
             />
           ))
         }
@@ -88,7 +92,7 @@ const cityEntries = placeEntries.filter((entry) => {
             <ImageDiv
               backgroundImageSrc={`url("${entry.frontmatter.image.thumbnail}")`}
               class="image-person"
-              href={entry.url}
+              href={getCorrectedEntryUrl(entry.url, entry.file)}
             />
           ))
         }
