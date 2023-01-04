@@ -1,5 +1,6 @@
 ---
 import type { MDXInstance } from "astro";
+import EntryH2 from "../../../components/EntryH2.astro";
 import EntryNav from "../../../components/EntryNav.astro";
 import HeroBanner from "../../../components/HeroBanner.astro";
 import AppLayout from "../../../layouts/AppLayout.astro";
@@ -90,27 +91,30 @@ const { Content, frontmatter, tabs } = Astro.props;
 
   <EntryNav mainLink={{ href: "/alpha", text: "Alpha" }} tabs={tabs} />
 
-  <div class="alpha-entry-layout--content-wrapper">
-    <div class="alpha-entry-layout--content">
-      <Content />
+  <div class="alpha-place-page--content-wrapper">
+    <div class="alpha-place-page--content">
+      <Content components={{ h2: EntryH2 }} />
     </div>
   </div>
 </AppLayout>
 
 <style>
-  .alpha-entry-layout--content-wrapper {
+  .alpha-place-page--content-wrapper {
     padding-block-end: var(--spacing-8);
     padding-block-start: var(--spacing-7);
     padding-inline: var(--app-padding-inline-small);
   }
 
-  .alpha-entry-layout--content {
+  .alpha-place-page--content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-6);
     margin-inline: auto;
     max-inline-size: var(--app-content-max-inline-size);
   }
 
   @media (min-width: 768px) {
-    .alpha-entry-layout--content-wrapper {
+    .alpha-place-page--content-wrapper {
       padding-inline: var(--app-padding-inline-large);
     }
   }

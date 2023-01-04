@@ -1,0 +1,67 @@
+---
+export interface Props {
+  source?: string;
+}
+
+const { source } = Astro.props;
+---
+
+<figure class="entry-quote">
+  <blockquote class="entry-quote-text">
+    <slot />
+  </blockquote>
+
+  {source && <figcaption class="entry-quote-source">{source}</figcaption>}
+</figure>
+
+<style>
+  .entry-quote {
+    display: flex;
+    flex-direction: column;
+    font-size: var(--font-size-4);
+    gap: var(--spacing-5);
+    margin-inline: auto;
+    max-inline-size: 30em;
+    padding-inline: 1em;
+  }
+
+  .entry-quote-source {
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-2);
+    text-align: end;
+  }
+
+  .entry-quote-source::before {
+    content: "— ";
+  }
+
+  .entry-quote-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+  }
+
+  .entry-quote-text > :global(p:first-child),
+  .entry-quote-text > :global(p:last-child) {
+    position: relative;
+  }
+
+  .entry-quote-text > :global(p:first-child::before),
+  .entry-quote-text > :global(p:last-child::after) {
+    font-size: var(--font-size-7);
+    line-height: 1;
+    position: absolute;
+  }
+
+  .entry-quote-text > :global(p:first-child::before) {
+    content: open-quote;
+    margin-inline-start: -0.44em;
+    top: -0.02em;
+  }
+
+  .entry-quote-text > :global(p:last-child::after) {
+    bottom: -0.18em;
+    content: close-quote;
+    margin-inline-start: 0.13em;
+  }
+</style>
