@@ -9,7 +9,10 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <h1>Hello world!</h1>
+        <p>
+          Nothing to see here! Maybe you're looking for my{" "}
+          <a href="/portfolio/">portfolio</a>?
+        </p>
         <Outlet />
 
         <Scripts />
