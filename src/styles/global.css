@@ -1,0 +1,102 @@
+:root {
+  --mm--color--light-blue-0: #035388;
+  --mm--color--light-blue-1: #0B69A3;
+  --mm--color--light-blue-2: #127FBF;
+  --mm--color--light-blue-3: #1992D4;
+  --mm--color--light-blue-4: #2BB0ED;
+  --mm--color--light-blue-5: #40C3F7;
+  --mm--color--light-blue-6: #5ED0FA;
+  --mm--color--light-blue-7: #81DEFD;
+  --mm--color--light-blue-8: #B3ECFF;
+  --mm--color--light-blue-9: #E3F8FF;
+
+  --mm--color--neutral-0: #222222;
+  --mm--color--neutral-1: #3B3B3B;
+  --mm--color--neutral-2: #515151;
+  --mm--color--neutral-3: #626262;
+  --mm--color--neutral-4: #7E7E7E;
+  --mm--color--neutral-5: #9E9E9E;
+  --mm--color--neutral-6: #B1B1B1;
+  --mm--color--neutral-7: #CFCFCF;
+  --mm--color--neutral-8: #E1E1E1;
+  --mm--color--neutral-9: #F7F7F7;
+
+  --mm--color--vivid-red-0: #610316;
+  --mm--color--vivid-red-1: #8A041A;
+  --mm--color--vivid-red-2: #AB091E;
+  --mm--color--vivid-red-3: #CF1124;
+  --mm--color--vivid-red-4: #E12D39;
+  --mm--color--vivid-red-5: #EF4E4E;
+  --mm--color--vivid-red-6: #F86A6A;
+  --mm--color--vivid-red-7: #FF9B9B;
+  --mm--color--vivid-red-8: #FFBDBD;
+  --mm--color--vivid-red-9: #FFE3E3;
+
+  --mm--font-family--sans-serif: "Open Sans Variable", sans-serif;
+  --mm--font-family--serif: "Merriweather", serif;
+
+  --mm--font-size--0: 13px;
+  --mm--font-size--1: 16px;
+  --mm--font-size--2: 20px;
+  --mm--font-size--3: 24px;
+  --mm--font-size--4: 28px;
+  --mm--font-size--5: 32px;
+  --mm--font-size--6: 36px;
+  --mm--font-size--7: 32px;
+
+  --mm--font-weight-0: light;
+  --mm--font-weight-1: normal;
+  --mm--font-weight-2: bold;
+
+  --mm--sizing--0: 4px;
+  --mm--sizing--1: 8px;
+  --mm--sizing--2: 16px;
+  --mm--sizing--3: 32px;
+  --mm--sizing--4: 64px;
+  --mm--sizing--5: 128px;
+  --mm--sizing--6: 192px;
+  --mm--sizing--7: 256px;
+  --mm--sizing--8: 512px;
+  --mm--sizing--9: 1024px;
+
+  --mm--spacing--1: 4px;
+  --mm--spacing--2: 8px;
+  --mm--spacing--3: 12px;
+  --mm--spacing--4: 16px;
+  --mm--spacing--5: 20px;
+  --mm--spacing--6: 24px;
+  --mm--spacing--7: 32px;
+  --mm--spacing--8: 36px;
+  --mm--spacing--9: 40px;
+}
+
+body {
+  background-color: var(--mm--color--neutral-0);
+  color: var(--mm--color--neutral-9);
+  font-family: var(--mm--font-family--sans-serif);
+  font-size: var(--mm--font-size--1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--mm--font-family--serif);
+}
+
+h1 {
+  font-size: var(--mm--font-size--7);
+  font-weight: var(--mm--font-weight-1);
+}
+
+a {
+  color: var(--mm--color--light-blue-4);
+
+  &:hover {
+    color: var(--mm--color--vivid-red-4);
+  }
+}
+
+@media screen and (min-width: 481px) {}

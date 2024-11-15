@@ -1,0 +1,37 @@
+---
+import { SITE_TITLE } from "../utils";
+---
+
+<nav>
+  <ul>
+    <li><a class="home-link" href="/">{SITE_TITLE}</a></li>
+  </ul>
+</nav>
+
+<style>
+  nav {
+    background-color: var(--mm--color--neutral-8);
+    padding: var(--mm--spacing--2) var(--mm--spacing--3);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  .home-link {
+    color: var(--mm--color--neutral-0);
+    font-size: var(--mm--font-size--1);
+    font-weight: var(--mm--font-weight-2);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--mm--color--vivid-red-3);
+    }
+  }
+</style>

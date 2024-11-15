@@ -10,8 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.16.12",
     "@astrojs/check": "^0.9.4",
+    "@astrojs/rss": "^4.0.9",
+    "@fontsource-variable/open-sans": "^5.1.0",
+    "@fontsource/merriweather": "^5.1.0",
+    "astro": "^4.16.12",
     "typescript": "^5.6.3"
   }
 }

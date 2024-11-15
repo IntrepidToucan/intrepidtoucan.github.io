@@ -1,17 +1,29 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
 
+const allWorks = await Astro.glob("./works/*.md");
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Making Mythology</title>
-  </head>
+<BaseLayout pageTitle="Home">
+  <ul>
+    {
+      allWorks.map((work) => (
+        <li>
+          <a href={work.url}>{work.frontmatter.title}</a>
+        </li>
+      ))
+    }
 
-  <body>
-    <h1>Making Mythology</h1>
-  </body>
-</html>
+    <li><a href="/rss.xml">RSS</a></li>
+  </ul>
+</BaseLayout>
+
+<style>
+  ul {
+    padding: 24px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+</style>
