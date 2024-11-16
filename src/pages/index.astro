@@ -1,27 +1,20 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-
-const allWorks = await Astro.glob("./works/*.md?(x)");
+import CategoriesNav from "../components/CategoriesNav.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { SITE_TITLE } from "../utils";
 ---
 
-<BaseLayout pageTitle="Home">
-  <ul>
-    {
-      allWorks.map((work) => (
-        <li>
-          <a href={work.url}>{work.frontmatter.title}</a>
-        </li>
-      ))
-    }
-  </ul>
-</BaseLayout>
-
-<style>
-  ul {
-    padding: var(--mm--global--padding-x);
-  }
-
-  li {
-    list-style-type: none;
-  }
-</style>
+<PageLayout headerTitle={SITE_TITLE} pageTitle="Home">
+  <CategoriesNav
+    links={[
+      {
+        href: "/campaigns",
+        title: "Campaigns",
+      },
+      {
+        href: "/works",
+        title: "Works",
+      },
+    ]}
+  />
+</PageLayout>

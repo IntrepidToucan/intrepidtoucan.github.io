@@ -1,0 +1,108 @@
+---
+import type { ImageMetadata } from "astro";
+
+interface GradientColorStopData {
+  color: "black" | "blue" | "neutral" | "red";
+  colorLevel: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+  opacity: number;
+}
+
+interface Props {
+  backgroundImage?: {
+    path: string;
+    positionX?: string;
+    positionY?: string;
+  };
+  gradientColorStop1?: GradientColorStopData | string;
+  gradientColorStop2?: GradientColorStopData | string;
+  gradientColorStop3?: GradientColorStopData | string;
+  title: string;
+}
+
+const DEFAULT_BACKGROUND_COLOR = "var(--mm--color--black-0)";
+
+const {
+  backgroundImage,
+  gradientColorStop1 = DEFAULT_BACKGROUND_COLOR,
+  gradientColorStop2 = DEFAULT_BACKGROUND_COLOR,
+  gradientColorStop3 = DEFAULT_BACKGROUND_COLOR,
+  title,
+} = Astro.props;
+
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/**/*.{jpeg,jpg,png,gif}",
+);
+
+let backgroundImageUrl = "";
+
+if (backgroundImage?.path) {
+  const backgroundImagePath = `/src/images/${backgroundImage.path}`;
+  const getBackgroundImageData = allImages[backgroundImagePath];
+
+  if (!getBackgroundImageData) {
+    throw new Error(`"${backgroundImagePath}" does not exist`);
+  }
+
+  backgroundImageUrl = `url('${(await getBackgroundImageData()).default.src}')`;
+}
+
+const cssVars: { [key: string]: string } = {
+  backgroundImageUrl,
+  backgroundPositionX: backgroundImage?.positionX || "center",
+  backgroundPositionY: backgroundImage?.positionY || "center",
+};
+
+[gradientColorStop1, gradientColorStop2, gradientColorStop3].forEach(
+  (data, idx) => {
+    cssVars[`gradientColorStop${idx + 1}`] =
+      typeof data === "string"
+        ? data
+        : `rgba(var(--mm--color--${data.color}-${data.colorLevel}-raw), ${data.opacity})`;
+  },
+);
+---
+
+<header class={backgroundImageUrl ? "with-background-image" : undefined}>
+  <div class="content-container">
+    <h1>{title}</h1>
+  </div>
+</header>
+
+<style define:vars={cssVars}>
+  header {
+    background-image: linear-gradient(
+      to bottom,
+      var(--gradientColorStop3),
+      var(--gradientColorStop2),
+      var(--gradientColorStop1)
+    );
+    background-position: var(--backgroundPositionX) var(--backgroundPositionY);
+    background-size: cover;
+    color: var(--mm--color--neutral-9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--mm--global--padding-x);
+    min-block-size: var(--mm--sizing--7);
+
+    &.with-background-image {
+      background-image: linear-gradient(
+          to bottom,
+          var(--gradientColorStop3),
+          var(--gradientColorStop2),
+          var(--gradientColorStop1)
+        ),
+        var(--backgroundImageUrl);
+    }
+  }
+
+  h1 {
+    font-size: var(--mm--font-size--8);
+    text-align: center;
+  }
+
+  .content-container {
+    margin-inline: auto;
+    max-inline-size: var(--mm--global--max-width);
+  }
+</style>

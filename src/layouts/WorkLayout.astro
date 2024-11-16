@@ -1,9 +1,9 @@
 ---
-import WorkHeroBanner from "../components/WorkHeroBanner.astro";
+import HeroBanner from "../components/HeroBanner.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Frontmatter {
-  heroImg: {
+  heroImage: {
     path: string;
     positionX?: string;
     positionY?: string;
@@ -16,23 +16,32 @@ interface Props {
 }
 
 const {
-  frontmatter: { heroImg, title },
+  frontmatter: { heroImage, title },
 } = Astro.props;
 ---
 
 <BaseLayout pageTitle={title}>
-  <WorkHeroBanner
-    heroImgPath={heroImg.path}
-    heroImgPositionX={heroImg.positionX}
-    heroImgPositionY={heroImg.positionY}
+  <HeroBanner
+    backgroundImage={{
+      path: heroImage.path,
+      positionX: heroImage.positionX,
+      positionY: heroImage.positionY,
+    }}
+    gradientColorStop1={{ color: "black", colorLevel: 0, opacity: 0.9 }}
+    gradientColorStop2={{ color: "black", colorLevel: 0, opacity: 0.4 }}
+    gradientColorStop3={{ color: "black", colorLevel: 0, opacity: 0 }}
     title={title}
   />
 
-  <slot />
+  <main>
+    <slot />
+  </main>
 </BaseLayout>
 
 <style>
-  a {
-    background-color: red;
+  main {
+    margin-inline: auto;
+    max-inline-size: var(--mm--global--max-width);
+    padding: var(--mm--spacing--9) var(--mm--global--padding-x);
   }
 </style>

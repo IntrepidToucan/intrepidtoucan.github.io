@@ -1,0 +1,17 @@
+---
+import PageLayout from "../../layouts/PageLayout.astro";
+
+const allPosts = await Astro.glob("./*.md?(x)");
+---
+
+<PageLayout pageTitle="Works">
+  <ul>
+    {
+      allPosts.map((post) => (
+        <li>
+          <a href={post.url}>{post.frontmatter.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</PageLayout>

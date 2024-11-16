@@ -21,13 +21,14 @@ h6 {
 
 h1 {
   font-size: var(--mm--font-size--7);
-  font-weight: var(--mm--font-weight-1);
+  font-weight: var(--mm--font-weight--1);
 }
 
 a {
   color: var(--mm--color--light-blue-4);
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: var(--mm--color--red-4);
   }
 

@@ -1,4 +1,13 @@
 :root {
+  --mm--border-radius--1: 4px;
+  --mm--border-radius--2: 8px;
+
+  --mm--border-width--1: 1px;
+  --mm--border-width--2: 2px;
+
+  --mm--color--black-0-raw: 0, 0, 0;
+  --mm--color--black-0: rgb(var(--mm--color--black-0-raw));
+
   --mm--color--blue-0-raw: 0, 62, 107;
   --mm--color--blue-1-raw: 10, 85, 140;
   --mm--color--blue-2-raw: 15, 96, 155;
@@ -96,9 +105,9 @@
   --mm--font-size--7: 32px;
   --mm--font-size--8: 36px;
 
-  --mm--font-weight-0: light;
-  --mm--font-weight-1: normal;
-  --mm--font-weight-2: bold;
+  --mm--font-weight--0: light;
+  --mm--font-weight--1: normal;
+  --mm--font-weight--2: bold;
 
   --mm--sizing--1: 4px;
   --mm--sizing--2: 8px;
@@ -120,5 +129,6 @@
   --mm--spacing--8: 36px;
   --mm--spacing--9: 40px;
 
+  --mm--global--max-width: var(--mm--sizing--9);
   --mm--global--padding-x: var(--mm--spacing--5);
 }

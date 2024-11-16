@@ -1,0 +1,27 @@
+---
+import HeroBanner from "../components/HeroBanner.astro";
+import BaseLayout from "./BaseLayout.astro";
+
+interface Props {
+  headerTitle?: string;
+  pageTitle: string;
+}
+
+const { headerTitle, pageTitle } = Astro.props;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <HeroBanner title={headerTitle ?? pageTitle} />
+
+  <main>
+    <slot />
+  </main>
+</BaseLayout>
+
+<style>
+  main {
+    margin-inline: auto;
+    max-inline-size: var(--mm--global--max-width);
+    padding: var(--mm--spacing--9) var(--mm--global--padding-x);
+  }
+</style>
