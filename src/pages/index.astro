@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const allWorks = await Astro.glob("./works/*.md");
+const allWorks = await Astro.glob("./works/*.md?(x)");
 ---
 
 <BaseLayout pageTitle="Home">
@@ -13,14 +13,12 @@ const allWorks = await Astro.glob("./works/*.md");
         </li>
       ))
     }
-
-    <li><a href="/rss.xml">RSS</a></li>
   </ul>
 </BaseLayout>
 
 <style>
   ul {
-    padding: 24px;
+    padding: var(--mm--global--padding-x);
   }
 
   li {

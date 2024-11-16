@@ -5,17 +5,27 @@ import { SITE_TITLE } from "../utils";
 <nav>
   <ul>
     <li><a class="home-link" href="/">{SITE_TITLE}</a></li>
+
+    <li class="first-right-link">
+      <a href="/rss.xml" target="_blank"> <span class="mdi--rss"></span> RSS</a>
+    </li>
   </ul>
 </nav>
 
 <style>
   nav {
-    background-color: var(--mm--color--neutral-8);
-    padding: var(--mm--spacing--2) var(--mm--spacing--3);
+    align-items: center;
+    background-color: var(--mm--color--neutral-0);
+    color: var(--mm--color--neutral-9);
+    display: flex;
+    padding: var(--mm--spacing--2) var(--mm--global--padding-x);
+    min-block-size: var(--mm--sizing--5);
   }
 
   ul {
+    align-items: center;
     display: flex;
+    flex-grow: 1;
     flex-wrap: wrap;
     padding: 0;
   }
@@ -24,14 +34,26 @@ import { SITE_TITLE } from "../utils";
     list-style-type: none;
   }
 
+  a {
+    align-items: center;
+    color: var(--mm--color--neutral-9);
+    display: flex;
+    font-size: var(--mm--font-size--1);
+    gap: var(--mm--spacing--1);
+    text-decoration: none;
+  }
+
+  .first-right-link {
+    margin-inline-start: auto;
+  }
+
   .home-link {
-    color: var(--mm--color--neutral-0);
+    font-family: var(--mm--font-family--serif);
     font-size: var(--mm--font-size--1);
     font-weight: var(--mm--font-weight-2);
-    text-decoration: none;
 
     &:hover {
-      color: var(--mm--color--vivid-red-3);
+      color: var(--mm--color--red-4);
     }
   }
 </style>

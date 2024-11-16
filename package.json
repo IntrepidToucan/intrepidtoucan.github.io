@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
+    "@astrojs/mdx": "^3.1.9",
     "@astrojs/rss": "^4.0.9",
     "@fontsource-variable/open-sans": "^5.1.0",
     "@fontsource/merriweather": "^5.1.0",

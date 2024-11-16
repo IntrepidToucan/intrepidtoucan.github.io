@@ -1,26 +1,60 @@
 ---
+import type { ImageMetadata } from "astro";
+
 interface Props {
+  heroImgPath: string;
+  heroImgPositionX?: string;
+  heroImgPositionY?: string;
   title: string;
 }
 
-const { title } = Astro.props;
+const {
+  heroImgPath,
+  heroImgPositionX = "center",
+  heroImgPositionY = "center",
+  title,
+} = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/images/works/**/*.{jpeg,jpg,png,gif}",
+);
+
+const imgPath = images[`/src/images/works/${heroImgPath}`];
+
+if (!imgPath) throw new Error(`"${heroImgPath}" does not exist`);
 ---
 
 <header>
   <h1>{title}</h1>
 </header>
 
-<style>
+<style
+  define:vars={{
+    heroImgSrc: `url('${(await imgPath()).default.src}')`,
+    heroImgPositionX,
+    heroImgPositionY,
+  }}
+>
   header {
-    background-color: var(--mm--color--light-blue-0);
+    background-image: linear-gradient(
+        to bottom,
+        rgba(var(--mm--color--blue-9-raw), 0.52),
+        rgba(var(--mm--color--blue-0-raw), 0.73),
+        #000
+      ),
+      var(--heroImgSrc);
+    background-position: var(--heroImgPositionX) var(--heroImgPositionY);
+    background-size: cover;
+    color: var(--mm--color--neutral-9);
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: var(--mm--spacing--4);
-    min-block-size: var(--mm--sizing--6);
+    min-block-size: var(--mm--sizing--7);
   }
 
   h1 {
+    font-size: var(--mm--font-size--8);
     text-align: center;
   }
 </style>

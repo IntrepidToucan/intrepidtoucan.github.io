@@ -3,6 +3,11 @@ import WorkHeroBanner from "../components/WorkHeroBanner.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 interface Frontmatter {
+  heroImg: {
+    path: string;
+    positionX?: string;
+    positionY?: string;
+  };
   title: string;
 }
 
@@ -10,11 +15,24 @@ interface Props {
   frontmatter: Frontmatter;
 }
 
-const { frontmatter } = Astro.props;
+const {
+  frontmatter: { heroImg, title },
+} = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <WorkHeroBanner title={frontmatter.title} />
+<BaseLayout pageTitle={title}>
+  <WorkHeroBanner
+    heroImgPath={heroImg.path}
+    heroImgPositionX={heroImg.positionX}
+    heroImgPositionY={heroImg.positionY}
+    title={title}
+  />
 
   <slot />
 </BaseLayout>
+
+<style>
+  a {
+    background-color: red;
+  }
+</style>
