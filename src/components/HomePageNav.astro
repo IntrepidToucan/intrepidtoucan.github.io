@@ -1,0 +1,70 @@
+---
+interface Props {
+  links: {
+    href: string;
+    subtitle: string;
+    title: string;
+  }[];
+}
+
+const { links } = Astro.props;
+---
+
+<ul>
+  {
+    links.map(({ href, subtitle, title }) => (
+      <li>
+        <a href={href}>
+          <p class="title">{title}</p>
+          <p class="subtitle">{subtitle}</p>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mm--spacing--6);
+    margin-inline: auto;
+    max-inline-size: var(--mm--sizing--8);
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  a {
+    border: var(--mm--border-width--2) solid var(--mm--color--neutral-0);
+    border-radius: var(--mm--border-radius--2);
+    color: var(--mm--color--neutral-0);
+    display: block;
+    padding: var(--mm--spacing--5);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background-color: var(--mm--color--neutral-8);
+      color: var(--mm--color--neutral-0);
+    }
+
+    &:active {
+      background-color: var(--mm--color--neutral-7);
+    }
+  }
+
+  .title {
+    font-family: var(--mm--font-family--serif);
+    font-size: var(--mm--font-size--3);
+    font-weight: var(--mm--font-weight--2);
+    line-height: var(--mm--line-height-1);
+    margin-block-end: var(--mm--spacing--3);
+  }
+
+  .subtitle {
+    font-size: var(--mm--font-size--2);
+  }
+</style>

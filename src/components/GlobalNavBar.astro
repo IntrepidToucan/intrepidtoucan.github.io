@@ -6,6 +6,11 @@ import { SITE_TITLE } from "../utils";
   <div class="content-container">
     <a class="home-link" href="/">{SITE_TITLE}</a>
 
+    <ul>
+      <li><a href="/campaigns">Campaigns</a></li>
+      <li><a href="/works">Works</a></li>
+    </ul>
+
     <ul class="right-links">
       <li><a href="/about">About</a></li>
 
@@ -25,36 +30,11 @@ import { SITE_TITLE } from "../utils";
     min-block-size: var(--mm--sizing--5);
   }
 
-  .home-link {
-    color: var(--mm--color--neutral-9);
-    flex-shrink: 0;
-    font-family: var(--mm--font-family--serif);
-    font-size: var(--mm--font-size--1);
-    font-weight: var(--mm--font-weight--2);
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      color: var(--mm--local--link-hover-color);
-    }
-  }
-
-  .content-container {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--mm--spacing--3);
-    margin-inline: auto;
-    max-inline-size: var(--mm--global--max-width);
-    padding: var(--mm--spacing--2) var(--mm--global--padding-x);
-  }
-
-  .right-links {
+  ul {
     display: flex;
     flex-wrap: wrap;
     gap: var(--mm--spacing--2);
     justify-content: center;
-    margin-inline-start: auto;
     padding: 0;
 
     & > li {
@@ -79,5 +59,34 @@ import { SITE_TITLE } from "../utils";
         }
       }
     }
+  }
+
+  .home-link {
+    color: var(--mm--color--neutral-9);
+    flex-shrink: 0;
+    font-family: var(--mm--font-family--serif);
+    font-size: var(--mm--font-size--1);
+    font-weight: var(--mm--font-weight--2);
+    margin-inline-end: var(--mm--spacing--1);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--mm--local--link-hover-color);
+    }
+  }
+
+  .content-container {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--mm--spacing--3);
+    margin-inline: auto;
+    max-inline-size: var(--mm--global--max-width);
+    padding: var(--mm--spacing--2) var(--mm--global--padding-x);
+  }
+
+  .right-links {
+    margin-inline-start: auto;
   }
 </style>

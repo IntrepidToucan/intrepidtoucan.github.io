@@ -1,19 +1,21 @@
 ---
-import CategoriesNav from "../components/CategoriesNav.astro";
+import HomePageNav from "../components/HomePageNav.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import { SITE_TITLE } from "../utils";
 ---
 
 <PageLayout headerTitle={SITE_TITLE} pageTitle="Home">
-  <CategoriesNav
+  <HomePageNav
     links={[
       {
         href: "/campaigns",
         title: "Campaigns",
+        subtitle: "Actual play sessions of solo tabletop RPGs",
       },
       {
         href: "/works",
         title: "Works",
+        subtitle: "Original creations",
       },
     ]}
   />
