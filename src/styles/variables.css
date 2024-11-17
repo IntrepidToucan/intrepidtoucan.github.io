@@ -129,6 +129,9 @@
   --mm--spacing--8: 36px;
   --mm--spacing--9: 40px;
 
+  --mm--global--link-color: var(--mm--color--light-blue-3);
+  --mm--global--link-hover-color: var(--mm--color--red-4);
   --mm--global--max-width: var(--mm--sizing--9);
   --mm--global--padding-x: var(--mm--spacing--5);
+  --mm--global--paragraph-spacing: var(--mm--spacing--6);
 }

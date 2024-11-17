@@ -1,5 +1,22 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import { SITE_TITLE } from "../utils";
 ---
 
-<PageLayout pageTitle="About" />
+<PageLayout pageTitle="About">
+  <div class="paragraphs-container">
+    <p>
+      {SITE_TITLE} is a fantasy worldbuilding project involving writing, music composition,
+      sound design, cinematography, and 3D modeling and animation. I created it as
+      an opportunity to practice and partake in a wide variety of hobbies that I
+      enjoy.
+    </p>
+
+    <p>
+      Outside of creative hobbies, I’ve recently (as of late 2024) started
+      <a href="/bjj">studying Brazilian jiu-jitsu</a>. It doesn’t really fit in
+      with the rest of the content here, but since this is my website, I can add
+      anything I want. :)
+    </p>
+  </div>
+</PageLayout>
