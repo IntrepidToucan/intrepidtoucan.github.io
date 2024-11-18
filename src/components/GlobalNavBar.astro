@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from "../utils";
+import { SITE_TITLE } from "@utils/index";
 ---
 
 <nav>
@@ -24,8 +24,6 @@ import { SITE_TITLE } from "../utils";
 
 <style>
   nav {
-    --mm--local--link-hover-color: var(--mm--global--link-hover-color);
-
     background-color: var(--mm--color--neutral-0);
     min-block-size: var(--mm--sizing--5);
   }
@@ -43,6 +41,7 @@ import { SITE_TITLE } from "../utils";
       & > a {
         align-items: center;
         block-size: 100%;
+        border: var(--mm--border-width--1) solid transparent;
         border-radius: var(--mm--border-radius--1);
         color: var(--mm--color--neutral-9);
         display: flex;
@@ -54,8 +53,11 @@ import { SITE_TITLE } from "../utils";
 
         &:hover,
         &:focus {
-          background-color: rgba(var(--mm--color--neutral-9-raw), 0.04);
-          color: var(--mm--local--link-hover-color);
+          border-color: var(--mm--color--neutral-7);
+        }
+
+        &:active {
+          background-color: rgba(var(--mm--color--neutral-9-raw), 0.1);
         }
       }
     }
@@ -67,12 +69,14 @@ import { SITE_TITLE } from "../utils";
     font-family: var(--mm--font-family--serif);
     font-size: var(--mm--font-size--1);
     font-weight: var(--mm--font-weight--2);
-    margin-inline-end: var(--mm--spacing--1);
-    text-decoration: none;
+    margin-inline-end: var(--mm--spacing--2);
+    text-decoration-line: none;
+    text-decoration-thickness: var(--mm--border-width--2);
+    text-underline-offset: var(--mm--spacing--1);
 
     &:hover,
     &:focus {
-      color: var(--mm--local--link-hover-color);
+      text-decoration-line: underline;
     }
   }
 

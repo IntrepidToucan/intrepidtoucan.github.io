@@ -1,20 +1,27 @@
 ---
-layout: "../../layouts/WorkLayout.astro"
+layout: "@layouts/WorkLayout.astro"
 heroImage:
   path: "works/001-creation-myth/001_Planet_01_480.jpg"
   positionY: "40%"
 title: "Creation Myth"
 ---
 
-import { Image } from 'astro:assets';
+import Blockquote from "@components/Blockquote.astro";
+import SoloImage from "@components/SoloImage.astro";
 
-import ExternalLink from '../../components/ExternalLink.astro';
-import imageSrc from '../../images/works/001-creation-myth/001_Planet_01_480.jpg';
+import storyImage1 from "@images/works/001-creation-myth/001_Planet_01_480.jpg";
+import storyImage2 from "@images/works/001-creation-myth/001_Planet_04_008.jpg";
+import storyImage3 from "@images/works/001-creation-myth/001_Planet_04_015.jpg";
+import storyImage4 from "@images/works/001-creation-myth/001_Planet_04_018.jpg";
 
-<div>
-  <ExternalLink href="/pdf/001_CreationMyth_001_Planet.pdf" label="Sheet music PDF" />
-</div>
+<Blockquote marginBottom>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+</Blockquote>
 
-<a href="/public/img/works/001-creation-myth/001_Planet_01_480_4k.jpg" target="_blank">
-  <Image alt="Planet" src={imageSrc} width="300" />
-</a>
+<SoloImage alt="Planet" src={storyImage1} />
+
+The world began as it will end...
+
+<SoloImage alt="Planet" src={storyImage2} />
+<SoloImage alt="Planet" src={storyImage3} />
+<SoloImage alt="Planet" src={storyImage4} />

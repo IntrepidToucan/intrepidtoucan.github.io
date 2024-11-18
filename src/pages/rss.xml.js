@@ -1,5 +1,5 @@
 import rss, { pagesGlobToRssItems } from '@astrojs/rss';
-import { SITE_TITLE } from '../utils';
+import { SITE_TITLE } from '@utils/index';
 
 export async function GET(context) {
   return rss({

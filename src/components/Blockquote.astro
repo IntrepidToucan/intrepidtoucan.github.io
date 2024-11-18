@@ -1,0 +1,19 @@
+---
+import clsx from "clsx";
+
+interface Props {
+  marginBottom?: boolean;
+}
+
+const { marginBottom = false } = Astro.props;
+---
+
+<blockquote class={clsx({ "with-margin-bottom": marginBottom })}>
+  <slot />
+</blockquote>
+
+<style>
+  .with-margin-bottom {
+    margin-block-end: var(--mm--spacing--7);
+  }
+</style>

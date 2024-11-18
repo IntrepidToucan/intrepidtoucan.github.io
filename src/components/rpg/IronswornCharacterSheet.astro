@@ -1,0 +1,127 @@
+---
+import { displayPlusNumber } from "@utils/index";
+
+const IRONSWORN_CHALLENGE_RANKS = [
+  "troublesome",
+  "dangerous",
+  "formidable",
+  "extreme",
+  "epic",
+] as const;
+
+type IronswornChallengeRank = (typeof IRONSWORN_CHALLENGE_RANKS)[number];
+
+interface IronswornCharacterStats {
+  edge: number;
+  heart: number;
+  iron: number;
+  shadow: number;
+  wits: number;
+}
+
+type IronswornAssetType = "companion" | "path" | "combat_talent" | "ritual";
+
+interface IronswornAsset {
+  data: unknown;
+  type: IronswornAssetType;
+}
+
+type IronswornDebility =
+  | "wounded"
+  | "shaken"
+  | "unprepared"
+  | "encumbered"
+  | "maimed"
+  | "corrupted"
+  | "cursed"
+  | "tormented";
+
+interface IronswornEquipment {
+  name: string;
+  description: string;
+}
+
+type IronswornVowType = "background_vow" | "inciting_incident";
+
+interface IronswornVow {
+  description: string;
+  rank: IronswornChallengeRank;
+  type: IronswornVowType;
+}
+
+interface Props {
+  assets: IronswornAsset[];
+  bonds: number;
+  debilities: IronswornDebility[];
+  equipment: IronswornEquipment[];
+  experience: number;
+  health: number;
+  momentum: number;
+  momentumMax: number;
+  momentumReset: number;
+  name: string;
+  spirit: number;
+  stats: IronswornCharacterStats;
+  supply: number;
+  vows: IronswornVow[];
+}
+
+const {
+  bonds,
+  health,
+  name,
+  spirit,
+  stats: { edge, heart, iron, shadow, wits },
+  supply,
+} = Astro.props;
+
+const IronswornTermDescriptionMapping: Record<
+  keyof Omit<
+    Props & IronswornCharacterStats,
+    "bonds" | "momentumMax" | "momentumReset" | "name" | "stats" | "vows"
+  >,
+  string
+> = {
+  edge: "Quickness, agility, and prowess in ranged combat",
+  health: "Your current physical condition and stamina",
+  heart: "Courage, willpower, empathy, sociability, and loyalty",
+  iron: "Physical strength, endurance, aggressiveness, and prowess in close combat",
+  momentum: "Represents how you are faring in your quests",
+  shadow: "Sneakiness, deceptiveness, and cunning",
+  spirit: "Your current mental state",
+  supply:
+    "An abstract representation of your preparedness, including ammo, food, water, and general upkeep",
+  wits: "Expertise, knowledge, and observation",
+};
+---
+
+<article>
+  <dl>
+    <dt>Name</dt>
+    <dd>{name}</dd>
+
+    <dt>Edge</dt>
+    <dd>{edge}</dd>
+
+    <dt>Heart</dt>
+    <dd>{heart}</dd>
+
+    <dt>Iron</dt>
+    <dd>{iron}</dd>
+
+    <dt>Shadow</dt>
+    <dd>{shadow}</dd>
+
+    <dt>Wits</dt>
+    <dd>{wits}</dd>
+
+    <dt>Health</dt>
+    <dd>{displayPlusNumber(health)}</dd>
+
+    <dt>Spirit</dt>
+    <dd>{displayPlusNumber(spirit)}</dd>
+
+    <dt>Supply</dt>
+    <dd>{displayPlusNumber(supply)}</dd>
+  </dl>
+</article>

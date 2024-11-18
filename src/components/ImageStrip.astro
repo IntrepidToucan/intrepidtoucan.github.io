@@ -1,0 +1,19 @@
+---
+interface Props {}
+
+const {} = Astro.props;
+---
+
+<div class="root">
+  <slot />
+</div>
+
+<style>
+  .root {
+    display: flex;
+
+    & :global(img) {
+      min-width: 0;
+    }
+  }
+</style>

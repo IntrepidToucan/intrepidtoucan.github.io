@@ -2,10 +2,11 @@
 interface Props {
   className?: string;
   href: string;
-  label: string;
 }
 
-const { className, href, label } = Astro.props;
+const { className, href } = Astro.props;
 ---
 
-<a class={className} href={href} target="_blank">{label}</a>
+<a class={className} href={href} target="_blank">
+  <slot />
+</a>

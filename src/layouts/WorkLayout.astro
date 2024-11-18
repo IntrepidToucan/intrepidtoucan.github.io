@@ -1,6 +1,6 @@
 ---
-import HeroBanner from "../components/HeroBanner.astro";
-import BaseLayout from "./BaseLayout.astro";
+import HeroBanner from "@components/HeroBanner.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 
 interface Frontmatter {
   heroImage: {
@@ -34,12 +34,15 @@ const {
   />
 
   <main>
-    <slot />
+    <div class="content-container paragraphs-container">
+      <slot />
+    </div>
   </main>
 </BaseLayout>
 
 <style>
-  main {
+  .content-container {
+    align-items: center;
     margin-inline: auto;
     max-inline-size: var(--mm--global--max-width);
     padding: var(--mm--spacing--9) var(--mm--global--padding-x);

@@ -1,0 +1,27 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+
+interface Props {
+  alt: string;
+  /**
+   * @default 0.5
+   */
+  sizeFactor?: number;
+  src: ImageMetadata;
+}
+
+const { alt, sizeFactor = 0.5, src } = Astro.props;
+---
+
+<!-- HACK: Need a wrapping element or else the CSS variables won't be defined. -->
+<div>
+  <Image alt={alt} class="image" src={src} />
+</div>
+
+<style define:vars={{ sizeFactor }}>
+  .image {
+    inline-size: calc(var(--mm--global--max-width) * var(--sizeFactor));
+    margin-inline: auto;
+  }
+</style>

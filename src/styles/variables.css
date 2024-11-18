@@ -4,20 +4,22 @@
 
   --mm--border-width--1: 1px;
   --mm--border-width--2: 2px;
+  --mm--border-width--3: 4px;
+  --mm--border-width--4: 6px;
 
   --mm--color--black-0-raw: 0, 0, 0;
   --mm--color--black-0: rgb(var(--mm--color--black-0-raw));
 
-  --mm--color--blue-0-raw: 0, 62, 107;
-  --mm--color--blue-1-raw: 10, 85, 140;
-  --mm--color--blue-2-raw: 15, 96, 155;
-  --mm--color--blue-3-raw: 24, 111, 175;
-  --mm--color--blue-4-raw: 38, 128, 194;
-  --mm--color--blue-5-raw: 64, 152, 215;
-  --mm--color--blue-6-raw: 98, 176, 232;
-  --mm--color--blue-7-raw: 132, 197, 244;
-  --mm--color--blue-8-raw: 182, 224, 254;
-  --mm--color--blue-9-raw: 220, 238, 251;
+  --mm--color--blue-0-raw: 3, 83, 136;
+  --mm--color--blue-1-raw: 11, 105, 163;
+  --mm--color--blue-2-raw: 18, 127, 191;
+  --mm--color--blue-3-raw: 25, 145, 210;
+  --mm--color--blue-4-raw: 43, 176, 237;
+  --mm--color--blue-5-raw: 64, 195, 247;
+  --mm--color--blue-6-raw: 94, 208, 250;
+  --mm--color--blue-7-raw: 129, 222, 253;
+  --mm--color--blue-8-raw: 179, 236, 255;
+  --mm--color--blue-9-raw: 227, 248, 255;
   --mm--color--blue-0: rgb(var(--mm--color--blue-0-raw));
   --mm--color--blue-1: rgb(var(--mm--color--blue-1-raw));
   --mm--color--blue-2: rgb(var(--mm--color--blue-2-raw));
@@ -28,27 +30,6 @@
   --mm--color--blue-7: rgb(var(--mm--color--blue-7-raw));
   --mm--color--blue-8: rgb(var(--mm--color--blue-8-raw));
   --mm--color--blue-9: rgb(var(--mm--color--blue-9-raw));
-
-  --mm--color--light-blue-0-raw: 3, 83, 136;
-  --mm--color--light-blue-1-raw: 11, 105, 163;
-  --mm--color--light-blue-2-raw: 18, 127, 191;
-  --mm--color--light-blue-3-raw: 25, 145, 210;
-  --mm--color--light-blue-4-raw: 43, 176, 237;
-  --mm--color--light-blue-5-raw: 64, 195, 247;
-  --mm--color--light-blue-6-raw: 94, 208, 250;
-  --mm--color--light-blue-7-raw: 129, 222, 253;
-  --mm--color--light-blue-8-raw: 179, 236, 255;
-  --mm--color--light-blue-9-raw: 227, 248, 255;
-  --mm--color--light-blue-0: rgb(var(--mm--color--light-blue-0-raw));
-  --mm--color--light-blue-1: rgb(var(--mm--color--light-blue-1-raw));
-  --mm--color--light-blue-2: rgb(var(--mm--color--light-blue-2-raw));
-  --mm--color--light-blue-3: rgb(var(--mm--color--light-blue-3-raw));
-  --mm--color--light-blue-4: rgb(var(--mm--color--light-blue-4-raw));
-  --mm--color--light-blue-5: rgb(var(--mm--color--light-blue-5-raw));
-  --mm--color--light-blue-6: rgb(var(--mm--color--light-blue-6-raw));
-  --mm--color--light-blue-7: rgb(var(--mm--color--light-blue-7-raw));
-  --mm--color--light-blue-8: rgb(var(--mm--color--light-blue-8-raw));
-  --mm--color--light-blue-9: rgb(var(--mm--color--light-blue-9-raw));
 
   --mm--color--neutral-0-raw: 34, 34, 34;
   --mm--color--neutral-1-raw: 59, 59, 59;
@@ -105,9 +86,9 @@
   --mm--font-size--7: 32px;
   --mm--font-size--8: 36px;
 
-  --mm--font-weight--0: light;
-  --mm--font-weight--1: normal;
-  --mm--font-weight--2: bold;
+  --mm--font-weight--0: 300;
+  --mm--font-weight--1: 400;
+  --mm--font-weight--2: 700;
 
   --mm--line-height-1: 1.25;
   --mm--line-height-2: 1.5;
@@ -132,7 +113,7 @@
   --mm--spacing--8: 36px;
   --mm--spacing--9: 40px;
 
-  --mm--global--link-color: var(--mm--color--light-blue-3);
+  --mm--global--link-color: var(--mm--color--blue-3);
   --mm--global--link-hover-color: var(--mm--color--red-4);
   --mm--global--max-width: var(--mm--sizing--9);
   --mm--global--padding-x: var(--mm--spacing--5);
