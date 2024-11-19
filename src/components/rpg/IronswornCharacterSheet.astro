@@ -67,7 +67,6 @@ interface Props {
 }
 
 const {
-  bonds,
   health,
   name,
   spirit,
@@ -75,24 +74,24 @@ const {
   supply,
 } = Astro.props;
 
-const IronswornTermDescriptionMapping: Record<
-  keyof Omit<
-    Props & IronswornCharacterStats,
-    "bonds" | "momentumMax" | "momentumReset" | "name" | "stats" | "vows"
-  >,
-  string
-> = {
-  edge: "Quickness, agility, and prowess in ranged combat",
-  health: "Your current physical condition and stamina",
-  heart: "Courage, willpower, empathy, sociability, and loyalty",
-  iron: "Physical strength, endurance, aggressiveness, and prowess in close combat",
-  momentum: "Represents how you are faring in your quests",
-  shadow: "Sneakiness, deceptiveness, and cunning",
-  spirit: "Your current mental state",
-  supply:
-    "An abstract representation of your preparedness, including ammo, food, water, and general upkeep",
-  wits: "Expertise, knowledge, and observation",
-};
+// const IronswornTermDescriptionMapping: Record<
+//   keyof Omit<
+//     Props & IronswornCharacterStats,
+//     "bonds" | "momentumMax" | "momentumReset" | "name" | "stats" | "vows"
+//   >,
+//   string
+// > = {
+//   edge: "Quickness, agility, and prowess in ranged combat",
+//   health: "Your current physical condition and stamina",
+//   heart: "Courage, willpower, empathy, sociability, and loyalty",
+//   iron: "Physical strength, endurance, aggressiveness, and prowess in close combat",
+//   momentum: "Represents how you are faring in your quests",
+//   shadow: "Sneakiness, deceptiveness, and cunning",
+//   spirit: "Your current mental state",
+//   supply:
+//     "An abstract representation of your preparedness, including ammo, food, water, and general upkeep",
+//   wits: "Expertise, knowledge, and observation",
+// };
 ---
 
 <article class="root">
