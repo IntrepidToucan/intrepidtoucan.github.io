@@ -9,14 +9,15 @@ interface Props {
    */
   sizeFactor?: number;
   src: ImageMetadata;
+  width?: number;
 }
 
-const { alt, sizeFactor = 0.5, src } = Astro.props;
+const { alt, sizeFactor = 0.5, src, width = 960 } = Astro.props;
 ---
 
 <!-- HACK: Need a wrapping element or else the CSS variables won't be defined. -->
 <div>
-  <Image alt={alt} class="image" src={src} />
+  <Image alt={alt} class="image" src={src} width={width} />
 </div>
 
 <style define:vars={{ sizeFactor }}>
