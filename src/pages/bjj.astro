@@ -1,132 +1,118 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
-
-const PositionNameMapping = {
-  STANDING: "Standing",
-  OPEN_GUARD: "Open Guard",
-  CLOSED_GUARD: "Closed Guard",
-  HALF_GUARD: "Half Guard",
-  SIDE_CONTROL: "Side Control",
-  MOUNT: "Mount",
-  BACK_CONTROL: "Back Control",
-};
-
-const POSITION_NAMES = Object.values(PositionNameMapping);
 ---
 
 <PageLayout pageTitle="BJJ">
   <div class="paragraphs-container">
     <p>
-      This is a small, tucked-away corner of my website where I track my
-      training progress in Brazilian jiu-jitsu.
+      This is a small corner of my website where I track my training progress in
+      Brazilian jiu-jitsu.
     </p>
 
     <table>
-      <caption>Position Transitions</caption>
+      <caption>Monthly Focus</caption>
 
       <thead>
         <tr>
-          <th scope="col"></th>
-          {POSITION_NAMES.map((data) => <th scope="col">{data}</th>)}
+          <th scope="col" style="width: 120px"></th>
+          <th scope="col">Notes</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <th scope="row">{PositionNameMapping.STANDING}</th>
-          <td class="highlight-cell"> </td>
+          <th scope="row">December 2024</th>
           <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <caption>Solo Drills</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 120px"></th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Technical Standup</th>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <caption>Phases of Guard</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 120px"></th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Engagement</th>
           <td></td>
         </tr>
 
         <tr>
-          <th scope="row">{PositionNameMapping.OPEN_GUARD}</th>
-          <td></td>
-          <td class="highlight-cell"></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <th scope="row">Maintenance</th>
           <td></td>
         </tr>
 
         <tr>
-          <th scope="row">{PositionNameMapping.CLOSED_GUARD}</th>
-          <td></td>
-          <td></td>
-          <td class="highlight-cell"></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <th scope="row">Retention</th>
           <td></td>
         </tr>
+      </tbody>
+    </table>
 
+    <table>
+      <caption>Positions</caption>
+
+      <thead>
         <tr>
-          <th scope="row">{PositionNameMapping.HALF_GUARD}</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="highlight-cell"></td>
-          <td></td>
-          <td></td>
+          <th scope="col" style="width: 120px"></th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Closed Guard</th>
           <td></td>
         </tr>
+      </tbody>
+    </table>
 
+    <table>
+      <caption>Submissions</caption>
+
+      <thead>
         <tr>
-          <th scope="row">{PositionNameMapping.SIDE_CONTROL}</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="highlight-cell"></td>
-          <td></td>
-          <td></td>
+          <th scope="col" style="width: 120px"></th>
+          <th scope="col">Notes</th>
         </tr>
+      </thead>
 
+      <tbody>
         <tr>
-          <th scope="row">{PositionNameMapping.MOUNT}</th>
+          <th scope="row">Armbar</th>
           <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="highlight-cell"></td>
-          <td></td>
-        </tr>
-
-        <tr>
-          <th scope="row">{PositionNameMapping.BACK_CONTROL}</th>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="highlight-cell"></td>
         </tr>
       </tbody>
     </table>
   </div>
 </PageLayout>
 
-<style
-  define:vars={{
-    positionsTableColumnWidth: `${100 / (POSITION_NAMES.length + 1)}%`,
-  }}
->
-  thead th {
-    inline-size: var(--positionsTableColumnWidth);
-  }
-
+<style>
   tr {
     block-size: var(--mm--sizing--5);
-  }
-
-  .highlight-cell {
-    background-color: var(--mm--color--neutral-7);
   }
 </style>
