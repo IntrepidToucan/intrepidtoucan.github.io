@@ -5,9 +5,49 @@ import PageLayout from "@layouts/PageLayout.astro";
 <PageLayout pageTitle="BJJ">
   <div class="paragraphs-container">
     <p>
-      This is a small corner of my website where I track my training progress in
-      Brazilian jiu-jitsu.
+      This is a small, tucked-away corner of my website where I track my
+      training progress in Brazilian jiu-jitsu.
     </p>
+
+    <h2>Principles</h2>
+
+    <ul>
+      <li>Alignment over everything else / no scrambles or “counters”</li>
+      <li>Maintain your alignment, then disrupt your opponent's alignment</li>
+      <li>Control your center of gravity and momentum</li>
+      <li>Continually off-balance your opponent (kuzushi)</li>
+      <li>
+        Use every part of all your limbs / use your head to frame, post, and
+        wedge / maintain knee-elbow connection
+      </li>
+      <li>Address the leading edge / meet or redirect the force vector</li>
+      <li>Take a dominant angle</li>
+      <li>Turn your opponent’s frames into levers</li>
+      <li>
+        Maximize strength using lever-based control, ratchet levers, and
+        internal/external rotation
+      </li>
+      <li>Focus your force into a small, hard surface area</li>
+      <li>Advance position using placeholders</li>
+      <li>Exert continuous strategic pressure against your opponent</li>
+    </ul>
+
+    <h2>Solo Drills</h2>
+
+    <ul>
+      <li>Technical Standup</li>
+      <li>Bridge</li>
+      <li>Hip Escape</li>
+      <li>Inversion and Half Granby</li>
+      <li>Hip Heist</li>
+      <li>Hip Switch</li>
+      <li>Windshield Wiper</li>
+      <li>Hip Shovel</li>
+      <li>Backstep</li>
+      <li>Rolls</li>
+      <li>Eggbeater</li>
+      <li>Shin Circle</li>
+    </ul>
 
     <table>
       <caption>Monthly Focus</caption>
@@ -22,25 +62,11 @@ import PageLayout from "@layouts/PageLayout.astro";
       <tbody>
         <tr>
           <th scope="row">December 2024</th>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <table>
-      <caption>Solo Drills</caption>
-
-      <thead>
-        <tr>
-          <th scope="col" style="width: 120px"></th>
-          <th scope="col">Notes</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <th scope="row">Technical Standup</th>
-          <td></td>
+          <td>
+            <ul>
+              <li>Guard retention (starting from seated guard)</li>
+            </ul>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -68,7 +94,19 @@ import PageLayout from "@layouts/PageLayout.astro";
 
         <tr>
           <th scope="row">Retention</th>
-          <td></td>
+          <td>
+            <ul>
+              <li>
+                Frame against the leading edge (often the knee/shin or
+                shoulder/upper arm), then mobilize your hips to reset your angle
+              </li>
+
+              <li>
+                If your hips get turned, maintain posture by turning your torso
+                to match
+              </li>
+            </ul>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -85,7 +123,7 @@ import PageLayout from "@layouts/PageLayout.astro";
 
       <tbody>
         <tr>
-          <th scope="row">Closed Guard</th>
+          <th scope="row">Seated Guard</th>
           <td></td>
         </tr>
       </tbody>
@@ -108,10 +146,32 @@ import PageLayout from "@layouts/PageLayout.astro";
         </tr>
       </tbody>
     </table>
+
+    <table>
+      <caption>Takedowns</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 120px"></th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Double Leg Takedown</th>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </PageLayout>
 
 <style>
+  h2 {
+    text-align: center;
+  }
+
   tr {
     block-size: var(--mm--sizing--5);
   }
