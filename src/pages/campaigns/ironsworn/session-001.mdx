@@ -1,0 +1,24 @@
+---
+layout: "@layouts/PostLayout.astro"
+heroImage:
+  path: "works/001-creation-myth/001_Planet_01_400.jpg"
+  positionY: "40%"
+title: "Ironsworn - Session 1"
+---
+
+import IronswornCharacterSheet from "@components/rpg/IronswornCharacterSheet.astro";
+
+## Our Hero
+
+<IronswornCharacterSheet name="Lucia" stats={{
+  edge: 0,
+  heart: 0,
+  iron: 0,
+  shadow: 0,
+  wits: 0,
+}}
+vows={[{
+  type: 'background_vow'
+}]} />
+
+## Our Story

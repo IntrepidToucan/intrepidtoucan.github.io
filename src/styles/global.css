@@ -21,7 +21,7 @@ table {
 thead,
 tfoot,
 th {
-  background-color: var(--mm--color--neutral-6);
+  background-color: var(--mm--color--neutral-7);
 }
 
 th,
@@ -32,6 +32,10 @@ td {
   & ul {
     padding-inline-start: var(--mm--spacing--5);
   }
+}
+
+tr {
+  block-size: var(--mm--sizing--5);
 }
 
 caption {

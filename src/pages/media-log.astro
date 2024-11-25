@@ -1,21 +1,17 @@
 ---
 import PageLayout from "@layouts/PageLayout.astro";
+
+const MediaType = {
+  COMIC: "Comic",
+} as const;
 ---
 
 <PageLayout pageTitle="Media Log">
   <div class="paragraphs-container">
     <p>
-      A running list of all the significant media I’ve consumed since starting
-      this running list.
+      A running list of all the significant media I’ve consumed since late 2024.
+      My rating scale goes from 1 (awful) to 4 (amazing).
     </p>
-
-    <p>My rating scale contains four levels:</p>
-    <ol>
-      <li>Bad, with almost no redeeming qualities</li>
-      <li>Bad, with redeeming qualities</li>
-      <li>Good, with flaws</li>
-      <li>Great, with no significant flaws</li>
-    </ol>
 
     <table>
       <thead>
@@ -39,8 +35,9 @@ import PageLayout from "@layouts/PageLayout.astro";
               <li>Jordie Bellaire (colorist)</li>
             </ul></td
           >
-          <td>Comics</td>
+          <td>{MediaType.COMIC}</td>
           <td></td>
+          <td>(3)</td>
           <td></td>
         </tr>
       </tbody>
@@ -49,11 +46,9 @@ import PageLayout from "@layouts/PageLayout.astro";
 </PageLayout>
 
 <style>
-  td:nth-child(3) {
-    text-align: center;
-  }
-
-  td:nth-child(4) {
+  td:nth-child(3),
+  td:nth-child(4),
+  td:nth-child(5) {
     text-align: center;
   }
 </style>
