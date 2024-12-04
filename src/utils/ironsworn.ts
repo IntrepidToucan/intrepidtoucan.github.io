@@ -1,4 +1,4 @@
-export const IRONSWORN_CHALLENGE_RANKS = ['troublesome', 'dangeorus', 'formidable', 'extreme', 'epic'] as const;
+export const IRONSWORN_CHALLENGE_RANKS = ['troublesome', 'dangerous', 'formidable', 'extreme', 'epic'] as const;
 
 export type IronswornAssetType = "companion" | "path" | "combat_talent" | "ritual";
 export type IronswornChallengeRank = typeof IRONSWORN_CHALLENGE_RANKS[number];
@@ -13,9 +13,8 @@ export type IronswornDebility =
   | "tormented";
 
 export interface IronswornAsset {
-  abilities: string[];
+  abilities: [string | null, string | null, string | null];
   name: string;
-  description: string;
   type: IronswornAssetType;
 }
 
@@ -58,8 +57,12 @@ export interface IronswornPlayerCharacterData {
   vows: IronswornVow[];
 }
 
-export const IronswornTermDescriptionMapping: Record<keyof (Pick<IronswornPlayerCharacterData, 'health' | 'momentum' | 'spirit' | 'supply'> & IronswornPlayerCharacterStats), string> = {
+export const IronswornTermDescriptionMapping: Record<keyof (Pick<IronswornPlayerCharacterData, 'health' | 'momentum' | 'spirit' | 'supply'> & IronswornPlayerCharacterStats) | IronswornChallengeRank, string> = {
+  dangerous: "2 progress per milestone",
   edge: "Quickness, agility, and prowess in ranged combat",
+  epic: "1 tick per milestone",
+  extreme: "2 ticks per milestone",
+  formidable: "1 progress per milestone",
   health: "Your current physical condition and stamina",
   heart: "Courage, willpower, empathy, sociability, and loyalty",
   iron: "Physical strength, endurance, aggressiveness, and prowess in close combat",
@@ -68,6 +71,7 @@ export const IronswornTermDescriptionMapping: Record<keyof (Pick<IronswornPlayer
   spirit: "Your current mental state",
   supply:
     "An abstract representation of your preparedness, including ammo, food, water, and general upkeep",
+  troublesome: "3 progress per milestone",
   wits: "Expertise, knowledge, and observation",
 };
 

@@ -1,4 +1,6 @@
 ---
+import clsx from "clsx";
+
 import {
   type IronswornPlayerCharacterData,
   IronswornTermDescriptionMapping,
@@ -68,7 +70,15 @@ const {
           <div class="vows-container">
             {vows.map((vow) => (
               <div>
-                <p>{vow.description}</p>
+                <p class="vow-description-container">
+                  {vow.description}
+                  <span
+                    class={clsx("tag", vow.rank)}
+                    title={IronswornTermDescriptionMapping[vow.rank]}
+                  >
+                    {vow.rank}
+                  </span>
+                </p>
 
                 <div class="progress-bar-container">
                   <p>{vow.progress}</p>
@@ -105,7 +115,28 @@ const {
 
       {
         assets.length > 0 ? (
-          <p>{assets.map((a) => a.name).join(", ")}</p>
+          <ul class="assets-list">
+            {assets.map((a) => (
+              <li>
+                <span class="tag">{a.type.replaceAll("_", " ")}</span>
+
+                <ul class="asset-abilities-list">
+                  {[0, 1, 2].map((idx) => {
+                    const ability = a.abilities[idx];
+
+                    return (
+                      <li
+                        class={clsx("ability-tag", { enabled: !!ability })}
+                        title={ability}
+                      />
+                    );
+                  })}
+                </ul>
+
+                <span class="asset-name">{a.name}</span>
+              </li>
+            ))}
+          </ul>
         ) : (
           <p>None</p>
         )
@@ -259,10 +290,67 @@ const {
     gap: var(--mm--spacing--6);
   }
 
+  .vow-description-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: var(--mm--spacing--4);
+  }
+
+  .tag {
+    background-color: var(--mm--color--neutral-4);
+    font-size: var(--mm--font-size--0);
+    font-weight: var(--mm--font-weight--2);
+    padding: var(--mm--spacing--1) var(--mm--spacing--3);
+    text-transform: capitalize;
+
+    &.epic {
+      background-color: var(--mm--color--red-1);
+    }
+  }
+
+  .assets-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mm--spacing--3);
+    padding: 0;
+
+    & > li {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--mm--spacing--3) var(--mm--spacing--4);
+      list-style-type: none;
+
+      & > .asset-name {
+        position: relative;
+        inset-block-end: 1px;
+      }
+    }
+  }
+
+  .asset-abilities-list {
+    display: flex;
+    gap: var(--mm--spacing--3);
+    padding: 0;
+
+    & > li {
+      background-color: var(--mm--color--neutral-1);
+      block-size: var(--mm--sizing--3);
+      border-radius: 50%;
+      inline-size: var(--mm--sizing--3);
+      list-style-type: none;
+
+      &.enabled {
+        background-color: var(--mm--color--blue-4);
+      }
+    }
+  }
+
   .progress-bar-container {
     align-items: center;
     display: flex;
-    margin-block-start: var(--mm--spacing--2);
+    margin-block-start: var(--mm--spacing--3);
 
     & > p {
       min-inline-size: var(--mm--sizing--5);
@@ -274,7 +362,7 @@ const {
     }
   }
 
-  @media screen and (min-width: 481px) {
+  @media screen and (min-width: 501px) {
     .root {
       grid-template-columns: [main-col] auto [side-col] min-content;
       grid-template-rows: [name-row] min-content [main-row] auto;
