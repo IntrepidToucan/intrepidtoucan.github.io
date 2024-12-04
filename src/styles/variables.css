@@ -31,6 +31,27 @@
   --mm--color--blue-8: rgb(var(--mm--color--blue-8-raw));
   --mm--color--blue-9: rgb(var(--mm--color--blue-9-raw));
 
+  --mm--color--green-0-raw: 5, 64, 10;
+  --mm--color--green-1-raw: 14, 88, 20;
+  --mm--color--green-2-raw: 32, 114, 39;
+  --mm--color--green-3-raw: 47, 129, 50;
+  --mm--color--green-4-raw: 63, 145, 66;
+  --mm--color--green-5-raw: 87, 174, 91;
+  --mm--color--green-6-raw: 123, 196, 127;
+  --mm--color--green-7-raw: 163, 217, 165;
+  --mm--color--green-8-raw: 193, 234, 197;
+  --mm--color--green-9-raw: 227, 249, 229;
+  --mm--color--green-0: rgb(var(--mm--color--green-0-raw));
+  --mm--color--green-1: rgb(var(--mm--color--green-1-raw));
+  --mm--color--green-2: rgb(var(--mm--color--green-2-raw));
+  --mm--color--green-3: rgb(var(--mm--color--green-3-raw));
+  --mm--color--green-4: rgb(var(--mm--color--green-4-raw));
+  --mm--color--green-5: rgb(var(--mm--color--green-5-raw));
+  --mm--color--green-6: rgb(var(--mm--color--green-6-raw));
+  --mm--color--green-7: rgb(var(--mm--color--green-7-raw));
+  --mm--color--green-8: rgb(var(--mm--color--green-8-raw));
+  --mm--color--green-9: rgb(var(--mm--color--green-9-raw));
+
   --mm--color--neutral-0-raw: 34, 34, 34;
   --mm--color--neutral-1-raw: 59, 59, 59;
   --mm--color--neutral-2-raw: 81, 81, 81;

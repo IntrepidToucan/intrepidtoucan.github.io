@@ -7,21 +7,11 @@ title: "Ironsworn - Setup"
 ---
 
 import IronswornCharacterSheet from "@components/rpg/IronswornCharacterSheet.astro";
+import { PlayerCharacter_000 } from "./_constants";
 
 ## Our Hero
 
-<IronswornCharacterSheet name="Lucia" stats={{
-  edge: 2,
-  heart: 3,
-  iron: 1,
-  shadow: 1,
-  wits: 2,
-}}
-vows={[{
-  description: "To found the first great city of the Ironlands",
-  rank: "epic",
-  type: "background_vow"
-}]} />
+<IronswornCharacterSheet {...PlayerCharacter_000} />
 
 ## Our Setting
 

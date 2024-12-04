@@ -1,180 +1,305 @@
 ---
-// import { displayPlusNumber } from "@utils/index";
+import {
+  type IronswornPlayerCharacterData,
+  IronswornTermDescriptionMapping,
+  displaySignedNumber,
+} from "@utils/index";
 
-type IronswornAssetType = "companion" | "path" | "combat_talent" | "ritual";
-type IronswornChallengeRank =
-  | "troublesome"
-  | "dangerous"
-  | "formidable"
-  | "extreme"
-  | "epic";
-type IronswornDebility =
-  | "wounded"
-  | "shaken"
-  | "unprepared"
-  | "encumbered"
-  | "maimed"
-  | "corrupted"
-  | "cursed"
-  | "tormented";
-type IronswornVowType = "background_vow" | "inciting_incident";
-
-interface IronswornAsset {
-  data: unknown;
-  type: IronswornAssetType;
-}
-
-interface IronswornCharacterStats {
-  edge: number;
-  heart: number;
-  iron: number;
-  shadow: number;
-  wits: number;
-}
-
-interface IronswornEquipment {
-  name: string;
-  description: string;
-}
-
-interface IronswornVow {
-  description: string;
-  rank: IronswornChallengeRank;
-  type: IronswornVowType;
-}
-
-interface Props {
-  assets: IronswornAsset[];
-  bonds: number;
-  debilities: IronswornDebility[];
-  equipment: IronswornEquipment[];
-  experience: number;
-  health: number;
-  momentum: number;
-  name: string;
-  spirit: number;
-  stats: IronswornCharacterStats;
-  supply: number;
-  vows: IronswornVow[];
-}
+interface Props extends IronswornPlayerCharacterData {}
 
 const {
-  // health,
+  assets,
+  bonds,
+  debilities,
+  equipment,
+  experience,
+  health,
+  momentum,
   name,
-  // spirit,
+  spirit,
   stats: { edge, heart, iron, shadow, wits },
-  // supply,
+  supply,
   vows,
 } = Astro.props;
-
-const IronswornTermDescriptionMapping: Partial<
-  Record<
-    keyof Omit<
-      Props & IronswornCharacterStats,
-      "bonds" | "name" | "stats" | "vows"
-    >,
-    string
-  >
-> = {
-  edge: "Quickness, agility, and prowess in ranged combat",
-  health: "Your current physical condition and stamina",
-  heart: "Courage, willpower, empathy, sociability, and loyalty",
-  iron: "Physical strength, endurance, aggressiveness, and prowess in close combat",
-  momentum: "Represents how you are faring in your quests",
-  shadow: "Sneakiness, deceptiveness, and cunning",
-  spirit: "Your current mental state",
-  supply:
-    "An abstract representation of your preparedness, including ammo, food, water, and general upkeep",
-  wits: "Expertise, knowledge, and observation",
-};
-
-const backgroundVow = vows.find((vow) => vow.type === "background_vow");
 ---
 
 <article class="root paragraphs-container">
-  <h3>{name}</h3>
+  <div class="name-container">
+    <h3>{name}</h3>
+  </div>
 
-  <ul class="stats">
-    <li title={IronswornTermDescriptionMapping.edge}>
-      <h4>Edge</h4>
-      <p>{edge}</p>
-    </li>
-    <li title={IronswornTermDescriptionMapping.heart}>
-      <h4>Heart</h4>
-      <p>{heart}</p>
-    </li>
-    <li title={IronswornTermDescriptionMapping.iron}>
-      <h4>Iron</h4>
-      <p>{iron}</p>
-    </li>
-    <li title={IronswornTermDescriptionMapping.shadow}>
-      <h4>Shadow</h4>
-      <p>{shadow}</p>
-    </li>
-    <li title={IronswornTermDescriptionMapping.wits}>
-      <h4>Wits</h4>
-      <p>{wits}</p>
-    </li>
-  </ul>
+  <div class="experience-container">
+    <div class="data-square">
+      <h4>Experience</h4>
 
-  {
-    backgroundVow && (
-      <div>
-        <h4>Background Vow</h4>
+      <p>{experience}</p>
+    </div>
+  </div>
 
-        <p>{backgroundVow.description}</p>
-      </div>
-    )
-  }
+  <div class="main-container">
+    <ul class="data-list">
+      <li title={IronswornTermDescriptionMapping.edge}>
+        <h4>Edge</h4>
+        <p>{edge}</p>
+      </li>
+      <li title={IronswornTermDescriptionMapping.heart}>
+        <h4>Heart</h4>
+        <p>{heart}</p>
+      </li>
+      <li title={IronswornTermDescriptionMapping.iron}>
+        <h4>Iron</h4>
+        <p>{iron}</p>
+      </li>
+      <li title={IronswornTermDescriptionMapping.shadow}>
+        <h4>Shadow</h4>
+        <p>{shadow}</p>
+      </li>
+      <li title={IronswornTermDescriptionMapping.wits}>
+        <h4>Wits</h4>
+        <p>{wits}</p>
+      </li>
+    </ul>
+
+    <div>
+      <h4>Vows</h4>
+
+      {
+        vows.length > 0 ? (
+          <div class="vows-container">
+            {vows.map((vow) => (
+              <div>
+                <p>{vow.description}</p>
+
+                <div class="progress-bar-container">
+                  <p>{vow.progress}</p>
+
+                  <progress
+                    aria-label="Vow progress track"
+                    value={vow.progress}
+                    max="40"
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>None</p>
+        )
+      }
+    </div>
+
+    <div>
+      <h4>Bonds</h4>
+
+      {
+        bonds.length > 0 ? (
+          <p>{bonds.map((b) => b.name).join(", ")}</p>
+        ) : (
+          <p>None</p>
+        )
+      }
+    </div>
+
+    <div>
+      <h4>Assets</h4>
+
+      {
+        assets.length > 0 ? (
+          <p>{assets.map((a) => a.name).join(", ")}</p>
+        ) : (
+          <p>None</p>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="side-container">
+    <ul class="data-list">
+      <li class="health" title={IronswornTermDescriptionMapping.health}>
+        <h4>Health</h4>
+        <p>{displaySignedNumber(health)}</p>
+      </li>
+      <li class="spirit" title={IronswornTermDescriptionMapping.spirit}>
+        <h4>Spirit</h4>
+        <p>{displaySignedNumber(spirit)}</p>
+      </li>
+      <li class="supply" title={IronswornTermDescriptionMapping.supply}>
+        <h4>Supply</h4>
+        <p>{displaySignedNumber(supply)}</p>
+      </li>
+    </ul>
+
+    <div class="data-square" title={IronswornTermDescriptionMapping.momentum}>
+      <h4>Momentum</h4>
+      <p>{displaySignedNumber(momentum)}</p>
+    </div>
+
+    <div>
+      <h4>Debilities</h4>
+
+      {debilities.length > 0 ? <p>{debilities.join(", ")}</p> : <p>None</p>}
+    </div>
+
+    <div>
+      <h4>Equipment</h4>
+
+      {
+        equipment.length > 0 ? (
+          <p>{equipment.map((e) => e.name).join(", ")}</p>
+        ) : (
+          <p>None</p>
+        )
+      }
+    </div>
+  </div>
 </article>
 
 <style>
   h3 {
     font-size: var(--mm--font-size--3);
-    text-align: center;
   }
 
   h4 {
     font-size: var(--mm--font-size--2);
-    margin-block-end: var(--mm--spacing--2);
+  }
+
+  progress[value] {
+    appearance: none;
+    block-size: var(--mm--sizing--4);
+
+    &:global(::-webkit-progress-value) {
+      background-color: var(--mm--color--blue-4);
+    }
+
+    &:global(::-webkit-progress-bar) {
+      background-color: var(--mm--color--neutral-4);
+    }
   }
 
   .root {
+    --mm--local--inner-padding: var(--mm--spacing--6);
+
     background-color: var(--mm--color--neutral-0);
-    color: var(--mm--color--neutral-9);
     border-radius: var(--mm--border-radius--1);
-    padding: var(--mm--spacing--4);
+    color: var(--mm--color--neutral-9);
+    display: grid;
+    gap: var(--mm--local--inner-padding);
+    padding: var(--mm--local--inner-padding);
   }
 
-  .stats {
+  .name-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mm--spacing--9);
+
+    & h4 {
+      margin-block-end: var(--mm--spacing--4);
+    }
+  }
+
+  .side-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mm--local--inner-padding);
+
+    & h4 {
+      margin-block-end: var(--mm--spacing--3);
+    }
+  }
+
+  .data-list {
     display: flex;
     flex-wrap: wrap;
     gap: var(--mm--spacing--3);
     padding: 0;
 
     & > li {
-      background-color: var(--mm--color--neutral-2);
       flex: 1 1 0;
       list-style-type: none;
-      padding: var(--mm--spacing--3);
+    }
+  }
+
+  .data-list > li,
+  .data-square {
+    background-color: var(--mm--color--neutral-3);
+    padding: var(--mm--spacing--3);
+    text-align: center;
+
+    &.health {
+      background-color: rgba(var(--mm--color--red-4-raw), 0.5);
+    }
+
+    &.spirit {
+      background-color: rgba(var(--mm--color--blue-4-raw), 0.5);
+    }
+
+    &.supply {
+      background-color: rgba(var(--mm--color--green-4-raw), 0.5);
+    }
+
+    & > h4 {
+      font-size: var(--mm--font-size--1);
+      margin-block-end: var(--mm--spacing--1);
+    }
+
+    & > p {
+      font-size: var(--mm--font-size--2);
+    }
+  }
+
+  .vows-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mm--spacing--6);
+  }
+
+  .progress-bar-container {
+    align-items: center;
+    display: flex;
+    margin-block-start: var(--mm--spacing--2);
+
+    & > p {
+      min-inline-size: var(--mm--sizing--5);
       text-align: center;
+    }
 
-      & > h4 {
-        display: block;
-        font-size: var(--mm--font-size--1);
-        margin-block-end: var(--mm--spacing--2);
-      }
-
-      & > p {
-        font-size: var(--mm--font-size--2);
-      }
+    & > progress {
+      flex-grow: 1;
     }
   }
 
   @media screen and (min-width: 481px) {
     .root {
+      grid-template-columns: [main-col] auto [side-col] min-content;
+      grid-template-rows: [name-row] min-content [main-row] auto;
       inline-size: 80%;
       margin-inline: auto;
+    }
+
+    .name-container {
+      grid-column: main-col;
+      grid-row: name-row;
+    }
+
+    .experience-container {
+      grid-column: side-col;
+      grid-row: name-row;
+    }
+
+    .main-container {
+      grid-column: main-col;
+      grid-row: main-row;
+    }
+
+    .side-container {
+      grid-column: side-col;
+      grid-row: main-row;
     }
   }
 </style>

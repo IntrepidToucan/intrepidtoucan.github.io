@@ -31,6 +31,10 @@ td {
 
   & ul {
     padding-inline-start: var(--mm--spacing--5);
+
+    &:not(:last-child) {
+      margin-block-end: var(--mm--spacing--4);
+    }
   }
 }
 

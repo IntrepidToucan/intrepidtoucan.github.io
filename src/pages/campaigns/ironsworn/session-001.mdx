@@ -7,18 +7,7 @@ title: "Ironsworn - Session 1"
 ---
 
 import IronswornCharacterSheet from "@components/rpg/IronswornCharacterSheet.astro";
+import { PlayerCharacter_000 } from "./_constants";
 
-## Our Hero
+<IronswornCharacterSheet {...PlayerCharacter_000} />
 
-<IronswornCharacterSheet name="Lucia" stats={{
-  edge: 0,
-  heart: 0,
-  iron: 0,
-  shadow: 0,
-  wits: 0,
-}}
-vows={[{
-  type: 'background_vow'
-}]} />
-
-## Our Story
