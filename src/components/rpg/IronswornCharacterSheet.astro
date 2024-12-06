@@ -93,7 +93,7 @@ const {
             ))}
           </div>
         ) : (
-          <p>None</p>
+          <p class="empty-state">None</p>
         )
       }
     </div>
@@ -105,7 +105,7 @@ const {
         bonds.length > 0 ? (
           <p>{bonds.map((b) => b.name).join(", ")}</p>
         ) : (
-          <p>None</p>
+          <p class="empty-state">None</p>
         )
       }
     </div>
@@ -138,7 +138,7 @@ const {
             ))}
           </ul>
         ) : (
-          <p>None</p>
+          <p class="empty-state">None</p>
         )
       }
     </div>
@@ -168,7 +168,13 @@ const {
     <div>
       <h4>Debilities</h4>
 
-      {debilities.length > 0 ? <p>{debilities.join(", ")}</p> : <p>None</p>}
+      {
+        debilities.length > 0 ? (
+          <p>{debilities.join(", ")}</p>
+        ) : (
+          <p class="empty-state">None</p>
+        )
+      }
     </div>
 
     <div>
@@ -176,9 +182,13 @@ const {
 
       {
         equipment.length > 0 ? (
-          <p>{equipment.map((e) => e.name).join(", ")}</p>
+          <ul class="equipment-list">
+            {equipment.map((e) => (
+              <li title={e.description}>{e.name}</li>
+            ))}
+          </ul>
         ) : (
-          <p>None</p>
+          <p class="empty-state">None</p>
         )
       }
     </div>
@@ -240,7 +250,7 @@ const {
     gap: var(--mm--local--inner-padding);
 
     & h4 {
-      margin-block-end: var(--mm--spacing--3);
+      margin-block-end: var(--mm--spacing--2);
     }
   }
 
@@ -360,6 +370,13 @@ const {
     & > progress {
       flex-grow: 1;
     }
+  }
+
+  .equipment-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--mm--spacing--1);
+    padding-inline-start: var(--mm--spacing--4);
   }
 
   @media screen and (min-width: 501px) {

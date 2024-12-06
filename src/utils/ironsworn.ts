@@ -48,12 +48,12 @@ export interface IronswornPlayerCharacterData {
   debilities: IronswornDebility[];
   equipment: IronswornEquipment[];
   experience: number;
-  health: number,
+  health: number;
   momentum: number;
-  name: "Lucia",
-  spirit: 5,
+  name: string;
+  spirit: number;
   stats: IronswornPlayerCharacterStats;
-  supply: number,
+  supply: number;
   vows: IronswornVow[];
 }
 

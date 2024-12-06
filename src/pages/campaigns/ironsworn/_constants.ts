@@ -20,10 +20,13 @@ export const PlayerCharacter_000: IronswornPlayerCharacterData = {
     },
   ],
   bonds: [],
-  equipment: [],
+  equipment: [{
+    name: "Wooden bow",
+    description: "A simple but sturdy bow fashioned by your father"
+  }],
   experience: 0,
   health: 5,
-  name: "Lucia",
+  name: "Lucia of the Havens",
   spirit: 5,
   stats: {
     edge: 2,
@@ -38,4 +41,8 @@ export const PlayerCharacter_000: IronswornPlayerCharacterData = {
     progress: 0,
     rank: "epic",
   }]
+} as const;
+
+export const PlayerCharacter_001: IronswornPlayerCharacterData = {
+  ...PlayerCharacter_000
 } as const;
