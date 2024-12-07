@@ -16,6 +16,7 @@ interface Props {
   gradientColorStop1?: GradientColorStopData | string;
   gradientColorStop2?: GradientColorStopData | string;
   gradientColorStop3?: GradientColorStopData | string;
+  subtitle?: string;
   title: string;
 }
 
@@ -26,6 +27,7 @@ const {
   gradientColorStop1 = DEFAULT_BACKGROUND_COLOR,
   gradientColorStop2 = DEFAULT_BACKGROUND_COLOR,
   gradientColorStop3 = DEFAULT_BACKGROUND_COLOR,
+  subtitle,
   title,
 } = Astro.props;
 
@@ -65,6 +67,8 @@ const cssVars: { [key: string]: string } = {
 <header class={backgroundImageUrl ? "with-background-image" : undefined}>
   <div class="content-container">
     <h1>{title}</h1>
+
+    {subtitle ? <p class="subtitle">{subtitle}</p> : null}
   </div>
 </header>
 
@@ -100,6 +104,10 @@ const cssVars: { [key: string]: string } = {
     font-size: var(--mm--font-size--8);
     font-weight: var(--mm--font-weight--1);
     text-align: center;
+  }
+
+  .subtitle {
+    font-size: var(--mm--font-size--3);
   }
 
   .content-container {

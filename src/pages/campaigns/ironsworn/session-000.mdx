@@ -3,17 +3,81 @@ layout: "@layouts/PostLayout.astro"
 heroImage:
   path: "works/001-creation-myth/001_Planet_01_400.jpg"
   positionY: "40%"
-title: "Ironsworn - Setup"
+title: "Ironsworn - Session 0 | Setup"
 ---
 
+import ExternalLink from "@components/ExternalLink.astro";
 import IronswornCharacterSheet from "@components/rpg/IronswornCharacterSheet.astro";
+import IronswornLicenseNotice from "@components/rpg/IronswornLicenseNotice.astro";
 import { PlayerCharacter_000 } from "./_constants";
 
+<IronswornLicenseNotice />
+
+## Introduction
+
+This is a solo playthrough of the <ExternalLink href="https://tomkinpress.com/pages/ironsworn">_Ironsworn_</ExternalLink>
+tabletop roleplaying game by Shawn Tomkin,
+and I’m playing using a variant I made up that I call “Achievements Mode.”
+
+The name is inspired by the concept of video game achievements,
+which are made-up rewards for accomplishing arbitrary tasks inside a video game.
+Some people find chasing video game achievements to be pointless, but for the most part, I think that collecting them is a fun challenge.
+
+In the Achievements Mode variant, I’ll attempt to incorporate into my RPG narrative __every__ Quest Starter prompt
+in the _Ironsworn_ rulebook associated with my world’s truths and my chosen setting.
+In total, that’s 12 prompts. I’m not required to adhere to the exact text of the prompts,
+but I want each prompt to be a significant source of inspiration for some part of my narrative.
+
+I may very well end up creating an overcomplicated mess,
+but I relish the challenge of trying to weave together so many ideas and plotlines into a coherent story.
+Growing up, I loved epic fantasy novels like those found in the _A Song of Ice and Fire_ and _The Wheel of Time_ series,
+and my taste for complex narratives and sprawling cast lists has remained until now.
+
+Oh, and I’m also going to try to have my player character collect as many animal friends
+(sourced from the _Ironsworn_ companion asset cards) as possible.
+Just because I really like animals.
+
 ## Our Hero
+
+I’m gonna be honest: I don’t feel like writing out a detailed backstory for my player character.
+I have some biographical traits in mind for her, but as for sharing them with an audience,
+my aim is to present my character’s history and personality organically through the narrative.
+
+For now, I’ll just say that she’s a loner with a lot of __heart__ and decent __edge__ and __wits__ who specializes in __archery__.
+She has low __iron__ and __shadow__, so sneaking and brute force aren’t her strengths.
+
+As much as possible, I want to develop the story as I go, so I haven’t chosen any initial background bonds.
+I’ll make those up on the fly as good opportunities present themselves.
+
+I want my character to be adept at making animal friends, so I’ve given her the __Animal Kin__ path asset.
+I also have some presently vague yet ambitious ideas regarding her background vow, so I’ve given her the __Fated__ path asset.
+
+My character’s background vow is inspired by the Quest Starter prompt for one of my world’s truths (which I’ll go over later):
+
+> You have vivid reoccurring dreams of an Ironlands city.
+> It has strong stone walls, bustling markets, and a keep on a high hill.
+> ... Nowhere in the Ironlands does such a city exist.
+> ... Somehow, no matter how long it takes, you must make this vision a reality.
+>
+> — <cite>_Ironsworn_</cite> rulebook, p. 125
+
+I want my character’s overarching story to be that of __founding the Ironlands’ first great city__. A tall order, to be sure.
+
+I don’t care too much about how my character looks, so feel free to imagine her appearance however you’d like it to be.
+
+Finally, I’ve named my character __Lucia__. I consulted the __Ironlander Names__ oracle table and rolled an __81__,
+which gave me the names Pendry and Shekhar as options. I wasn’t feeling either of those for my player character’s name,
+so I mulliganed. My second roll was a __76__, which gave me “Kormak” and “Lucia.”
+“Lucia” sounded good to me, so that is what my character’s name shall be.
 
 <IronswornCharacterSheet {...PlayerCharacter_000} />
 
 ## Our Setting
+
+I chose the __Havens__ as the primary setting of my story
+because its Quest Starter interested me more than those of the other Ironland regions.
+The notion of a community being subject to unjust and cruel leadership seems like
+it could offer opportunities for compelling political and interpersonal intrigues.
 
 <aside class="paragraphs-container">
   ### The Havens
@@ -25,30 +89,39 @@ import { PlayerCharacter_000 } from "./_constants";
 
     <div>
       A settlement has fallen under the unjust rule of a cruel leader.
-      What leverage do they hold over these people? What is your connection to the
-      community? What can be done to overthrow this tyrant?
+      What leverage do they hold over these people?
+      ... What can be done to overthrow this tyrant?
     </div>
   </details>
 </aside>
 
 ## Our Truths
 
+These are the truths I’ve chosen for my world (truncated so that I don’t copy an egregious amount of the _Ironsworn_ rulebook text).
+
+I don’t want magic to play a large role in the story, at least initially.
+Magic might end up being a background element that incrementally comes to the fore as the story progresses.
+Similarly, I’m starting with the premise that beasts and horrors are only the stuff of legends,
+but that assumption might be refuted later.
+
+I won’t go into further detail on my truths, as you can read them yourself below
+and I’m itching to just start playing.
+Hopefully, I’ll also be able to exposit all these aspects of my world organically through the narrative.
+
 <aside class="paragraphs-container">
   ### The Old World
 
-  The savage clans called the Skulde invaded the kingdoms of the Old
-  World. Our armies fell. Most were killed or taken into slavery. Those
-  who escaped set sail aboard anything that would float. After an arduous
-  months-long voyage, the survivors made landfall upon the Ironlands.
+  The savage clans called the Skulde invaded the kingdoms of the Old World.
+  ... After an arduous months-long voyage, the survivors made landfall upon the Ironlands.
 
   <details>
     <summary>Quest Starter</summary>
 
     <div>
-      You are a descendant of the Skulde. Because of your heritage,
-      your family has long borne the distrust of your fellow Ironlanders. Now, a
-      small force of Skulde have landed on our shores. Are they the harbinger of
-      an invasion? Where do your loyalties lie?
+      You are a descendant of the Skulde.
+      Because of your heritage, your family has long borne the distrust of your fellow Ironlanders.
+      Now, a small force of Skulde have landed on our shores.
+      ... Where do your loyalties lie?
     </div>
   </details>
 </aside>
@@ -56,17 +129,15 @@ import { PlayerCharacter_000 } from "./_constants";
 <aside class="paragraphs-container">
   ### Iron
 
-  The weather is bleak. Rain and wind sweep in from the ocean. The winters
-  are long and bitter. One of the first settlers complained, “Only those made
-  of iron dare live in this foul place”—and thus our land was named.
+  The weather is bleak. ... The winters are long and bitter.
+  One of the first settlers complained, “Only those made of iron dare live in this foul place”—and thus our land was named.
 
   <details>
     <summary>Quest Starter</summary>
 
     <div>
-      The harvest fell short. The unrelenting snows left the village
-      isolated. The food is running out. What will you do to see these people
-      through this harsh season?
+      The harvest fell short. The unrelenting snows left the village isolated. ...
+      What will you do to see these people through this harsh season?
     </div>
   </details>
 </aside>
@@ -75,16 +146,15 @@ import { PlayerCharacter_000 } from "./_constants";
   ### Legacies
 
   Other humans sailed here from the Old World untold years ago, but all
-  that is left of them is a savage, feral people we call the broken. Is their fate
-  to become our own?
+  that is left of them is a savage, feral people we call the broken.
 
    <details>
     <summary>Quest Starter</summary>
 
     <div>
-      You find a child—one of the broken. It is wounded, and
-      hunted by others of its kind. Do you protect it, even at the risk of inviting
-      the wrath of the broken tribes?
+      You find a child—one of the broken.
+      It is wounded, and hunted by others of its kind.
+      Do you protect it, even at the risk of inviting the wrath of the broken tribes?
     </div>
   </details>
 </aside>
@@ -94,16 +164,14 @@ import { PlayerCharacter_000 } from "./_constants";
 
   We live in communities called circles. These are settlements ranging in
   size from a steading with a few families to a village of several hundred.
-  Some circles belong to nomadic folk. Some powerful circles might
-  include a cluster of settlements. We trade (and sometimes feud) with other circles.
+  ... We trade (and sometimes feud) with other circles.
 
    <details>
     <summary>Quest Starter</summary>
 
     <div>
-      A decades-long feud between two circles has flared into open
-      conflict. What is the cause of this dispute? Do you join in the fight, or swear
-      to put a stop to it?
+      A decades-long feud between two circles has flared into open conflict.
+      ... Do you join in the fight, or swear to put a stop to it?
     </div>
   </details>
 </aside>
@@ -112,13 +180,15 @@ import { PlayerCharacter_000 } from "./_constants";
   ### Leaders
 
   Leadership is as varied as the people.
+  Some communities are governed by the head of a powerful family.
+  Or, they have a council of elders who make decisions and settle disputes.
 
    <details>
     <summary>Quest Starter</summary>
 
     <div>
       You have vivid reoccurring dreams of an Ironlands city.
-      It has strong stone walls, bustling markets, and a keep on a high hill.
+      It has strong stone walls, bustling markets, and a keep on a high hill. ...
       Somehow, no matter how long it takes, you must make this vision a reality.
     </div>
   </details>
@@ -127,19 +197,17 @@ import { PlayerCharacter_000 } from "./_constants";
 <aside class="paragraphs-container">
   ### Defense
 
-  The wardens are our soldiers, guards, and militia. They serve their
-  communities by standing sentry, patrolling surrounding lands, and
-  organizing defenses in times of crisis. Most have strong ties to their
-  community. Others, called free wardens, are wandering mercenaries who
-  hire on to serve a community or protect caravans.
+  The wardens are our soldiers, guards, and militia.
+  They serve their communities by standing sentry, patrolling surrounding lands,
+  and organizing defenses in times of crisis.
 
    <details>
     <summary>Quest Starter</summary>
 
     <div>
-      You come upon a dying warden. She tells you of an important
-      mission, and charges you with its completion. “Swear to me,” she says,
-      reaching out with a bloodied hand to give you an object crucial to the quest.
+      You come upon a dying warden.
+      She tells you of an important mission, and charges you with its completion.
+      “Swear to me,” she says, reaching out with a bloodied hand to give you an object crucial to the quest.
       What is it?
     </div>
   </details>
@@ -155,7 +223,7 @@ import { PlayerCharacter_000 } from "./_constants";
 
     <div>
       You have heard stories of someone who wields true power.
-      They live in an isolated settlement far away. Who told you of this mystic?
+      They live in an isolated settlement far away. ...
       Are they feared or respected? Why do you swear to seek them out?
     </div>
   </details>
@@ -164,17 +232,16 @@ import { PlayerCharacter_000 } from "./_constants";
 <aside class="paragraphs-container">
   ### Religion
 
-  A few Ironlanders still make signs or mumble prayers out of habit or
-  tradition, but most believe the gods long ago abandoned us.
+  A few Ironlanders still make signs or mumble prayers out of habit or tradition,
+  but most believe the gods long ago abandoned us.
 
    <details>
     <summary>Quest Starter</summary>
 
     <div>
-      A charismatic Ironlander, encouraging her followers to
-      renounce the vestiges of Old World religions, proposes a new path for this
-      new world. What doctrine does she teach? What does she seek to achieve?
-      Are you sworn to aid or stop her?
+      A charismatic Ironlander, encouraging her followers
+      to renounce the vestiges of Old World religions, proposes a new path for this new world.
+      ... What does she seek to achieve? Are you sworn to aid or stop her?
     </div>
   </details>
 </aside>
@@ -182,17 +249,16 @@ import { PlayerCharacter_000 } from "./_constants";
 <aside class="paragraphs-container">
   ### Firstborn
 
-  The firstborn have passed into legend. Some say the remnants of the old
-  tribes still dwell in deep forests or high mountains. Most believe they
-  were never anything more than myth.
+  The firstborn have passed into legend.
+  Some say the remnants of the old tribes still dwell in deep forests or high mountains.
 
    <details>
     <summary>Quest Starter</summary>
 
     <div>
-      Someone obsessed with the firstborn wants to find evidence
-      of their existence. This will require an expedition into the far reaches of the
-      Ironlands. What is your role in this mission?
+      Someone obsessed with the firstborn wants to find evidence of their existence.
+      This will require an expedition into the far reaches of the Ironlands.
+      What is your role in this mission?
     </div>
   </details>
 </aside>
@@ -200,17 +266,17 @@ import { PlayerCharacter_000 } from "./_constants";
 <aside class="paragraphs-container">
   ### Beasts
 
-  The beasts of old are nothing but legend. A few who travel into the deep
-  forests and high mountains return with wild tales of monstrous creatures,
-  but they are obviously delusional.
+  The beasts of old are nothing but legend.
+  A few who travel into the deep forests and high mountains
+  return with wild tales of monstrous creatures, but they are obviously delusional.
 
   <details>
     <summary>Quest Starter — Established in [Session 1](./session-001)</summary>
 
     <div>
       You were witness to an attack by what you thought was an animal of monstrous proportions.
-      You are accused of the murder. How can you prove your innocence?
-      Can you even trust your own memories of the event?
+      ...[Y]ou are accused of the murder...
+      How can you prove your innocence? Can you even trust your own memories of the event?
     </div>
   </details>
 </aside>
@@ -221,12 +287,12 @@ import { PlayerCharacter_000 } from "./_constants";
   Nothing but stories to frighten children.
 
   <details>
-    <summary>Quest Starter — Established in [Session 1](./session-001)</summary>
+    <summary>Quest Starter</summary>
 
     <div>
-      The murders began last season. Local gossip suggests they
-      are the work of a vengeful horror, but there may be more mundane forces at
-      work. What is your connection to these killings? What will you do to stop them?
+      The murders began last season.
+      Local gossip suggests they are the work of a vengeful horror...
+      What is your connection to these killings? What will you do to stop them?
     </div>
   </details>
 </aside>

@@ -66,11 +66,14 @@ h2 {
   font-size: var(--mm--font-size--4);
 }
 
-aside {
+aside,
+blockquote {
   background-color: var(--mm--color--neutral-8);
   border-radius: var(--mm--border-radius--1);
   padding: var(--mm--spacing--4);
+}
 
+aside {
   &.paragraphs-container {
     gap: 1em;
   }
@@ -91,20 +94,21 @@ aside {
   }
 }
 
+blockquote {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  & p:not(:last-child) {
+    font-style: italic;
+  }
+}
+
 details {
   &>summary {
     cursor: pointer;
     font-family: var(--mm--font-family--serif);
   }
-}
-
-blockquote {
-  border-inline-start: var(--mm--border-width--4) solid var(--mm--color--neutral-0);
-  font-family: var(--mm--font-family--serif);
-  font-size: var(--mm--font-size--3);
-  font-weight: var(--mm--font-weight--1);
-  padding-block: var(--mm--spacing--3);
-  padding-inline-start: var(--mm--spacing--6);
 }
 
 a {
@@ -127,11 +131,8 @@ a {
 }
 
 @media screen and (min-width: 481px) {
-  aside {
-    inline-size: 80%;
-    margin-inline: auto;
-  }
 
+  aside,
   blockquote {
     inline-size: 80%;
     margin-inline: auto;

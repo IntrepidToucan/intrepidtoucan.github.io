@@ -18,6 +18,8 @@ interface Props {
 const {
   frontmatter: { heroImage, title },
 } = Astro.props;
+
+const titleSegments = title.split(" | ");
 ---
 
 <BaseLayout pageTitle={title}>
@@ -30,7 +32,8 @@ const {
     gradientColorStop1={{ color: "black", colorLevel: 0, opacity: 0.9 }}
     gradientColorStop2={{ color: "black", colorLevel: 0, opacity: 0.4 }}
     gradientColorStop3={{ color: "black", colorLevel: 0, opacity: 0 }}
-    title={title}
+    subtitle={titleSegments[1]}
+    title={titleSegments[0]}
   />
 
   <main>
