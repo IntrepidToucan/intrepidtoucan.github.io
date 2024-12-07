@@ -1,0 +1,67 @@
+---
+interface Props {
+  maxSessionNumber: number;
+  sessionNumber: number;
+}
+
+const { maxSessionNumber, sessionNumber } = Astro.props;
+---
+
+<nav>
+  <ul class="links">
+    {
+      sessionNumber > 0 ? (
+        <li>
+          <a href={`./session-${String(sessionNumber - 1).padStart(3, "0")}`}>
+            « Session {sessionNumber - 1}
+          </a>
+        </li>
+      ) : null
+    }
+
+    {
+      sessionNumber < maxSessionNumber ? (
+        <li class="next-link">
+          <a href={`./session-${String(sessionNumber + 1).padStart(3, "0")}`}>
+            Session {sessionNumber + 1} »
+          </a>
+        </li>
+      ) : null
+    }
+  </ul>
+</nav>
+
+<style>
+  nav {
+    background-color: var(--mm--color--neutral-0);
+  }
+
+  .links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin-inline: auto;
+    max-inline-size: var(--mm--global--max-width);
+    padding: var(--mm--spacing--3) var(--mm--global--padding-x);
+
+    & > li {
+      list-style-type: none;
+
+      & > a {
+        color: var(--mm--color--neutral-9);
+        font-size: var(--mm--font-size--1);
+        font-weight: var(--mm--font-weight--2);
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .next-link {
+    margin-inline-start: auto;
+  }
+</style>

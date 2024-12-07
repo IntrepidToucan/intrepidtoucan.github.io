@@ -1,0 +1,85 @@
+---
+import HeroBanner from "@components/HeroBanner.astro";
+import SessionNavBar from "@components/rpg/SessionNavBar.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+export interface SessionFrontmatter {
+  heroImage: {
+    path: string;
+    positionX?: string;
+    positionY?: string;
+  };
+  title: string;
+}
+
+interface Props {
+  frontmatter: SessionFrontmatter;
+}
+
+const allCampaignSessions = await Astro.glob("../pages/campaigns/**/*.md?(x)");
+
+const {
+  frontmatter: { heroImage, title },
+} = Astro.props;
+
+const { pathname } = Astro.url;
+
+const SESSION_PATH_SEGMENT_STRING = "/session-";
+
+const pathSegments = pathname.split(SESSION_PATH_SEGMENT_STRING);
+const maxSessionNumber =
+  Number(
+    allCampaignSessions
+      .filter((s) =>
+        s.url.startsWith(`${pathSegments[0]}${SESSION_PATH_SEGMENT_STRING}`),
+      )
+      .sort((a, b) => b.url.localeCompare(a.url))[0]
+      .url.split(SESSION_PATH_SEGMENT_STRING)[1],
+  ) || 0;
+const sessionNumber = Number(pathSegments[1]) || 0;
+
+const titleSegments = title.split(" | ");
+---
+
+<BaseLayout pageTitle={title}>
+  <HeroBanner
+    backgroundImage={{
+      path: heroImage.path,
+      positionX: heroImage.positionX,
+      positionY: heroImage.positionY,
+    }}
+    gradientColorStop1={{ color: "black", colorLevel: 0, opacity: 0.9 }}
+    gradientColorStop2={{ color: "black", colorLevel: 0, opacity: 0.4 }}
+    gradientColorStop3={{ color: "black", colorLevel: 0, opacity: 0 }}
+    subtitle={titleSegments[1]}
+    title={titleSegments[0]}
+  />
+
+  <main>
+    <SessionNavBar
+      maxSessionNumber={maxSessionNumber}
+      sessionNumber={sessionNumber}
+    />
+
+    <div class="content-container paragraphs-container">
+      <slot />
+    </div>
+
+    <SessionNavBar
+      maxSessionNumber={maxSessionNumber}
+      sessionNumber={sessionNumber}
+    />
+  </main>
+</BaseLayout>
+
+<style>
+  .content-container {
+    margin-inline: auto;
+    max-inline-size: var(--mm--global--max-width);
+    padding: var(--mm--spacing--9) var(--mm--global--padding-x);
+
+    & :global(h2) {
+      text-align: center;
+    }
+  }
+</style>

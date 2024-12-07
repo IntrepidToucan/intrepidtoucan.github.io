@@ -108,10 +108,17 @@ const cssVars: { [key: string]: string } = {
 
   .subtitle {
     font-size: var(--mm--font-size--3);
+    text-align: center;
   }
 
   .content-container {
     margin-inline: auto;
     max-inline-size: var(--mm--global--max-width);
+  }
+
+  @media screen and (min-width: 481px) {
+    .subtitle {
+      text-align: start;
+    }
   }
 </style>

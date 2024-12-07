@@ -1,0 +1,18 @@
+---
+import SessionLayout, {
+  type SessionFrontmatter,
+} from "@layouts/SessionLayout.astro";
+import IronswornLicenseNotice from "@components/rpg/IronswornLicenseNotice.astro";
+
+interface Props {
+  frontmatter: SessionFrontmatter;
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<SessionLayout frontmatter={frontmatter}>
+  <IronswornLicenseNotice />
+
+  <slot />
+</SessionLayout>
