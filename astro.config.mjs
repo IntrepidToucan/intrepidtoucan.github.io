@@ -7,4 +7,5 @@ import mdx from '@astrojs/mdx';
 export default defineConfig({
   site: 'https://makingmythology.com',
   integrations: [mdx()],
+  trailingSlash: 'always'
 });

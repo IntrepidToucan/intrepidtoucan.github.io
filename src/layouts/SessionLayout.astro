@@ -26,15 +26,20 @@ const { pathname } = Astro.url;
 
 const SESSION_PATH_SEGMENT_STRING = "/session-";
 
-const pathSegments = pathname.split(SESSION_PATH_SEGMENT_STRING);
+function normalizePath(path: string): string {
+  return path.replaceAll(/\/$/g, "");
+}
+
+const pathSegments = normalizePath(pathname).split(SESSION_PATH_SEGMENT_STRING);
 const maxSessionNumber =
   Number(
-    allCampaignSessions
-      .filter((s) =>
-        s.url.startsWith(`${pathSegments[0]}${SESSION_PATH_SEGMENT_STRING}`),
-      )
-      .sort((a, b) => b.url.localeCompare(a.url))[0]
-      .url.split(SESSION_PATH_SEGMENT_STRING)[1],
+    normalizePath(
+      allCampaignSessions
+        .filter((s) =>
+          s.url.startsWith(`${pathSegments[0]}${SESSION_PATH_SEGMENT_STRING}`),
+        )
+        .sort((a, b) => b.url.localeCompare(a.url))[0].url,
+    ).split(SESSION_PATH_SEGMENT_STRING)[1],
   ) || 0;
 const sessionNumber = Number(pathSegments[1]) || 0;
 
