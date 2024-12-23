@@ -1,0 +1,102 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout pageTitle="Cooking">
+  <div class="paragraphs-container">
+    <table>
+      <caption>Tools</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 180px"></th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Cast iron skillet</th>
+          <td>
+            <ul>
+              <li>
+                <a href="https://youtu.be/P4zW-C010oc?feature=shared"
+                  >The Best Way To Clean and Season a Cast Iron Skillet |
+                  Epicurious 101</a
+                >
+
+                <ul>
+                  <li>Kosher salt for cleaning</li>
+                  <li>Crisco for seasoning</li>
+                </ul>
+              </li>
+            </ul></td
+          >
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="dishes">
+      <caption>Dishes</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 180px"></th>
+          <th scope="col" style="width: 100px">Date</th>
+          <th scope="col" style="width: 80px">Rating</th>
+          <th scope="col" style="width: 240px">Ingredients</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">Breakfast meats</th>
+          <td></td>
+          <td></td>
+          <td>
+            <ul>
+              <li>Bacon</li>
+              <li>Sausage</li>
+              <li>Ham</li>
+            </ul></td
+          >
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">Oatmeal</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">Granola</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">Fruit smoothie</th>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</PageLayout>
+
+<style>
+  .dishes {
+    td:nth-child(2),
+    td:nth-child(3) {
+      text-align: center;
+    }
+  }
+</style>

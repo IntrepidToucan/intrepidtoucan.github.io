@@ -104,6 +104,10 @@ blockquote {
   }
 }
 
+pre {
+  padding: var(--mm--spacing--4);
+}
+
 details {
   &>summary {
     cursor: pointer;
@@ -133,7 +137,8 @@ a {
 @media screen and (min-width: 481px) {
 
   aside,
-  blockquote {
+  blockquote,
+  pre {
     inline-size: 80%;
     margin-inline: auto;
   }

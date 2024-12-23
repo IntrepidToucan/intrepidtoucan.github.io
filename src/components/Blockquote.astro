@@ -14,13 +14,15 @@ const { marginBottom = false } = Astro.props;
 
 <style>
   blockquote {
+    background-color: transparent;
     border-inline-start: var(--mm--border-width--4) solid
       var(--mm--color--neutral-0);
+    border-radius: 0;
     font-family: var(--mm--font-family--serif);
     font-size: var(--mm--font-size--3);
     font-weight: var(--mm--font-weight--1);
     padding-block: var(--mm--spacing--3);
-    padding-inline-start: var(--mm--spacing--6);
+    padding-inline: var(--mm--spacing--6) var(--mm--spacing--4);
   }
 
   .with-margin-bottom {

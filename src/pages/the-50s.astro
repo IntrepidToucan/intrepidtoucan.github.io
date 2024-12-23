@@ -1,0 +1,116 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+---
+
+<PageLayout pageTitle="The 50s">
+  <div class="paragraphs-container">
+    <table>
+      <caption>Books</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 40px"></th>
+          <th scope="col" style="width: 180px">Title</th>
+          <th scope="col" style="width: 180px">Author</th>
+          <th scope="col" style="width: 100px">Finished</th>
+          <th scope="col" style="width: 80px">Rating</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <th scope="row">Dune</th>
+          <td>Frank Herbert</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <caption>Media</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 40px"></th>
+          <th scope="col" style="width: 180px">Title</th>
+          <th scope="col" style="width: 180px">Author</th>
+          <th scope="col" style="width: 100px">Finished</th>
+          <th scope="col" style="width: 80px">Rating</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <th scope="row">BJJ Mental Models</th>
+          <td>Steve Kwan, Matt Kwan</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th scope="row">1</th>
+          <th scope="row">Chewjitsu Podcast</th>
+          <td>Nick “Chewy” Albin, Eugene Tsozik</td>
+          <td></td>
+          <td></td>
+          <td
+            ><ul>
+              <li>
+                Favorite episodes:
+                <ul>
+                  <li>
+                    #319 - Rules For BJJ #17: Expectations Are Dangerous and #18
+                    Look Fresh When Tired
+                  </li>
+                </ul>
+              </li>
+            </ul></td
+          >
+        </tr>
+      </tbody>
+    </table>
+
+    <table>
+      <caption>Tabletop Games</caption>
+
+      <thead>
+        <tr>
+          <th scope="col" style="width: 40px"></th>
+          <th scope="col" style="width: 180px">Title</th>
+          <th scope="col" style="width: 180px">Author</th>
+          <th scope="col" style="width: 100px">Finished</th>
+          <th scope="col" style="width: 80px">Rating</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <th scope="row">Ironsworn</th>
+          <td>Shawn Tomkin</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</PageLayout>
+
+<style>
+  td {
+    text-align: center;
+
+    &:last-child {
+      text-align: start;
+    }
+  }
+</style>

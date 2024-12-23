@@ -16,7 +16,9 @@ interface Props {
   frontmatter: SessionFrontmatter;
 }
 
-const allCampaignSessions = await Astro.glob("../pages/campaigns/**/*.md?(x)");
+const allCampaignSessions = (
+  await Astro.glob("../pages/campaigns/**/*.md?(x)")
+).filter((p) => !p.frontmatter.draft);
 
 const {
   frontmatter: { heroImage, title },
