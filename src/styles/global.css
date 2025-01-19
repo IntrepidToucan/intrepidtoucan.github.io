@@ -14,8 +14,26 @@ body {
 table {
   border: var(--mm--border-width--2) solid var(--mm--color--neutral-0);
   border-collapse: collapse;
-  font-size: var(--mm--font-size--0);
+  font-size: 14px;
   table-layout: fixed;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+    &>li {
+      line-height: 1.6;
+    }
+
+    strong+& {
+      margin-block-start: 0.5em;
+    }
+
+    ul {
+      margin-block-start: 0.5em;
+    }
+  }
 }
 
 thead,
@@ -27,7 +45,7 @@ th {
 th,
 td {
   border: var(--mm--border-width--1) solid var(--mm--color--neutral-4);
-  padding: var(--mm--spacing--1);
+  padding: var(--mm--spacing--2) var(--mm--spacing--1);
 
   & ul {
     padding-inline-start: var(--mm--spacing--5);
